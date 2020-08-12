@@ -4,7 +4,6 @@ import LottieView from 'lottie-react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 // import { Container } from './styles';
 
 const Hello = () => {
