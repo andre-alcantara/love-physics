@@ -24,7 +24,7 @@ const Welcome = () => {
   ])
 
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF'}}>
 
       <StatusBar style='dark' />
       <View style={{
@@ -49,8 +49,8 @@ const Welcome = () => {
             <Image 
               source={item.imageURL}
               style={{
-                width: wp('90%'),
-                height: hp('50%'),
+                width: wp('100%'),
+                height: hp('40%'),
 
               }}
             />
