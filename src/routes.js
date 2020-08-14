@@ -10,7 +10,7 @@ import Hello from './pages/Hello';
 
 const Routes = () => {
   return (
-    <Stack.Navigator initialRouteName='Welcome'>
+    <Stack.Navigator initialRouteName='Hello'>
       <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name='SignIn' component={SignIn} options={{ headerShown: false }} />
       <Stack.Screen name='Hello' component={Hello} options={{ headerShown: false }} />

@@ -36,7 +36,6 @@ export default function WelcomeList() {
         alignItems: 'center',
         height: hp('90%'),
         width: wp('100%'),
-        marginTop: hp('0%')
       }}>
 
         <Image 
