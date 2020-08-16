@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, SafeAreaView, Image } from 'react-native';
+import { View, Text, FlatList, SafeAreaView, Image, TouchableOpacity, TouchableOpacityBase } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import ViewPager from '@react-native-community/viewpager';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -14,9 +14,10 @@ export default function Welcome() {
         <StatusBar style='dark' />
         <View style={{
           width: wp('100%'),
-          height: hp('80%')
+          height: hp('100%')
         }}>
         <WelcomeList />
+      
         </View>
         </SafeAreaView>
   );
