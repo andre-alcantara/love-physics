@@ -10,7 +10,6 @@
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.1.0",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-native-community/viewpager": "^4.1.4",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "expo": "~38.0.8",
@@ -29,6 +28,7 @@
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-svg": "12.1.0",
+    "react-native-swiper": "^1.6.0",
     "react-native-web": "~0.11.7",
     "styled-components": "^5.1.1"
   },
