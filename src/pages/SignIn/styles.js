@@ -11,9 +11,8 @@ export const Wrapper = styled.SafeAreaView `
     flex: 1;
     align-self: center;
     width: 90%;
-    margin-top: ${hp('2%')}px;
+    margin-top: ${hp('3.5%')}px;
 `;
-
 export const Header = styled.View `
     width: 90%;
     align-self: center;

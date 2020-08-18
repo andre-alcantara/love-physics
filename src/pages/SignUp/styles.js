@@ -10,7 +10,7 @@ export const Background = styled.ImageBackground `
 export const Wrapper = styled.SafeAreaView `
     align-self: center;
     width: 90%;
-    margin-top: ${hp('5%')}px;
+    margin-top: ${hp('3.5%')}px;
 `;
 
 export const Header = styled.View `

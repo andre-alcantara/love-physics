@@ -34,7 +34,7 @@ export default function SignIn({ navigation }) {
   return (
     <Background source={require('../../img/background.png')}>
 
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView enableOnAndroid={true}>
       <StatusBar style="dark" />
       <Wrapper>
         
@@ -107,7 +107,7 @@ export default function SignIn({ navigation }) {
             elevation: 5,
           }}>
             <Logo style={{
-              marginLeft: wp('2%')
+              marginLeft: wp('3.3%')
             }} width={40} height={wp('5.5%')} />
             <SignUpText>Entrar com Google</SignUpText>
           </SignUpButton>

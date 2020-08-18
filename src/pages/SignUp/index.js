@@ -36,7 +36,9 @@ export default function SignUp({ navigation }) {
             
     <Background source={require('../../img/background.png')}>
 
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true} enableAutomaticScroll={(Platform.OS === 'ios')}>
+       <KeyboardAvoidingView>
+
        
       <StatusBar style="dark" />
       <Wrapper>
@@ -120,6 +122,7 @@ export default function SignUp({ navigation }) {
                 </TouchableOpacity>
             </SignUpView>
         </Wrapper>
+        </KeyboardAvoidingView>
         </KeyboardAwareScrollView>
       </Background>
     
