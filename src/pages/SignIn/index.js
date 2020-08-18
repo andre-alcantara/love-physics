@@ -24,6 +24,7 @@ import {
 } from './styles';
 
 import Logo from '../../img/google.svg';
+import Facebook from '../../img/facebook.svg';
 
 const SignIn = ({ navigation }) => {
   const [secureText, setSecureText] = useState(true);
@@ -34,13 +35,13 @@ const SignIn = ({ navigation }) => {
       <Wrapper>
         
         <TouchableOpacity onPress={() => navigation.replace('Welcome')}>
-          <AntDesign style={{ alignSelf: 'flex-end',  }} name="close" size={hp('3.5%')} color="black" />                                          
+          <AntDesign style={{ alignSelf: 'flex-end', marginTop: 12, marginBottom: -12  }} name="close" size={hp('3.5%')} color="black" />                                          
         </TouchableOpacity>
       
         <Title>Bem-vindo de volta</Title>
         <Description>Apenas um minuto para você utilizar o Love Physics!</Description>
         
-        <Label style={{marginTop: hp('10%')}}>EMAIL</Label>
+        <Label style={{marginTop: hp('7%')}}>EMAIL</Label>
         <Input 
           containerStyle={{ marginTop: hp('1%') }}
           inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
@@ -68,21 +69,58 @@ const SignIn = ({ navigation }) => {
           secureTextEntry={secureText}
         />
        
-        
-
           <ForgotButton>
             <ForgotText>Esqueceu a senha?</ForgotText>
           </ForgotButton>
 
-          <SignInButton>
+          <SignInButton style={{
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+          }}>
             <SignInText>Entrar</SignInText>
           </SignInButton>
               
-          <SignUpButton>
+          <SignUpButton style={{
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+          }}>
             <Logo style={{
               marginLeft: wp('2%')
             }} width={40} height={wp('5.5%')} />
             <SignUpText>Entrar com Google</SignUpText>
+          </SignUpButton>
+
+          <SignUpButton style={{
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+            backgroundColor: '#4267b2'
+          }}>
+            <Facebook style={{
+              marginLeft: wp('2%')
+            }} width={40} height={wp('5.5%')} />
+            <SignUpText style={{
+              color: '#FFF',
+              marginLeft: wp('6.5%')
+            }}>Entrar com Facebook</SignUpText>
           </SignUpButton>
 
             <SignUpView>
