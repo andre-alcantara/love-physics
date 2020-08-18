@@ -45,15 +45,13 @@ export default function Welcome({ navigation }) {
         </Container>
         
 
-        <SignInButton onPress={() => navigation.replace('SignIn')}>
-          <SignInText>Entrar</SignInText>
+        <SignInButton onPress={() => navigation.navigate('SignIn')}>
+          <SignInText>Login</SignInText>
         </SignInButton>
 
-        <SignUpButton>
+        <SignUpButton onPress={() => navigation.navigate('SignUp')}>
           <SignUpText>Criar Conta</SignUpText>
         </SignUpButton>
         </Wrapper>
   );
 }   
-
-console.disableYellowBox = true;

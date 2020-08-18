@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, TouchableOpacityBase } from 'react-native';
+import { View, TouchableOpacity, Platform , KeyboardAvoidingView} from 'react-native';
 import { Input } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar'
-import { Feather, AntDesign } from '@expo/vector-icons';
+import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { 
     Background,
@@ -28,27 +28,39 @@ import {
 import Logo from '../../img/google.svg';
 import Facebook from '../../img/facebook.svg';
 
-export default function SignIn({ navigation }) {
+export default function SignUp({ navigation }) {
   const [secureText, setSecureText] = useState(true);
 
   return (
+    
+            
     <Background source={require('../../img/background.png')}>
 
       <KeyboardAwareScrollView>
+       
       <StatusBar style="dark" />
       <Wrapper>
         
         <Header>
           <TouchableOpacity onPress={() => navigation.popToTop()}>
-            <AntDesign style={{ alignSelf: 'flex-end', marginTop: 12, marginBottom: -12  }} name="close" size={hp('3.5%')} color="black" />                                          
+            <AntDesign style={{ alignSelf: 'flex-end', marginTop: 12, marginBottom: -12 }} name="close" size={hp('3.5%')} color="black" />                                          
           </TouchableOpacity>
         </Header>
-        
+     
       
-        <Title>Login</Title>
-        <Description>Apenas um minuto para você utilizar o LovePhysics!</Description>
+        <Title>Criar Conta</Title>
+        <Description>Crie sua conta e experimente o LovePhysics!</Description>
         
-        <Label style={{marginTop: hp('7%')}}>EMAIL</Label>
+        <Label style={{marginTop: hp('7%')}}>NICKNAME</Label>
+        <Input 
+          containerStyle={{ marginTop: hp('1%') }}
+          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
+          placeholder='Seu Nickname...'
+          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
+          errorMessage='Error Message'
+        />
+
+        <Label>EMAIL</Label>
         <Input 
           containerStyle={{ marginTop: hp('1%') }}
           inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
@@ -76,9 +88,7 @@ export default function SignIn({ navigation }) {
           secureTextEntry={secureText}
         />
        
-          <ForgotButton>
-            <ForgotText>Esqueceu a senha?</ForgotText>
-          </ForgotButton>
+          
 
           <SignInButton 
           onPress={() => navigation.navigate('Hello')}
@@ -92,42 +102,27 @@ export default function SignIn({ navigation }) {
             shadowRadius: 3.84,
             elevation: 5,
           }}>
-            <SignInText>Entrar</SignInText>
+            <SignInText>Criar Conta</SignInText>
           </SignInButton>
               
-          <SignUpButton style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            
-            elevation: 5,
-          }}>
-            <Logo style={{
-              marginLeft: wp('2%')
-            }} width={40} height={wp('5.5%')} />
-            <SignUpText>Entrar com Google</SignUpText>
-          </SignUpButton>
-
+          
 
             <SignUpView>
                 <SignUpDescription>
-                    Não possui uma conta? 
+                    Já possui uma conta? 
                 </SignUpDescription>
 
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                     <SignUpText style={{
                       color: '#FF5555',
                       marginLeft: wp('0%'),
-                    }}> Criar Conta</SignUpText>
+                    }}> Fazer login</SignUpText>
                 </TouchableOpacity>
             </SignUpView>
         </Wrapper>
         </KeyboardAwareScrollView>
       </Background>
+    
   );
 }
 

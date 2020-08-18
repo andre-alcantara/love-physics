@@ -8,16 +8,16 @@ export const Background = styled.ImageBackground `
 `; 
 
 export const Wrapper = styled.SafeAreaView `
-    flex: 1;
     align-self: center;
     width: 90%;
-    margin-top: ${hp('2%')}px;
+    margin-top: ${hp('5%')}px;
 `;
 
 export const Header = styled.View `
     width: 90%;
     align-self: center;
     flex-direction: row;
+    justify-content: space-between;
     justify-content: flex-end;
     margin-top: ${hp('1%')}px;
     margin-bottom: ${hp('-1%')}px;
