@@ -1,13 +1,17 @@
-import React from 'react';
-import { ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, TouchableOpacityBase } from 'react-native';
 import { Input } from 'react-native-elements';
-import { Feather } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar'
+import { Feather, AntDesign } from '@expo/vector-icons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import { 
     Background,
     Wrapper, 
+    TextView,
     Title, 
     Description, 
+    InputView,
     Label, 
     ForgotButton,
     ForgotText, 
@@ -19,56 +23,82 @@ import {
     SignUpText
 } from './styles';
 
+import Logo from '../../img/google.svg';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
+  const [secureText, setSecureText] = useState(true);
+
   return (
-    <Background source={require('../../img/background.png')} >
-        <Wrapper>
-            <Title>Bem-vindo de volta</Title>
-            <Description>Apenas um minuto para você utilizar Love Physics!</Description>
+    <Background source={require('../../img/background.png')}>
+      <StatusBar style="dark" />
+      <Wrapper>
+        
+        <TouchableOpacity onPress={() => navigation.replace('Welcome')}>
+          <AntDesign style={{ alignSelf: 'flex-end',  }} name="close" size={hp('3.5%')} color="black" />                                          
+        </TouchableOpacity>
+      
+        <Title>Bem-vindo de volta</Title>
+        <Description>Apenas um minuto para você utilizar o Love Physics!</Description>
+        
+        <Label style={{marginTop: hp('10%')}}>EMAIL</Label>
+        <Input 
+          containerStyle={{ marginTop: hp('1%') }}
+          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
+          placeholder='exemplo@exemplo.com'
+          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
+          errorMessage='Error Message'
+        />
 
-            <Label>Email</Label>
-            <Input 
-            placeholder='exemplo@exemplo.com'
-            errorMessage='Erro'
-            rightIcon={
-                <Feather name="eye" size={24} color="black" />
-            }
-            />
+        <Label>SENHA</Label>
+        <Input 
+          placeholder='Sua senha...'
+          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
+          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
+          errorMessage='Error Message'
+          rightIcon={
+            (secureText) ?
+            <TouchableOpacity onPress={() => setSecureText(false)}>
+              <Feather name="eye" size={24} color="#A9A9A9" />
+            </TouchableOpacity>
+            :
+            <TouchableOpacity onPress={() => setSecureText(true)}>
+              <Feather name="eye-off" size={24} color="#A9A9A9" />
+            </TouchableOpacity>
+          }
+          secureTextEntry={secureText}
+        />
+       
+        
 
-            <Label>Senha</Label>
-            <Input 
-            placeholder='exemplo@exemplo.com'
-            errorMessage='Erro'
-            rightIcon={
-                <Feather name="eye" size={24} color="black" />
-            }
-            secureTextEntry={true}
-            />
+          <ForgotButton>
+            <ForgotText>Esqueceu a senha?</ForgotText>
+          </ForgotButton>
 
-            <ForgotButton>
-                <ForgotText>Esqueceu a senha?</ForgotText>
-            </ForgotButton>
-
-            <SignInButton>
-                <SignInText>Entrar</SignInText>
-            </SignInButton>
-
-            <SignInButton>
-                <SignInText>Entrar com o Google</SignInText>
-            </SignInButton>
+          <SignInButton>
+            <SignInText>Entrar</SignInText>
+          </SignInButton>
+              
+          <SignUpButton>
+            <Logo style={{
+              marginLeft: wp('2%')
+            }} width={40} height={wp('5.5%')} />
+            <SignUpText>Entrar com Google</SignUpText>
+          </SignUpButton>
 
             <SignUpView>
                 <SignUpDescription>
-                    Não possui uma conta?
+                    Não possui uma conta? 
                 </SignUpDescription>
 
-                <SignUpButton>
-                    <SignUpText>Criar Conta</SignUpText>
-                </SignUpButton>
+                <TouchableOpacity>
+                    <SignUpText style={{
+                      color: '#FF5555',
+                      marginLeft: wp('0%'),
+                    }}> Criar Conta</SignUpText>
+                </TouchableOpacity>
             </SignUpView>
         </Wrapper>
-    </Background>
+      </Background>
   );
 }
 

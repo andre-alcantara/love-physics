@@ -10,7 +10,7 @@ import Img1 from '../../img/img1.svg';
 import Img2 from '../../img/img2.svg';
 import Img3 from '../../img/img3.svg';
 
-export default function Welcome() {
+export default function Welcome({ navigation }) {
 
 
   return (
@@ -18,7 +18,7 @@ export default function Welcome() {
 
       <StatusBar style='auto' />
       <Container>    
-        <Swiper autoplayTimeout={4} 
+        <Swiper autoplayTimeout={2.5} 
           autoplay={true} 
           autoplayDirection={true} 
           showsButtons={false} 
@@ -45,7 +45,7 @@ export default function Welcome() {
         </Container>
         
 
-        <SignInButton>
+        <SignInButton onPress={() => navigation.replace('SignIn')}>
           <SignInText>Entrar</SignInText>
         </SignInButton>
 
