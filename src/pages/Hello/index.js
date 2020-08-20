@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Wrapper, Container, InputView, Title, Name, TextButton } from './styles';
 
-const Hello = () => {
+const Hello = ({ navigation }) => {
   return (
     <Wrapper>
       <Container>
@@ -21,7 +21,8 @@ const Hello = () => {
               position: 'absolute'
           }} source={require('../../../astronaut.json')} autoPlay loop />
 
-        <TouchableOpacity style={{
+        <TouchableOpacity onPress={() => navigation.replace('TabRoutes')}
+        style={{
           padding: 20,
         }}>
           <LinearGradient
