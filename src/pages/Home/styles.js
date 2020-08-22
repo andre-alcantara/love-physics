@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export const Wrapper = styled.SafeAreaView `
+
+export const Wrapper = styled.View `
     flex: 1;
     background: #FFF;
     
 `;
 
-export const Container = styled.SafeAreaView `
+export const Container = styled.View `
     flex: 1;
     align-self: center;
     width: 100%;
@@ -15,11 +16,11 @@ export const Container = styled.SafeAreaView `
 `;
 
 export const Header = styled.View `
-    margin-top: ${hp('-2%')};
     flex-direction: row;
     align-self: center;
     width: 90%;
     align-items: stretch;
+    margin-top: 12px;
 `;
 
 export const TextView = styled.View `
@@ -94,7 +95,6 @@ export const StatsView = styled.View `
     flex-direction: row;
     height: 350%;
     margin-top: ${hp('-2.4%')};
-    
 `;
 
 export const HeaderDivisor= styled.View `
@@ -108,12 +108,12 @@ export const HeaderDivisor= styled.View `
 
 export const Top = styled.View `
     background-color: #fff;
-    height: 27%;
+    height: ${hp('28%')};
 `;
 
 export const Content = styled.ScrollView `
     width: 100%;
-    align-self: center;
+    align-self: flex-end;
 `;
 
 export const Title = styled.Text `
@@ -126,15 +126,27 @@ export const Title = styled.Text `
 export const Activities = styled.ScrollView `
     width: 100%;
     flex-direction: row;
-    margin-top: ${hp('2%')};
+    margin-top: 5px;
+    
 `;
 
-export const Activity = styled.View `
-    background-color: #FF5555;
-    padding: 20px;
-    padding-top: -20px;
+export const ScientistCard = styled.View `
+    width: 90%;
+    height: 180px;
+    background-color: #FFF;
+    align-self: center;
+    margin-bottom: 15px;
+    margin-top: 12px;
     border-radius: 20px;
-    margin-left: ${wp('5.3%')};
-    height: ${hp('40%')};
-    width: 250px;
+`;
+
+export const CuriosityCard = styled.View `
+    width: 160px;
+    height: 175px;
+    background-color: #FFF;
+    align-self: center;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    border-radius: 20px;
+    margin-left: 15px;
 `;
