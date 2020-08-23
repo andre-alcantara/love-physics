@@ -9,7 +9,8 @@ import { useFonts,
 Montserrat_500Medium,
 Montserrat_600SemiBold,
 Montserrat_700Bold,
-Montserrat_800ExtraBold 
+Montserrat_800ExtraBold,
+Montserrat_900Black
 } from '@expo-google-fonts/montserrat';
 
 
@@ -18,7 +19,8 @@ const App = () => {
     Montserrat_500Medium,
     Montserrat_600SemiBold,
     Montserrat_700Bold,
-    Montserrat_800ExtraBold 
+    Montserrat_800ExtraBold,
+    Montserrat_900Black
   })
 
   if(!fontsLoaded) {

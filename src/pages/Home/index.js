@@ -5,14 +5,37 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
 
-import { Wrapper, 
-  Container, Top, Header, PrimaryText, SecondaryText, TextView, StarView, Divisor, StarCount, HeartView, StatsView, HeartCount, Content, Title, Activities, ScientistCard, CuriosityCard } from './styles';
-import MathCard from '../../assets/button/mathCard.svg';
-import SpeedCard from '../../assets/button/speedCard.svg';
+import { Wrapper, Container, Top, 
+  Header, PrimaryText, 
+  SecondaryText, TextView, 
+  StarView, Divisor, 
+  StarCount, HeartView, 
+  StatsView, HeartCount, 
+  Content, Title, 
+  Activities, ActivitiesText,
+  ScientistCard, ScientistText,
+  ScientistDesc,
+  CuriosityCard, CuriosityText, 
+  StartButton, StartText 
+} from './styles';
 
+import MathCard from '../../assets/button/mathCard.svg';
+import MathIcon from '../../assets/button/mathIcon.svg';
+import SpeedCard from '../../assets/button/speedCard.svg';
+import SpeedIcon from '../../assets/button/speedIcon.svg';
 import Character from '../../assets/characters/character1.svg';
+
 import Star from '../../assets/characters/star.svg';
 import Heart from '../../assets/characters/heart.svg';
+import Start from '../../assets/button/start.svg';
+import Scientist from '../../assets/scientist/scientist.svg';
+
+import Glasses from '../../assets/curiosity/glasses.svg';
+import Sky from '../../assets/curiosity/sky.svg';
+import Mirage from '../../assets/curiosity/mirage.svg';
+import Fire from '../../assets/curiosity/fire.svg';
+import BlackHole from '../../assets/curiosity/blackhole.svg';
+
 
 const Home = () => {
   return (
@@ -62,12 +85,42 @@ const Home = () => {
         <Activities horizontal={true} showsHorizontalScrollIndicator={false}>
            
           <MathCard style={{
-            marginLeft: -20
+            marginLeft: -20,
           }} height={330} width={330} />
+          <MathIcon style={{
+            position: 'absolute',
+            marginLeft: 40,
+            marginTop: 20,
+          }} height={130} width={130} /> 
+          <ActivitiesText>Matemática</ActivitiesText>
+          <StartButton>
+            <StartText>COMECAR</StartText>
+            <Start style={{
+              marginLeft: 10,
+              
+            }} height={25} width={25} />
+          </StartButton>
 
           <SpeedCard style={{
-            marginLeft: -60
+            marginLeft: -65
           }} height={330} width={330} />
+          <SpeedIcon style={{
+            position: 'absolute',
+            marginLeft: 310,
+            marginTop: 20,
+          }} height={130} width={130} />
+          <ActivitiesText style={{
+            marginLeft: 310,
+          }}>Velocidade</ActivitiesText>
+          <StartButton style={{
+            marginLeft: 310
+          }}>
+            <StartText>COMECAR</StartText>
+            <Start style={{
+              marginLeft: 10,
+              
+            }} height={25} width={25} />
+          </StartButton>
                    
         </Activities>
         
@@ -79,33 +132,93 @@ const Home = () => {
           marginTop: 8,
         }}>
           <MaterialCommunityIcons name='brain' size={30} />
-          <Title>Fisico do Dia</Title>
+          <Title>Cientista do Dia</Title>
         </View>
 
         <ScientistCard style={styles.shadowCard}>
-          <Title>Fisico</Title>
+          <Scientist style={{
+            marginLeft: 15,
+            marginTop: 25,
+          }} height={100} width={100} />
+          
+            <ScientistText>Marie Cure</ScientistText>
+            
+            <ScientistDesc>Foi uma física polonesa naturalizada francesa, que conduziu pesquisas pioneiras em todo o mundo no ramo da radioatividade.</ScientistDesc>
+            
+          <TouchableOpacity style={{
+            marginLeft: 16,
+            marginTop: 12,
+            
+            width: 100,
+          }}>
+            <Text style={{
+              color: '#FF5555',
+              textAlign: 'center',
+              fontFamily: 'Montserrat_600SemiBold'
+            }}>Saiba Mais</Text> 
+          </TouchableOpacity>  
+          
+          
         </ScientistCard>
 
-        <View style={{
-          flexDirection: 'row',
-          width: '90%',
-          alignSelf: 'center',
-          alignItems: 'flex-end',
-        }}>
-          <AntDesign name='questioncircleo' size={30} />
+        
           <Title>Curiosidades</Title>
-        </View>
+        
 
         <Activities horizontal={true} showsHorizontalScrollIndicator={false}>
-          <CuriosityCard style={[styles.shadowCard, {marginLeft: 22}]}>
-            
-          </CuriosityCard > 
-          <CuriosityCard style={styles.shadowCard}>
-            
-          </CuriosityCard>
-          <CuriosityCard style={styles.shadowCard}>
-            
-          </CuriosityCard>
+          
+          <TouchableOpacity>
+            <CuriosityCard style={[styles.shadowCard, {marginLeft: 22}]}>
+              <Glasses width={90} height={90} />
+              <CuriosityText style={{
+                marginTop: 7,
+                marginBottom: -7,
+              }}>Como funciona o cinema 3D?</CuriosityText>
+            </CuriosityCard > 
+          </TouchableOpacity>
+          
+          <TouchableOpacity>
+            <CuriosityCard style={styles.shadowCard}>
+              <Sky width={90} height={90} />
+              <CuriosityText style={{
+                marginTop: 7,
+                marginBottom: -7,
+              }}>Por que o céu é azul?</CuriosityText>
+            </CuriosityCard>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <CuriosityCard style={styles.shadowCard}>
+              <Mirage width={75} height={75} />
+              <CuriosityText style={{
+                marginTop: 15,
+                marginBottom: -15,
+              }}>O que são miragens?</CuriosityText>
+            </CuriosityCard>
+          </TouchableOpacity>
+          
+          <TouchableOpacity>
+            <CuriosityCard style={styles.shadowCard}>
+              <Fire width={75} height={75} />
+              <CuriosityText style={{
+                marginTop: 15,
+                marginBottom: -15,
+              }}>Porque a água apaga o fogo?</CuriosityText>
+            </CuriosityCard>
+          </TouchableOpacity>
+          
+          <TouchableOpacity>
+            <CuriosityCard style={[styles.shadowCard, {marginRight: 20,}]}>
+              <BlackHole width={90} height={90} />
+              <CuriosityText style={{
+                width: 130,
+                marginTop: 9,
+                marginBottom: -9,
+              }}>O que são buracos negros?</CuriosityText>
+            </CuriosityCard>
+          </TouchableOpacity>
+          
+
         </Activities>
       </Content>
         

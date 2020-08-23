@@ -126,8 +126,35 @@ export const Title = styled.Text `
 export const Activities = styled.ScrollView `
     width: 100%;
     flex-direction: row;
-    margin-top: 5px;
+    margin-top: 10px;
     
+`;
+
+export const ActivitiesText = styled.Text `
+    color: #FFF;
+    position: absolute;
+    margin-top: 175px;
+    margin-left: 45px;
+    font-family: Montserrat_600SemiBold;
+    font-size: 28px;
+`;
+
+export const StartButton = styled.TouchableOpacity `
+    background-color: #FF5555;
+    flex-direction: row;
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 240px;
+    padding: 10px;
+    border-radius: 20px;
+    align-items: center;
+`;
+
+export const StartText = styled.Text `
+    color: #FFF;
+    font-family: Montserrat_900Black;
+    font-size: 18px;
+
 `;
 
 export const ScientistCard = styled.View `
@@ -136,17 +163,45 @@ export const ScientistCard = styled.View `
     background-color: #FFF;
     align-self: center;
     margin-bottom: 15px;
-    margin-top: 12px;
+    margin-top: 16px;
     border-radius: 20px;
+`;
+
+export const ScientistText = styled.Text `
+    color: #000;
+    font-family: Montserrat_600SemiBold;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 130px;
+    margin-top: 20px;
+`;
+
+export const ScientistDesc = styled.Text `
+    font-family: Montserrat_500Medium;
+    color: #808080;
+    font-size: 14px;
+    width: ${wp('55%')};
+    margin-left: 130px;
+    margin-top: 68px;
+    position: absolute;
 `;
 
 export const CuriosityCard = styled.View `
     width: 160px;
-    height: 175px;
+    height: 160px;
     background-color: #FFF;
     align-self: center;
     margin-bottom: 15px;
     margin-top: 10px;
     border-radius: 20px;
     margin-left: 15px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const CuriosityText = styled.Text `
+    text-align: center;
+    font-family: Montserrat_600SemiBold;
+    font-size: 14px;
+    width: 120px;
 `;
