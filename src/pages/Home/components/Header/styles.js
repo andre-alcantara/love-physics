@@ -4,6 +4,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 export const Top = styled.View `
     background-color: #fff;
     height: ${hp('28%')};
+    border-bottom-width: 1;
+    border-bottom-color: #E1DEDE;
 `;
 
 export const HeaderView = styled.View `

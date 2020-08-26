@@ -18,7 +18,7 @@ const icons = {
     name: 'brain',
   },
   Ranking: {
-    name: 'barschart',
+    name: 'trophy-outline',
   },
   Profile: {
     name: 'face-profile',
@@ -55,7 +55,7 @@ export default function TabRoutes() {
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { name } = icons[route.name];
-            return <AntDesign name={name} size={35} color={color} />
+            return <MaterialCommunityIcons name={name} size={35} color={color} />
             }, 
           }) 
         } name='Ranking' component={Ranking} />
