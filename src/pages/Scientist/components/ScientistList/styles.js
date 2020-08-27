@@ -15,6 +15,7 @@ export const TextView = styled.View `
 export const Name = styled.Text `
     font-family: Montserrat_600SemiBold;
     font-size: 25px;
+    color: #000;
 `;
 
 export const Life = styled.Text `
