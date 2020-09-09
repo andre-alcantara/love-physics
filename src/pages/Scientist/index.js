@@ -19,7 +19,7 @@ const Scientist = () => {
           keyExtractor={item => item.id}
           data={Scientists}
           renderItem={({ item }) => <ScientistList scientist={item.name} 
-          life={item.life} />} 
+          life={item.life} id={item.id} />} 
         />
       
       

@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-// import { Container } from './styles';
+import { Position, Name, Star } from './styles';
 
 const Leaderboard = ({ nickname, stars }) => {
   return (
-    <>
-      <Text>{nickname}</Text>
+    <Position>
       
-      {console.log(nickname)}
-    </>
+      <Name>{ nickname }</Name>
+      <Star>{ stars }</Star>
+    </Position>
+      
   );
 }
 

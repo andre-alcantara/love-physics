@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LottieView from 'lottie-react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AuthContext } from '../../contexts/auth';
 
 import { Wrapper, Container, InputView, Title, Name, TextButton } from './styles';
 
 const Hello = ({ navigation }) => {
+  const { signIn } = useContext(AuthContext);
+
   return (
     <Wrapper>
       <Container>
 
         <InputView>
             <Title>Bem Vindo,</Title>
-            <Name>Jogador</Name>
+            <Name>{ user && user.name }</Name>
         </InputView>
           
           <LottieView style={{

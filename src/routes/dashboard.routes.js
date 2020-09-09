@@ -1,8 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 // Screens
 import Home from '../pages/Home';
@@ -25,8 +27,8 @@ const icons = {
   }
 }
 
-export default function TabRoutes() {
-    return (
+const DashboardRoutes = () => {
+  return (
       <Tab.Navigator tabBarOptions={{
         style: {
           backgroundColor: '#FFF',
@@ -70,3 +72,5 @@ export default function TabRoutes() {
       </Tab.Navigator>
     )
 }
+
+export default DashboardRoutes;

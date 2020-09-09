@@ -5,9 +5,9 @@ import { Button, TextView, Name, Life } from './styles';
 
 import Marie from '../../../../assets/scientist/scientist.svg';
 
-const ScientistList = ({ scientist, life }) => {
+const ScientistList = ({ scientist, life, id }) => {
   return (  
-    <Button style={styles.button}>
+    <Button style={styles.button} onPress={() => alert(id)}>
       <Marie width={65} height={65} />
       <TextView>
         <Name>{scientist}</Name>

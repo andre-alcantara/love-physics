@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -17,6 +17,7 @@ import {
 
 export default function PlayerCard() {
   return (
+    <View style={styles.container}>
     <LinearGradient
       colors={['#FF5555', '#E38686']}
       style={styles.statsView}>
@@ -39,7 +40,8 @@ export default function PlayerCard() {
       </EndStat>
       
 
-    </LinearGradient>           
+    </LinearGradient>      
+    </View>     
   );
 };
 
@@ -47,12 +49,24 @@ export default function PlayerCard() {
 const styles = StyleSheet.create({
   statsView: {
     justifyContent: 'flex-end',
-    marginTop: 16,
+    
     marginBottom: -16,
     alignSelf: 'center' ,
    
     borderRadius: 20, 
     height: 140,
-    width: '90%',
+    width: '100%',
+   
+  },
+
+  container: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
   }
 })

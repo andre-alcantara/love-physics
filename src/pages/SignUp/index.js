@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TouchableOpacity, Platform , KeyboardAvoidingView} from 'react-native';
 import { Input } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar'
 import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { AuthContext } from '../../contexts/auth';
 
 import { 
     Background,
@@ -30,17 +31,24 @@ import Facebook from '../../img/facebook.svg';
 
 export default function SignUp({ navigation }) {
   const [secureText, setSecureText] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const { signUp } = useContext(AuthContext);
+
+  const handleSignUp = () => {
+    signUp(email, password, name);
+  }
 
   return (
-    
-            
     <Background source={require('../../img/background.png')}>
 
       <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true} enableAutomaticScroll={(Platform.OS === 'ios')}>
        <KeyboardAvoidingView>
 
        
-      <StatusBar style="dark" />
+      
       <Wrapper>
         
         <Header>
@@ -60,6 +68,8 @@ export default function SignUp({ navigation }) {
           placeholder='Seu Nickname...'
           errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
           errorMessage='Error Message'
+          onChangeText={(text) => setName(text)}
+          value={name}
         />
 
         <Label>EMAIL</Label>
@@ -69,6 +79,8 @@ export default function SignUp({ navigation }) {
           placeholder='exemplo@exemplo.com'
           errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
           errorMessage='Error Message'
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
 
         <Label>SENHA</Label>
@@ -88,12 +100,14 @@ export default function SignUp({ navigation }) {
             </TouchableOpacity>
           }
           secureTextEntry={secureText}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
         />
        
           
 
           <SignInButton 
-          onPress={() => navigation.navigate('Hello')}
+          onPress={handleSignUp}
           style={{
             shadowColor: "#000",
             shadowOffset: {

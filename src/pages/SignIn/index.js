@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TouchableOpacity, TouchableOpacityBase } from 'react-native';
 import { Input } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar'
 import { Feather, AntDesign } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { AuthContext } from '../../contexts/auth';
 
 import { 
     Background,
@@ -26,10 +27,18 @@ import {
 } from './styles';
 
 import Logo from '../../img/google.svg';
-import Facebook from '../../img/facebook.svg';
 
 export default function SignIn({ navigation }) {
   const [secureText, setSecureText] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    signIn(email, password);
+  }
 
   return (
     <Background source={require('../../img/background.png')}>
@@ -55,6 +64,8 @@ export default function SignIn({ navigation }) {
           placeholder='exemplo@exemplo.com'
           errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
           errorMessage='Error Message'
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
 
         <Label>SENHA</Label>
@@ -74,6 +85,8 @@ export default function SignIn({ navigation }) {
             </TouchableOpacity>
           }
           secureTextEntry={secureText}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
         />
        
           <ForgotButton>
@@ -81,7 +94,7 @@ export default function SignIn({ navigation }) {
           </ForgotButton>
 
           <SignInButton 
-          onPress={() => navigation.navigate('Hello')}
+          onPress={handleLogin}
           style={{
             shadowColor: "#000",
             shadowOffset: {

@@ -1,9 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import AuthProvider from './src/contexts/auth';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppLoading } from 'expo';
+import { StatusBar } from 'expo-status-bar';
 
-import Routes from './src/routes';
+import Routes from './src/routes/routes';
 
 import { useFonts, 
 Montserrat_500Medium,
@@ -29,9 +30,14 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Routes />
+      <AuthProvider>
+        <StatusBar style="dark" />
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   )
 }
 
 export default App;
+
+console.disableYellowBox = true;

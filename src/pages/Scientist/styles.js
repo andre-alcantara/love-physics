@@ -5,7 +5,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const headerHeight = Platform.OS === 'android' ? 
     hp('18%') : hp('15.5%') 
 
-export const Wrapper = styled.View `
+export const Wrapper = styled.SafeAreaView `
     flex: 1;
     width: 100%;
     background-color: #FFF;
@@ -14,24 +14,19 @@ export const Wrapper = styled.View `
 export const TextView = styled.View `
     width: 90%;
     align-self: center;
-    margin-top: 20px;
+    margin-top: 6px;
 `;
 
 export const Header = styled.View `
-    height: ${headerHeight}px;
-    width: 100%;
-    align-self: center;
-    background-color: #FFF;
-    justify-content: center;
+    height: 70px;
     border-bottom-width: 1px;
     border-bottom-color: #E1DEDE;
+    justify-content: center;
 `;
 
 export const Title = styled.Text `
     font-family: Montserrat_800ExtraBold;
     font-size: 28px;
-    margin-top: ${hp('2.5%')}px;
-
 `;
 
 export const List = styled.ScrollView `
