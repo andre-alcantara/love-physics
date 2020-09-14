@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { AuthContext } from '../../../../contexts/auth';
 
 import Character from '../../../../assets/characters/character1.svg';
 
@@ -16,6 +17,8 @@ import {
 } from './styles';
 
 export default function PlayerCard() {
+  const { user } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
     <LinearGradient
@@ -24,7 +27,7 @@ export default function PlayerCard() {
 
       <CenterStat>
         <Character height={65} width={65} />
-        <Nickname>Cefiroti</Nickname>
+        <Nickname>{ user.name }</Nickname>
       </CenterStat>
 
       <StartStat>

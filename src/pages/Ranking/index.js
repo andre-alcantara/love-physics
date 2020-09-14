@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, FlatList, Text } from 'react-native';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -13,9 +13,7 @@ import { Wrapper,
   Header, 
   TextView, 
   Title,
-  Scroll
 } from './styles';
-import { useState } from 'react';
 
 import Character from '../../assets/characters/character1.svg';
 

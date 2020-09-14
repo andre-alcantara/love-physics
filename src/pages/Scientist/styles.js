@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const headerHeight = Platform.OS === 'android' ? 
-    hp('18%') : hp('15.5%') 
+    90 : 70 
+
+const marginTop = Platform.OS === 'android' ? 
+    10 : 0    
 
 export const Wrapper = styled.SafeAreaView `
     flex: 1;
@@ -18,7 +21,7 @@ export const TextView = styled.View `
 `;
 
 export const Header = styled.View `
-    height: 70px;
+    height: ${headerHeight}px;
     border-bottom-width: 1px;
     border-bottom-color: #E1DEDE;
     justify-content: center;
@@ -27,6 +30,7 @@ export const Header = styled.View `
 export const Title = styled.Text `
     font-family: Montserrat_800ExtraBold;
     font-size: 28px;
+    margin-top: ${marginTop}px;
 `;
 
 export const List = styled.ScrollView `

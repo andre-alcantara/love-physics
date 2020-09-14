@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthProvider from './src/contexts/auth';
+import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppLoading } from 'expo';
 import { StatusBar } from 'expo-status-bar';

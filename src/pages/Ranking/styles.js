@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import Constants from 'expo-constants';
 
 const headerHeight = Platform.OS === 'android' ?
-    250 : 230
+    250 : 220
 
 const statusBarHeight = Constants.statusBarHeight;    
 
@@ -21,7 +21,7 @@ export const TextView = styled.View `
 `;
 
 export const Header = styled.View `
-    height: 220px;
+    height: ${headerHeight}px;
     width: 100%;
     align-self: center;
     background-color: #FFF;
