@@ -2,42 +2,39 @@ import React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 import Scientists from '../../data/scientists';
 
-import { Wrapper, Header, TextView, Title, List } from './styles';
+
+import { Wrapper, Container,  ListView, Header, TextView, Title, List } from './styles';
 
 import ScientistList from './components/ScientistList'; 
 
 const Scientist = () => {   
   return (
-    <Wrapper>
+    <Wrapper>      
+    <Container>
       <Header>
         <TextView>
           <Title>Físicos</Title>
         </TextView>                                                             
       </Header>
    
+      <ListView>
         <FlatList 
-          keyExtractor={item => item.id}
-          data={Scientists}
-          renderItem={({ item }) => <ScientistList scientist={item.name} 
-          life={item.life} id={item.id} />} 
-        />
+            keyExtractor={item => item.id}
+            contentContainerStyle={{ 
+              alignItems: 'center'
+              
+            }}
+            data={Scientists}
+            numColumns={2}
+            renderItem={({ item }) => <ScientistList scientist={item.name} 
+            life={item.life} id={item.id} image={item.image}/>} 
+          />
+      </ListView>
+        
       
-      
+      </Container>  
     </Wrapper>
   ); 
 }
 
 export default Scientist;
-
-const styles = StyleSheet.create({
-  shadowCard: {
-    shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2, 
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    }
-})

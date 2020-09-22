@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Fontisto } from '@expo/vector-icons';
 import Character from '../../../../assets/characters/character1.svg';
 import { Input } from 'react-native-elements';
 import { AuthContext } from '../../../../contexts/auth';

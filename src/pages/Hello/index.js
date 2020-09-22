@@ -8,7 +8,6 @@ import { AuthContext } from '../../contexts/auth';
 import { Wrapper, Container, InputView, Title, Name, TextButton } from './styles';
 
 const Hello = ({ navigation }) => {
-  const { signIn } = useContext(AuthContext);
 
   return (
     <Wrapper>
@@ -16,7 +15,7 @@ const Hello = ({ navigation }) => {
 
         <InputView>
             <Title>Bem Vindo,</Title>
-            <Name>{ user && user.name }</Name>
+            <Name>Cefiroti</Name>
         </InputView>
           
           <LottieView style={{

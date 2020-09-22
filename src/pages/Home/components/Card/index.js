@@ -16,7 +16,7 @@ const Card = () => {
         marginTop: 25,
       }} height={100} width={100} />
           
-      <ScientistText>Marie Cure</ScientistText> 
+      <ScientistText></ScientistText> 
       <ScientistDesc>Foi uma física polonesa naturalizada francesa, 
         que conduziu pesquisas pioneiras em todo o mundo no ramo da radioatividade.
       </ScientistDesc>
@@ -25,7 +25,7 @@ const Card = () => {
         marginLeft: 16,
         marginTop: 12,  
         width: 100,
-      }}>
+      }} onPress={() => alert('Oi')}>
         <Text style={{
           color: '#FF5555',
           textAlign: 'center',

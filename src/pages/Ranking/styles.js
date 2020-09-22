@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import Constants from 'expo-constants';
 
 const headerHeight = Platform.OS === 'android' ?
-    250 : 220
+    240 : 210
 
 const statusBarHeight = Constants.statusBarHeight;    
 
@@ -16,8 +16,8 @@ export const Wrapper = styled.SafeAreaView `
 
 export const TextView = styled.View `
     width: 90%;
-    align-self: center;
-    margin-top: -6px;
+    align-self: flex-start;
+    margin-top: -12px;
 `;
 
 export const Header = styled.View `
@@ -28,12 +28,14 @@ export const Header = styled.View `
     justify-content: center;
     border-bottom-width: 1px;
     border-bottom-color: #E1DEDE;
+    align-items: center;
 `;
 
 export const Title = styled.Text `
     font-family: Montserrat_800ExtraBold;
     font-size: 28px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    align-self: flex-end;
 `;
 
 export const Scroll = styled.ScrollView `

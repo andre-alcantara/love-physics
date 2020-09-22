@@ -4,4 +4,5 @@ export default {
   secondaryText: '#E3C7C7',
   bottomTab: '#4D4E57',
   placeholder: '#FFF'
-}
+}  
+

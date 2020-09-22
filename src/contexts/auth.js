@@ -80,7 +80,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ signed:!!user, user, loading, signUp, signIn, signOut }}>
-      {children}
+      { children }
     </AuthContext.Provider>
   );
 }

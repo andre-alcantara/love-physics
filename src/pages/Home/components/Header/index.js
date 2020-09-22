@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, TouchableOpacity, Modal} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../../../contexts/auth';
+import Settings from '../../../Profile/components/Settings';
 
 import { 
   Top, 
@@ -21,6 +22,8 @@ import Heart from '../../../../assets/characters/heart.svg';
 import Character from '../../../../assets/characters/character1.svg';
 
 const Header = () => {
+  const [visible, setVisible] = useState(false);
+  
   const { user, signOut } = useContext(AuthContext);
 
   return (
@@ -30,10 +33,18 @@ const Header = () => {
           <PrimaryText>Olá { user && user.name },</PrimaryText>
           <SecondaryText>Que bom te ver!</SecondaryText>
         </TextView>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setVisible(true)}>
           <Character height={hp('20%')} width={wp('20%')} />
         </TouchableOpacity>    
       </HeaderView>
+
+        <Modal 
+          visible={visible}
+          onRequestClose={() => setVisible(false)}
+          animationType='slide'
+        >
+          <Settings close={() => setVisible(false)} />
+        </Modal>
 
       <StatsView>
         <StarView>

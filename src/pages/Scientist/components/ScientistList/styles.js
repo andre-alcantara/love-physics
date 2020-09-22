@@ -1,27 +1,33 @@
 import styled from 'styled-components';
 
 export const Button = styled.TouchableOpacity `
-    margin-top: 10px;
-    padding: 10px;
-    flex-direction: row;
+    padding: 4%;
+    padding-top: 2%;
+    justify-content: flex-start;
+    margin: 7px;
+    margin-top: 13px;
+    background-color: #fff;
+    padding-left: 18px;
+    width: 46%;
+    height: 190;
 `;
 
 export const TextView = styled.View `
-    padding-right: 12px;
-    width: 70%;
-    margin-left: 16px;
+
+    
 `;
 
 export const Name = styled.Text `
-    font-family: Montserrat_600SemiBold;
-    font-size: 25px;
+    font-family: Montserrat_700Bold;
+    margin-top: 3%;
+    font-size: 18px;
     color: #000;
 `;
 
 export const Life = styled.Text `
     font-family: Montserrat_600SemiBold;
-    font-size: 15px;
+    font-size: 13px;
     color: #808080;
-    margin-top: 5px;
+    margin-top: 3px;
 `;
 

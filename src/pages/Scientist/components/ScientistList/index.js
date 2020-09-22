@@ -5,14 +5,16 @@ import { Button, TextView, Name, Life } from './styles';
 
 import Marie from '../../../../assets/scientist/scientist.svg';
 
-const ScientistList = ({ scientist, life, id }) => {
+const ScientistList = ({ scientist, life, id, image }) => {
   return (  
     <Button style={styles.button} onPress={() => alert(id)}>
-      <Marie width={65} height={65} />
-      <TextView>
+      
+      
+        { image }
+      
         <Name>{scientist}</Name>
         <Life>{life}</Life>
-      </TextView>
+      
     </Button>
   );
 }
@@ -22,16 +24,14 @@ export default ScientistList;
 const styles = StyleSheet.create({
   button: {
     alignSelf: 'center',
-    width: '90%',
-    backgroundColor: '#FFF',
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2, 
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.40,
+    shadowRadius: 5,
     elevation: 5,
   }
 })
