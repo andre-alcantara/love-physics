@@ -39,7 +39,7 @@ export const AvatarView = styled.View `
 `; 
 
 export const EditButton = styled.TouchableOpacity `
-    margin-top: 10px;
+    
 `;
 
 export const EditText = styled.Text `

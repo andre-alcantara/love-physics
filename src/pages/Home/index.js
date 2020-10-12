@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,15 +7,14 @@ import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
 
 import { Wrapper, Container, 
   Content, Title, 
-  Activities, ActivitiesText,
-  CuriosityCard, CuriosityText, 
-  StartButton, StartText 
+  List
 } from './styles';
 
 import Header from './components/Header';
-import Activity from './components/Activity';
 import Card from './components/Card';
 import Curiosity from './components/Curiosity';
+import Curiosities from '../../data/curiosity';
+import Activity from './components/Activity';
 
 const Home = () => {
   return (
@@ -29,7 +28,7 @@ const Home = () => {
       <Title>Atividades</Title>
 
       <Activity />
-        
+
       <View style={{
         flexDirection: 'row',
         width: '90%',
@@ -44,7 +43,18 @@ const Home = () => {
       <Card />
 
       <Title>Curiosidades</Title>
-      <Curiosity />
+      <List 
+        horizontal={true}
+        contentContainerStyle={{
+          paddingBottom: 120,
+                
+        }}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        data={Curiosities}
+        renderItem={({ item }) => <Curiosity title={item.title} id={item.id}
+        /> } 
+    /> 
 
       </Content>
     </Container>

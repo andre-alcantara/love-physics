@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 export const Button = styled.TouchableOpacity `
-    padding: 4%;
-    padding-top: 2%;
-    justify-content: flex-start;
-    margin: 7px;
-    margin-top: 13px;
-    background-color: #fff;
-    padding-left: 18px;
-    width: 46%;
-    height: 190;
+    width: 90%;
+    height: 60px;
+    align-self: center;
+    justify-content: center;
+    background-color: #FFF;
+    margin-top: 10px;
+    border-radius: 10px;
+    
 `;
 
 export const TextView = styled.View `
@@ -17,17 +16,19 @@ export const TextView = styled.View `
     
 `;
 
+export const ImageView = styled.View `
+    position: absolute;
+    margin-left: 20px;
+`;
+
 export const Name = styled.Text `
     font-family: Montserrat_700Bold;
-    margin-top: 3%;
     font-size: 18px;
-    color: #000;
+    align-self: center;
 `;
 
 export const Life = styled.Text `
     font-family: Montserrat_600SemiBold;
-    font-size: 13px;
-    color: #808080;
-    margin-top: 3px;
+    
 `;
 

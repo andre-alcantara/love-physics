@@ -24,3 +24,7 @@ export const Title = styled.Text `
     margin-left: ${wp('6%')};
 `;
 
+export const List = styled.FlatList `
+    height: 190px;
+    margin-top: 10px;
+`;

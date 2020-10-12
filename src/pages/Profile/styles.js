@@ -1,20 +1,18 @@
 import styled from 'styled-components';
 
 const headerHeight = Platform.OS === 'android' ? 
-    90 : 70
+    120 : 100
 
 const marginTop = Platform.OS === 'android' ? 
-    16 : 0    
+    25 : 10     
 
 export const Wrapper = styled.SafeAreaView `
     flex: 1;
-    background-color: #FFF;
+    background-color: #9BDCEA;
 `;
 
 export const Header = styled.View `
     height: ${headerHeight}px;
-    border-bottom-width: 1px;
-    border-bottom-color: #E1DEDE;
     justify-content: center;
     flex-direction: row;
 `;
@@ -28,7 +26,7 @@ export const TextView = styled.View `
 
 export const Title = styled.Text `
     font-family: Montserrat_800ExtraBold;
-    font-size: 28px;
+    font-size: 25px;
 `;
 
 export const Icon = styled.TouchableOpacity `

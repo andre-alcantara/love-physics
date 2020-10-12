@@ -9,13 +9,14 @@ import Leaderboard from 'react-native-leaderboard';
 
 import { Feather } from '@expo/vector-icons';
 
+import { Content, ListView } from '../Scientist/styles';
 import { Wrapper, 
   Header, 
   TextView, 
   Title,
 } from './styles';
 
-import Character from '../../assets/characters/character1.svg';
+
 
 const Ranking = () => {
   const [players, setPlayers] = useState([
@@ -46,12 +47,20 @@ const Ranking = () => {
       <Header>
         <TextView>
           <Title>Ranking</Title>
-          <PlayerCard />
         </TextView>  
            
                                        
       </Header>
 
+      <ListView style={{
+        marginTop: 30,
+        paddingTop: 95
+      }}>
+        <Content>
+          <PlayerCard />
+        </Content>
+        
+      
       <Leaderboard 
         data={players} 
         sortBy='stars' 
@@ -71,6 +80,7 @@ const Ranking = () => {
           marginLeft: 13,
         }}
       />
+      </ListView>
 
     {/*}
       <Scroll>

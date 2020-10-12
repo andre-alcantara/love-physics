@@ -14,7 +14,7 @@ export const ScientistCard = styled.View `
 export const ScientistText = styled.Text `
     color: #000;
     font-family: Montserrat_600SemiBold;
-    font-size: 30px;
+    font-size: 25px;
     position: absolute;
     margin-left: 130px;
     margin-top: 20px;

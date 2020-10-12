@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Ionicons, Fontisto } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Character from '../../../../assets/characters/character1.svg';
 import { Input } from 'react-native-elements';
 import { AuthContext } from '../../../../contexts/auth';
@@ -45,7 +45,7 @@ const Settings = ({ close }) => {
           </TitleView>
 
           <AvatarView>
-            <Character height={100} width={100} />
+            <Character height={110} width={110} />
             <EditButton>
               <EditText>Alterar</EditText>
             </EditButton>
@@ -100,6 +100,13 @@ const Settings = ({ close }) => {
           <Switch value={dark} onChange={() => setDark(!dark)} />
         </DarkModeView>
         
+        <DarkModeView>
+          <DarkModeText style={{
+            color: '#FF5555'
+          }}>Sair</DarkModeText>
+          
+        </DarkModeView>
+
         </Container>
       </Wrapper>
       

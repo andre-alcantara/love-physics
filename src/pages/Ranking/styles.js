@@ -3,39 +3,39 @@ import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Constants from 'expo-constants';
 
-const headerHeight = Platform.OS === 'android' ?
-    240 : 210
+const headerHeight = Platform.OS === 'android' ? 
+    120 : 100
+
+const marginTop = Platform.OS === 'android' ? 
+    25 : 10 
 
 const statusBarHeight = Constants.statusBarHeight;    
 
 export const Wrapper = styled.SafeAreaView `
     flex: 1;
     width: 100%;
-    background-color: #FFF;
+    background-color: #9BDCEA;
 `;
 
 export const TextView = styled.View `
     width: 90%;
-    align-self: flex-start;
-    margin-top: -12px;
+    margin-top: ${marginTop}px;
+    align-self: center;
 `;
 
 export const Header = styled.View `
     height: ${headerHeight}px;
     width: 100%;
+    margin-top: 10px;
+    margin-top: 10px;
     align-self: center;
-    background-color: #FFF;
-    justify-content: center;
-    border-bottom-width: 1px;
-    border-bottom-color: #E1DEDE;
+    background-color: #9BDCEA;
     align-items: center;
 `;
 
 export const Title = styled.Text `
     font-family: Montserrat_800ExtraBold;
-    font-size: 28px;
-    margin-bottom: 16px;
-    align-self: flex-end;
+    font-size: 25px;
 `;
 
 export const Scroll = styled.ScrollView `

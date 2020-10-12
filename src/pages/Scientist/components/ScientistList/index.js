@@ -1,19 +1,39 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Modal, Text, TouchableOpacity } from 'react-native';
 
-import { Button, TextView, Name, Life } from './styles';
+import { Button, Name, ImageView } from './styles';
 
-import Marie from '../../../../assets/scientist/scientist.svg';
+import ScientistDetail from '../ScientistDetail';
 
-const ScientistList = ({ scientist, life, id, image }) => {
+const ScientistList = ({ scientist, life, who, image, award }) => {
+  const [visible, setVisible] = useState(false);
+
   return (  
-    <Button style={styles.button} onPress={() => alert(id)}>
-      
-      
-        { image }
+    <Button style={styles.button} onPress={() => setVisible(true)}>
+      <Modal 
+        visible={visible}
+        onRequestClose={() => setVisible(false)}
+        animationType='slide'
+      >
+        <ScientistDetail 
+          close={() => setVisible(false)} 
+          scientist = {scientist}
+          image = {image}
+          life = {life}
+          who={who}
+          award={award}
+        />
+      </Modal>
+
+      <ImageView>
+        { 
+          // FOTO NO BANCO (Gustavo) 
+        }
+      </ImageView>
+        
       
         <Name>{scientist}</Name>
-        <Life>{life}</Life>
+        
       
     </Button>
   );
@@ -23,15 +43,14 @@ export default ScientistList;
 
 const styles = StyleSheet.create({
   button: {
-    alignSelf: 'center',
-    borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2, 
+      height: 5,
     },
-    shadowOpacity: 0.40,
-    shadowRadius: 5,
-    elevation: 5,
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
+
+    elevation: 11,
   }
 })

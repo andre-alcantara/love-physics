@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const CenterStat = styled.View `
-    width: 33.33%;
-    align-self: center;
+    width: 50%;
     position: absolute;
     height: 100%;
     justify-content: center;
@@ -16,9 +15,7 @@ export const Nickname = styled.Text `
 `;
 
 export const StartStat = styled.View `
-    width: 33.33%;
     align-self: flex-start;
-    height: 100%;
     justify-content: center;
     align-items: center;
 `;
@@ -41,7 +38,7 @@ export const Number = styled.Text `
 `;
 
 export const EndStat = styled.View `
-    width: 33.33%;
+    width: 50%;
     align-self: flex-end;
     height: 100%;
     justify-content: center;
