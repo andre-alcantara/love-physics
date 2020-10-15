@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { View, TouchableOpacity, Modal} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../../../contexts/auth';
-import Settings from '../../../Profile/components/Settings';
+import Settings from '../Settings';
 
 import { 
   Top, 

@@ -40,7 +40,7 @@ export const Close = styled.TouchableOpacity `
 export const Content = styled.ScrollView `
     align-self: center;
     width: 90%;
-    
+    padding-bottom: 10px;
 `;
 
 export const Title = styled.Text `

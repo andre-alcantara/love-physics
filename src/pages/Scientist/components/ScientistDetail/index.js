@@ -46,13 +46,13 @@ const ScientistDetail = ({ close, life, scientist, image, who, award }) => {
         </Detail>
         <Title> Prêmios </Title>
         <Detail style={{
-          width: 229
+          width: 240
         }}>
           { award }
         </Detail>
         <Title> Descobertas </Title>
         <Detail style={{
-          width: 229
+          width: 240
         }}>
           { award }
         </Detail>

@@ -22,9 +22,6 @@ const icons = {
   Ranking: {
     name: 'trophy-outline',
   },
-  Profile: {
-    name: 'face-profile',
-  }
 }
 
 const DashboardRoutes = () => {
@@ -33,14 +30,14 @@ const DashboardRoutes = () => {
         style: {
           backgroundColor: '#FFF',
         },
-        activeTintColor: '#282A36',
+        activeTintColor: '#FF5555',
         inactiveTintColor: '#C6C2C2',
         showLabel: false,
       }}>
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { name } = icons[route.name];
-            return <Ionicons name={name} size={35} color={color} />
+            return <Ionicons name={name} size={33} color={color} />
             } 
           }) 
         } 
@@ -49,7 +46,7 @@ const DashboardRoutes = () => {
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { name } = icons[route.name];
-            return <MaterialCommunityIcons name={name} size={35} color={color} />
+            return <MaterialCommunityIcons name={name} size={33} color={color} />
             } 
           }) } 
           name='Scientist' component={Scientist} />
@@ -57,18 +54,12 @@ const DashboardRoutes = () => {
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             const { name } = icons[route.name];
-            return <MaterialCommunityIcons name={name} size={35} color={color} />
+            return <MaterialCommunityIcons name={name} size={33} color={color} />
             }, 
           }) 
         } name='Ranking' component={Ranking} />
 
-        <Tab.Screen options={ ({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            const { name } = icons[route.name];
-            return <MaterialCommunityIcons name={name} size={35} color={color} />
-            } 
-          })
-        } name='Profile' component={Profile} />
+        
       </Tab.Navigator>
     )
 }
