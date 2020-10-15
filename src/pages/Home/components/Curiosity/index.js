@@ -1,6 +1,7 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import Curiosities from '../../../../data/curiosity'; 
+import CuriosityDetail from './components/CuriosityDetail';
 
 import { Activities, 
   CuriosityCard, 
@@ -14,9 +15,11 @@ import Fire from '../../../../assets/curiosity/fire.svg';
 import BlackHole from '../../../../assets/curiosity/blackhole.svg';
 
 const Curiosity = ({ title }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
 
-    <TouchableOpacity onPress={() => {}} >
+    <TouchableOpacity onPress={() => setVisible(true)} >
       <CuriosityCard style={[styles.shadowCard, { marginLeft: 22 }]}>
         <Glasses width={90} height={90} />
         <CuriosityText style={{
@@ -24,6 +27,14 @@ const Curiosity = ({ title }) => {
           marginBottom: -7,
         }}>{ title }</CuriosityText>
         </CuriosityCard > 
+
+        <Modal 
+          visible={visible}
+          onRequestClose={() => setVisible(false)}
+          animationType='slide'
+        >
+          <CuriosityDetail title={title} close={() => setVisible(false)}/> 
+        </Modal>
       </TouchableOpacity>
    
   );
