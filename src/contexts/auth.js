@@ -46,8 +46,9 @@ const AuthProvider = ({ children }) => {
     await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(async (value) => {
       let uid = value.user.uid;
-      await firebase.database().ref('users').child(uid).set({
-        balance: 0,
+      await firebase.database().ref('users').child(uid).set({ 
+        star: 0,
+        heart: 0,
         name: name
       })
       .then(() => {
