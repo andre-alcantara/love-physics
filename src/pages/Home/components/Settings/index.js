@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Character from '../../../../assets/characters/character1.svg';
 import { Input } from 'react-native-elements';
@@ -36,7 +36,7 @@ const Settings = ({ close }) => {
   const [value, setValue] = useState(false);
   const [dark, setDark] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
   return (
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <Wrapper>
@@ -106,9 +106,12 @@ const Settings = ({ close }) => {
         </DarkModeView>
         
         <DarkModeView>
+          <TouchableOpacity onPress={signOut}>
           <DarkModeText style={{
             color: '#FF5555'
           }}>Sair</DarkModeText>
+          </TouchableOpacity>
+         
           
         </DarkModeView>
 
