@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
 import { Edit } from '../../styles';
+import User from '../../../../../../data/user';
 
 import { 
   ProfileView, 
@@ -12,20 +13,41 @@ import {
 } from './styles';
 
 const Photo = () => {
+  const user = [
+    {
+      id: 1
+    }
+  ]
+
   return (
     <ProfileView>
-      <Profile>
-        <Current>Sua foto atual:</Current>
-        <ProfilePhoto>
-          <Text>Foto do cara</Text>
-        </ProfilePhoto>
-      </Profile>
       
-      <ChoosePhoto>
-        <ChooseText>
-          Selecionar foto
-        </ChooseText>
-      </ChoosePhoto>
+      
+      <FlatList 
+        horizontal={true}
+        style={{
+          marginBottom: -30,
+        }}
+        contentContainerStyle={{
+          
+        }}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        data={User}
+        renderItem={({ item }) => 
+         
+            <Image source={item.image} style={{ 
+              
+              width:130,
+              height: 130,
+              
+              
+            }}/>
+          
+          
+        
+         } 
+    /> 
 
       
       

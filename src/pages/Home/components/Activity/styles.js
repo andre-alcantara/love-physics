@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export const Activities = styled.ScrollView `
-    width: 100%;
+export const Activities = styled.View `
+    height: 300;
     flex-direction: row;
     margin-top: 10px;
     
@@ -10,18 +10,19 @@ export const Activities = styled.ScrollView `
 
 export const ActivitiesText = styled.Text `
     color: #FFF;
+    width: 100%;
     position: absolute;
-    margin-top: 175px;
-    margin-left: 45px;
-    font-family: Montserrat_600SemiBold;
-    font-size: 28px;
+    margin-top: 180px;
+    margin-left: 25px;
+    font-family: Montserrat_700Bold;
+    font-size: 26px;
 `;
 
 export const StartButton = styled.TouchableOpacity `
     background-color: #FF5555;
     flex-direction: row;
     position: absolute;
-    margin-left: 45px;
+    margin-left: 25px;
     margin-top: 240px;
     padding: 10px;
     border-radius: 20px;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import { Activities, 
   ActivitiesText, 
@@ -12,46 +13,38 @@ import SpeedCard from '../../../../assets/button/speedCard.svg';
 import SpeedIcon from '../../../../assets/button/speedIcon.svg';
 import Start from '../../../../assets/button/start.svg';
 
-const Activity = () => {
+const Activity = ({ title, color, icon }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
-    <Activities horizontal={true} showsHorizontalScrollIndicator={false}>
-      <MathCard style={{
-        marginLeft: -20,
-      }} height={330} width={330} />
-      <MathIcon style={{
-        position: 'absolute',
-        marginLeft: 40,
-        marginTop: 20,
-      }} height={130} width={130} /> 
-      <ActivitiesText>Matemática</ActivitiesText>
-      <StartButton>
+    <Activities>
+      <View style={{
+        marginLeft: 20,
+        height: 330, 
+        width: 260,
+        backgroundColor: color,
+        borderRadius: 20,
+        paddingLeft: 25,
+        paddingTop: 25,
+        
+      }} >
+      {icon}
+      <ActivitiesText>
+        {title}
+      </ActivitiesText>
+
+
+      <StartButton onPress={() => setVisible(true)}>
         <StartText>COMECAR</StartText>
         <Start style={{
             marginLeft: 10,  
         }} height={25} width={25} />
       </StartButton>
 
-      <SpeedCard style={{
-        marginLeft: -65
-      }} height={330} width={330} />
-      <SpeedIcon style={{
-        position: 'absolute',
-        marginLeft: 310,
-        marginTop: 20,
-      }} height={130} width={130} />
-      <ActivitiesText style={{
-        marginLeft: 310,
-      }}>Velocidade</ActivitiesText>
-      <StartButton style={{
-        marginLeft: 310
-      }}>
-      <StartText>COMECAR</StartText>
-      <Start style={{
-        marginLeft: 10, 
-      }} height={25} width={25} />
-      </StartButton>           
+      </View>
     </Activities>
   );
 }
 
 export default Activity;
+

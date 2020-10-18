@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
+import Activities from '../../data/activity';
 
 import { Wrapper, Container, 
   Content, Title, 
@@ -27,7 +28,32 @@ const Home = () => {
     <Content showsVerticalScrollIndicator={false}>
       <Title>Atividades</Title>
 
-      <Activity />
+    <View style={{
+      height: 350
+    }}>
+      <List 
+        horizontal={true}
+        style={{
+          heigth: 300,
+          paddingRight: 20,
+        }}
+        contentContainerStyle={{
+          paddingRight: 20,
+          
+
+        }}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        data={Activities}
+        renderItem={({ item }) => <Activity  
+          title={item.title} 
+          id={item.id}
+          color={item.color}
+          icon={item.icon}
+          /> } 
+    /> 
+    </View>
+      
 
       <View style={{
         flexDirection: 'row',
