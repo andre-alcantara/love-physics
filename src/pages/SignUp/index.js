@@ -63,17 +63,21 @@ export default function SignUp({ navigation }) {
         
         <Label style={{marginTop: hp('7%')}}>NICKNAME</Label>
         <Input 
+          maxLength={8}
+          autoCapitalize='none'
+          autoCorrect={false}
           containerStyle={{ marginTop: hp('1%') }}
           inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
           placeholder='Seu Nickname...'
           errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
-          errorMessage='Error Message'
+          errorMessage='Até 8 caracteres'
           onChangeText={(text) => setName(text)}
           value={name}
         />
 
         <Label>EMAIL</Label>
         <Input 
+        autoCapitalize='none'
           containerStyle={{ marginTop: hp('1%') }}
           inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
           placeholder='exemplo@exemplo.com'
