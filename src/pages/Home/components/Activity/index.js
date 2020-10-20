@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { Modal, View } from 'react-native';
+
+import Introduce from './components/Introduce';
 
 import { Activities, 
   ActivitiesText, 
@@ -35,16 +37,32 @@ const Activity = ({ title, color, icon }) => {
 
 
       <StartButton onPress={() => setVisible(true)}>
-        <StartText>COMECAR</StartText>
+        <StartText>ESTUDAR</StartText>
         <Start style={{
             marginLeft: 10,  
         }} height={25} width={25} />
       </StartButton>
 
       </View>
+
+      
+      <Modal 
+          visible={visible}
+          onRequestClose={() => setVisible(false)}
+          animationType='slide'
+        >
+        <Introduce 
+          close={() => setVisible(false)} 
+          title={title} 
+          icon={icon}
+          color={color}
+          />
+      </Modal>
     </Activities>
-  );
-}
+
+    
+    );
+    }
 
 export default Activity;
 
