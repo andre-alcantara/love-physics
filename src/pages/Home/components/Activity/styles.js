@@ -12,7 +12,7 @@ export const ActivitiesText = styled.Text `
     color: #FFF;
     width: 100%;
     position: absolute;
-    margin-top: 180px;
+    margin-top: 155px;
     margin-left: 25px;
     font-family: Montserrat_700Bold;
     font-size: 26px;
@@ -23,7 +23,7 @@ export const StartButton = styled.TouchableOpacity `
     flex-direction: row;
     position: absolute;
     margin-left: 25px;
-    margin-top: 240px;
+    margin-top: 210px;
     padding: 10px;
     border-radius: 20px;
     align-items: center;

@@ -5,7 +5,7 @@ export const Wrapper = styled.SafeAreaView `
 `;
 
 export const Exit = styled.View `
-    margin-top: 20px;
+    margin-top: 12px;
     width: 90%;
     align-self: center;
 `;

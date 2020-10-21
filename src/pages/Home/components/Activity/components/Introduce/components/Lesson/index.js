@@ -1,7 +1,18 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Content, Difficulty, DifficultyText, Card, SubTitle, Description } from './styles';
+import { Content, 
+  Difficulty, 
+  DifficultyText, 
+  Card, 
+  SubTitle, 
+  DescriptionScroll,
+  Description,
+  MaterialText,
+  Material,
+  Videos,
+  Quiz
+} from './styles';
 
 const Lesson = ({ color }) => {
   return (
@@ -19,11 +30,26 @@ const Lesson = ({ color }) => {
           Velocidade Média
         </SubTitle>
 
-        <Description>
-          Velocidade média é a razão entre o deslocamento e o intervalo de tempo 
-          em que um movimento acontece. Deslocamento é uma grandeza vetorial, 
-          medida pela diferença entre as posições final e inicial de um movimento.
-        </Description>
+        <DescriptionScroll>
+          <Description>
+            Velocidade média é a razão entre o deslocamento e o intervalo de tempo 
+            em que um movimento acontece. Deslocamento é uma grandeza vetorial, 
+            medida pela diferença entre as posições final e inicial de um movimento.
+          </Description>
+        </DescriptionScroll>
+       
+
+        <MaterialText>
+          Materiais de apoio:
+        </MaterialText>
+        <Material>
+          <Videos>
+
+          </Videos>
+          <Quiz>
+
+          </Quiz>
+        </Material>
       </Card>
 
       <Card>  

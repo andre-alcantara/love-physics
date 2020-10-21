@@ -22,7 +22,7 @@ const Activity = ({ title, color, icon }) => {
     <Activities>
       <View style={{
         marginLeft: 20,
-        height: 330, 
+        height: 285, 
         width: 260,
         backgroundColor: color,
         borderRadius: 20,
