@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Image } from 'react-native';
 
 import { Content, 
   Difficulty, 
@@ -17,6 +17,7 @@ import { Content,
 const Lesson = ({ color }) => {
   return (
     <Content horizontal={true} showsHorizontalScrollIndicator={false}>
+      
       <Card>  
         <Difficulty style={{
           backgroundColor: color
@@ -46,8 +47,17 @@ const Lesson = ({ color }) => {
           <Videos>
 
           </Videos>
+          <Image 
+          style={{
+            width: 130,
+            height: 140
+          }}
+        source={{uri: 'https://lovephysics.blob.core.windows.net/img/andre.png'}}
+      />
           <Quiz>
-
+          <MaterialText>
+            Materiais de apoio:
+          </MaterialText>
           </Quiz>
         </Material>
       </Card>

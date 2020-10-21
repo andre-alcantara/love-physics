@@ -63,7 +63,9 @@ const Home = () => {
         marginTop: 8,
       }}>
         <MaterialCommunityIcons name='brain' size={30} />
-        <Title>Cientista do Dia</Title>
+        <Title style={{
+          marginTop: -25,
+        }}>Cientista do Dia</Title>
       </View>
 
       <Card />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { Image, TouchableOpacity, Text } from 'react-native';
 import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -25,7 +25,13 @@ const Introduce = ({ close, title, icon, color }) => {
       </Exit>
 
       <Header>
-        {icon}
+        <Image 
+        style={{
+          width: 103,
+          height: 100
+        }}
+        source={{uri: `https://lovephysics.blob.core.windows.net/${icon}`}}
+        />
         <TitleView>
           <Title>
             {title}

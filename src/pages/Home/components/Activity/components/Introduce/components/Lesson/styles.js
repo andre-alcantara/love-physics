@@ -76,17 +76,17 @@ export const Material = styled.View `
     margin-bottom: 20px;
 `;
 
-export const Videos = styled.View `
+export const Videos = styled.TouchableOpacity `
     height: 110;
     width: 130;
     background-color: #FFF555;
     border-radius: 8px;
 `;
 
-export const Quiz = styled.View `
+export const Quiz = styled.TouchableOpacity `
     height: 110;
     width: 130;
-    background-color: #FFF555;
+    background-color: #FF5555;
     margin-left: 10px;
     border-radius: 8px;
 `;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, View, Image } from 'react-native';
 
 import Introduce from './components/Introduce';
 
@@ -22,7 +22,7 @@ const Activity = ({ title, color, icon }) => {
     <Activities>
       <View style={{
         marginLeft: 20,
-        height: 285, 
+        height: 300, 
         width: 260,
         backgroundColor: color,
         borderRadius: 20,
@@ -30,7 +30,13 @@ const Activity = ({ title, color, icon }) => {
         paddingTop: 25,
         
       }} >
-      {icon}
+       <Image 
+        style={{
+          width: 133,
+          height: 130,
+        }}
+        source={{uri: `https://lovephysics.blob.core.windows.net/${icon}`}}
+        />
       <ActivitiesText>
         {title}
       </ActivitiesText>
