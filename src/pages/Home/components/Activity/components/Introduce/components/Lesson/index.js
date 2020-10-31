@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import { Content, 
   Difficulty, 
@@ -23,7 +24,7 @@ const Lesson = ({ color }) => {
           backgroundColor: color
         }}>
           <DifficultyText>
-            INTRODUÇÃO
+            FÁCIL
           </DifficultyText>
         </Difficulty>
 
@@ -39,25 +40,30 @@ const Lesson = ({ color }) => {
           </Description>
         </DescriptionScroll>
        
-
         <MaterialText>
           Materiais de apoio:
         </MaterialText>
         <Material>
           <Videos>
-
+            <AntDesign name="youtube" size={40} color="#FF5555" />
+            <MaterialText style={{
+              color: '#FF5555',
+              marginTop: 8,
+              marginBottom: 2
+            }}>
+              Vídeos
+            </MaterialText>
           </Videos>
-          <Image 
-          style={{
-            width: 130,
-            height: 140
-          }}
-        source={{uri: 'https://lovephysics.blob.core.windows.net/img/andre.png'}}
-      />
+        
           <Quiz>
-          <MaterialText>
-            Materiais de apoio:
-          </MaterialText>
+            <AntDesign name="star" size={40} color="#FFF" />
+            <MaterialText style={{
+              color: '#FFF',
+              marginTop: 8,
+              marginBottom: 2
+            }}>
+              Praticar
+            </MaterialText>
           </Quiz>
         </Material>
       </Card>

@@ -14,30 +14,69 @@ import {
 } from './styles';
 
 const Photo = () => {
-  const [checked, setChecked] = useState(User[checked]);
+  const [checked, setChecked] = useState(false);
 
   return (
-    <ProfileView>
+    <ProfileView horizontal={true} showsHorizontalScrollIndicator={false}>
       
-      <FlatList 
-        horizontal={true}
-        style={{
-          marginBottom: -30,
-        }}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        data={User}
-        renderItem={({ item }) => <CheckBox
-        style={{flex: 1, marginRight: 15}}
-        onClick={() => setChecked(User[checked])}
-        isChecked={item.checked}
-        checkedImage={<Image source={item.image} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={item.imageUn} style={{ width:120, height: 120 }} /> }
-    /> } 
-        
+      <CheckBox
+        style={{flex: 1, marginLeft: 6}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face1.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face1Un.png')} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face2.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face2Un.png')} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face3.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face3Un.png')} style={{ width:120, height: 120 }} /> }
       />
-         
-      </ProfileView>
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face4.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face4Un.png')} style={{ width:120, height: 120 }} /> }
+      />
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face5.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face5Un.png')} style={{ width:120, height: 120 }} /> }
+      />
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face6.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face6Un.png')} style={{ width:120, height: 120 }} /> }
+      />
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face7.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face7Un.png')} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 15}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={require('../../../../../../assets/users/face8.png')} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={require('../../../../../../assets/users/face8Un.png')} style={{ width:120, height: 120 }} /> }
+      />
+      
+    </ProfileView>
   );
 }
 

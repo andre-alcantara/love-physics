@@ -11,11 +11,11 @@ export default [
   { id: 2,
     title: 'Velocidade',
     color: '#F1A45D',
-    icon: 'lesson/math.png'
+    icon: 'lesson/speed.png'
   },
   { id: 3,
     title: 'Força',
     color: '#FF8086',
-    icon: 'lesson/math.png'
+    icon: 'lesson/strength.png'
   },
 ]

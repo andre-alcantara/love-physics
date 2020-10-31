@@ -79,8 +79,10 @@ export const Material = styled.View `
 export const Videos = styled.TouchableOpacity `
     height: 110;
     width: 130;
-    background-color: #FFF555;
+    background-color: #F8EFEF;
     border-radius: 8px;
+    align-items: center;   
+    justify-content: center; 
 `;
 
 export const Quiz = styled.TouchableOpacity `
@@ -89,4 +91,6 @@ export const Quiz = styled.TouchableOpacity `
     background-color: #FF5555;
     margin-left: 10px;
     border-radius: 8px;
+    align-items: center;
+    justify-content: center;
 `;

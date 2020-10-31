@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export const Activities = styled.View `
+export const Activities = styled.TouchableOpacity `
     height: 300;
     flex-direction: row;
     margin-top: 10px;
@@ -18,7 +18,7 @@ export const ActivitiesText = styled.Text `
     font-size: 26px;
 `;
 
-export const StartButton = styled.TouchableOpacity `
+export const StartButton = styled.View `
     background-color: #FF5555;
     flex-direction: row;
     position: absolute;

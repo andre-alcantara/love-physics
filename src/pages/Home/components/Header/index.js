@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, TouchableOpacity, Modal} from 'react-native';
+import { Image, TouchableOpacity, Modal} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../../../contexts/auth';
 import Settings from '../Settings';
@@ -34,7 +34,14 @@ const Header = () => {
           <SecondaryText>Que bom te ver!</SecondaryText>
         </TextView>
         <TouchableOpacity onPress={() => setVisible(true)}>
-          <Character height={hp('20%')} width={wp('20%')} />
+          <Image
+          style={{
+            height: 65,
+            width: 65,
+            
+          }} 
+            source={{uri :'https://lovephysics.blob.core.windows.net/user/face1.png'}}
+          />
         </TouchableOpacity>    
       </HeaderView>
 
@@ -49,7 +56,7 @@ const Header = () => {
       <StatsView>
         <StarView>
           <Star height={hp('7.3%')} width={wp('7.3%')} />
-              <StarCount>2000</StarCount>
+              <StarCount>0</StarCount>
           </StarView>
           <HeartView>
             <Heart height={hp('7.3%')} width={wp('7.3%')} />

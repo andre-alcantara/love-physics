@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 
-export const ProfileView = styled.View `
-    flex-direction: row;
-    margin-top: 30px;
-    margin-bottom: 40px;
-`;
+
+
+export const ProfileView = styled.ScrollView.attrs(props => ({
+    contentContainerStyle: { 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        paddingRight: 18,
+    }})) 
+    `
+        flex-direction: row;
+        margin-top: -35px;
+        margin-bottom: 20px;
+    `;
 
 export const Current = styled.Text `
     margin-bottom: 5px;

@@ -180,13 +180,16 @@ const Settings = ({ close }) => {
           <Content>
   
           <Title style={{
-          marginTop:-50,
-          
-          marginLeft: 7
+            marginTop:20,
+            marginBottom: 20, 
+            marginLeft: 7
         }}>Alterar carinha</Title>
 
        <Photo />
-       <Edit>
+       <Edit style={{
+         marginBottom: 10,
+         marginTop: -30,
+       }}>
         <Text style={{
           fontFamily: 'Montserrat_600SemiBold',
           color: '#FFF',

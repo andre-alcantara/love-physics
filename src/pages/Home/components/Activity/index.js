@@ -19,7 +19,7 @@ const Activity = ({ title, color, icon }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Activities>
+    <Activities onPress={() => setVisible(true)}>
       <View style={{
         marginLeft: 20,
         height: 300, 
@@ -32,7 +32,7 @@ const Activity = ({ title, color, icon }) => {
       }} >
        <Image 
         style={{
-          width: 133,
+          width: 135,
           height: 130,
         }}
         source={{uri: `https://lovephysics.blob.core.windows.net/${icon}`}}
@@ -42,7 +42,7 @@ const Activity = ({ title, color, icon }) => {
       </ActivitiesText>
 
 
-      <StartButton onPress={() => setVisible(true)}>
+      <StartButton>
         <StartText>ESTUDAR</StartText>
         <Start style={{
             marginLeft: 10,  
@@ -56,7 +56,7 @@ const Activity = ({ title, color, icon }) => {
           visible={visible}
           onRequestClose={() => setVisible(false)}
           animationType='slide'
-        >
+      >
         <Introduce 
           close={() => setVisible(false)} 
           title={title} 

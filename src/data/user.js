@@ -4,7 +4,7 @@ import React from 'react';
 export default [
   { 
     id: 1,
-    image: require('../assets/users/face1.png'),
+    image: 'profile/face1.png',
     imageUn: require('../assets/users/face1Un.png')
   },
   { 
