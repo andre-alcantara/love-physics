@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+
+import { useStateValue } from '../../../../../../../../contexts/theme';
+
 
 import { Content, 
   Difficulty, 
@@ -15,7 +18,10 @@ import { Content,
   Quiz
 } from './styles';
 
+
 const Lesson = ({ color }) => {
+  const [state] = useStateValue();
+
   return (
     <Content horizontal={true} showsHorizontalScrollIndicator={false}>
       
@@ -45,9 +51,9 @@ const Lesson = ({ color }) => {
         </MaterialText>
         <Material>
           <Videos>
-            <AntDesign name="youtube" size={40} color="#FF5555" />
+            <AntDesign name="youtube" size={40} color={state.theme.title} />
             <MaterialText style={{
-              color: '#FF5555',
+              color: state.theme.title,
               marginTop: 8,
               marginBottom: 2
             }}>

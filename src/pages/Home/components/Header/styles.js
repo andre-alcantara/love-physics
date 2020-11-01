@@ -12,7 +12,6 @@ export const HeaderView = styled.View `
     flex-direction: row;
     align-self: center;
     width: 90%;
-    
     margin-top: ${hp('2%')};
 `;
 
@@ -55,7 +54,6 @@ export const StarCount = styled.Text `
     margin-left: ${wp('18%')};
     color: #FFF;
     text-align: center;
-
 `;
 
 export const HeartView = styled.View `

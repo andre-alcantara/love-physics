@@ -80,7 +80,7 @@ export const Material = styled.View `
 export const Videos = styled.TouchableOpacity `
     height: 110;
     width: 130;
-    background-color: #F8EFEF;
+    background-color: ${props => props.theme.description};
     border-radius: 8px;
     align-items: center;   
     justify-content: center; 

@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import Switch from 'expo-dark-mode-switch';
 import Modal from 'react-native-modal';
 import Photo from './components/Photo';
-import { useStateValue } from '../../../../contexts/theme'
+import { useStateValue } from '../../../../contexts/theme';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { Wrapper, 
