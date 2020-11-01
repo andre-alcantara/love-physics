@@ -40,7 +40,7 @@ const Header = () => {
             width: 65,
             
           }} 
-            source={{uri :'https://lovephysics.blob.core.windows.net/user/face1.png'}}
+            source={{uri :'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2FToyFace_Colored_01.png?alt=media&token=20360901-6689-4201-a23f-0f5370867a80'}}
           />
         </TouchableOpacity>    
       </HeaderView>

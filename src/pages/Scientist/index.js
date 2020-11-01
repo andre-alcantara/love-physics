@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, FlatList, StatusBar } from 'react-native';
 import Scientists from '../../data/scientists';
 
 import { Feather } from '@expo/vector-icons';
@@ -11,6 +11,7 @@ const Scientist = () => {
 
   return (
     <Wrapper>      
+      
     
       <Header>
         <TextView>
