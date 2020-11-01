@@ -12,10 +12,10 @@ export const CuriosityCard = styled.View `
     height: 160px;
     background-color: ${props => props.theme.bottomTab};
     align-self: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     margin-top: 10px;
     border-radius: 20px;
-    margin-left: 15px;
+    margin-right: -8px;
     justify-content: center;
     align-items: center;
 `;

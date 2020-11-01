@@ -38,13 +38,14 @@ export const AvatarView = styled.View `
 `; 
 
 export const EditButton = styled.TouchableOpacity `
-    
+    margin-top: 12px;
 `;
 
 export const EditText = styled.Text `
     color: #20D29B;
     font-family: Montserrat_500Medium;
     font-size: 14px;
+    
 `;
 
 export const InputView = styled.View `

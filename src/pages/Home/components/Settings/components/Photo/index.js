@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
 import { Edit } from '../../styles';
 import User from '../../../../../../data/user';
-import CheckBox from 'react-native-check-box'
+import CheckBox from 'react-native-check-box';
 
 import { 
   ProfileView, 

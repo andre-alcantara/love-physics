@@ -8,6 +8,7 @@ export const Content = styled.ScrollView.attrs(props => ({
     }})) 
     `
         flex: 1;
+        
     `;
 
 export const Difficulty = styled.View `
@@ -25,7 +26,7 @@ export const DifficultyText = styled.Text `
 export const Card = styled.View `
     width: 310px;
     height: 90%;
-    background-color: #FFF;
+    background-color: ${props => props.theme.background};
     margin-left: 18px;
     border-radius: 20px;
     padding-top: 15px;
@@ -36,10 +37,11 @@ export const SubTitle = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 24px;
     margin-top: 18px;
+    color: ${props => props.theme.title};
 `;
 
 export const Description = styled.Text `
-    
+    color: ${props => props.theme.title};
     font-size: 16px;
     font-family: Montserrat_500Medium;
 `;
@@ -57,8 +59,7 @@ export const DescriptionScroll = styled.ScrollView.attrs(props => ({
         width: 93%;
         border-radius: 8px;
         height: 100px;
-        background-color: #F8EFEF;
-
+        background-color: ${props => props.theme.description};
     `; 
    
 

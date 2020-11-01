@@ -42,7 +42,7 @@ const Home = () => {
         }}
         contentContainerStyle={{
           paddingRight: 20,
-          
+        
 
         }}
         showsHorizontalScrollIndicator={false}
@@ -58,27 +58,17 @@ const Home = () => {
     </View>
       
 
-      <View style={{
-        flexDirection: 'row',
-        width: '90%',
-        alignSelf: 'center',
-        alignItems: 'flex-end',
-        marginTop: 8,
-      }}>
-        <MaterialCommunityIcons name='brain' size={30} color={state.theme.title}/>
-        <Title style={{
-          marginTop: -25,
-        }}>Cientista do Dia</Title>
-      </View>
+      
 
-      <Card />
-
-      <Title>Curiosidades</Title>
+      <Title style={{
+          marginTop: -10
+        }}>Curiosidades</Title>
       <List 
+        
         horizontal={true}
         contentContainerStyle={{
-          paddingBottom: 120,
-                
+          marginBottom: 10,
+          paddingRight: 30,
         }}
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}

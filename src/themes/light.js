@@ -8,5 +8,6 @@ export default {
   statusBarStyle: "dark-content",
   icon: '#000',
   activeTintColor: '#C6C2C2',
-  inactiveTintColor: '#282A36'
+  inactiveTintColor: '#282A36',
+  description: '#F8EFEF',
 }

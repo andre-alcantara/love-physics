@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { Image, Text } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Character from '../../../../assets/characters/character1.svg';
 import { Input } from 'react-native-elements';
@@ -70,7 +70,14 @@ const Settings = ({ close }) => {
           </TitleView>
 
           <AvatarView>
-            <Character height={110} width={110} />
+          <Image
+          style={{
+            height: 100,
+            width: 100,
+            
+          }} 
+            source={{uri :'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2FToyFace_Colored_01.png?alt=media&token=20360901-6689-4201-a23f-0f5370867a80'}}
+          />
             <EditButton onPress={() => setVisiblePhoto(true)}>
               <EditText>Alterar</EditText>
             </EditButton>
