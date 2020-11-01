@@ -6,6 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
 import Activities from '../../data/activity';
 
+import { useStateValue } from '../../contexts/theme';
+
 import { Wrapper, Container, 
   Content, Title, 
   List
@@ -18,10 +20,11 @@ import Curiosities from '../../data/curiosity';
 import Activity from './components/Activity';
 
 const Home = () => {
+  const [state] = useStateValue();
+
   return (
   <Wrapper>
 
-  <StatusBar style='dark' />
   <Container>
     
   <Header />
@@ -62,7 +65,7 @@ const Home = () => {
         alignItems: 'flex-end',
         marginTop: 8,
       }}>
-        <MaterialCommunityIcons name='brain' size={30} />
+        <MaterialCommunityIcons name='brain' size={30} color={state.theme.title}/>
         <Title style={{
           marginTop: -25,
         }}>Cientista do Dia</Title>

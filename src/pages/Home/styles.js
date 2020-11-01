@@ -3,7 +3,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 export const Wrapper = styled.View `
     flex: 1;
-    background: #FFF;
+    background-color: ${props => props.theme.background};
 `;
 
 export const Container = styled.View `
@@ -22,6 +22,7 @@ export const Title = styled.Text `
     font-size: 25px;
     margin-top: ${hp('1.8%')};
     margin-left: ${wp('6%')};
+    color: ${props => props.theme.title};
 `;
 
 export const List = styled.FlatList `

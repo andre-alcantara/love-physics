@@ -31,11 +31,7 @@ const ScientistDetail = ({ close, life, scientist, image, who, award }) => {
         </ImageView>
         <Name> { scientist } </Name>
         <Life> { life } </Life>
-        <Text style={{
-          fontFamily: 'Montserrat_600SemiBold',
-          fontSize: 15,
-          color: '#808080'
-        }}>Alemanha</Text>
+        <Life>Alemanha</Life>
         
       </Header>
       

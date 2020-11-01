@@ -14,6 +14,7 @@ export const Wrapper = styled.SafeAreaView `
 `;
 
 export const Content = styled.View `
+
     position:absolute;
     margin-top: -25px;
     width: 90%;
@@ -22,18 +23,17 @@ export const Content = styled.View `
     justify-content: center;
 `;
 
-export const SearchBar = styled.TextInput.attrs({
-    placeholderTextColor: '#A9A9A9'
-}) `
+export const SearchBar = styled.TextInput `
     width: 100%;
     height: 60px;
-    background-color: #FFF;
     align-self: center;
     border-radius: 10px;
     flex-direction: row;
     padding-left: 17px;
     font-size: 13px;
     font-family: Montserrat_500Medium;
+    color: ${props => props.theme.title};
+    background-color: ${props => props.theme.bottomTab};
 `;
 
 
@@ -54,11 +54,10 @@ export const Title = styled.Text `
 `;
 
 export const ListView = styled.View `
-    
+    background-color: ${props => props.theme.background};
     padding-top: 50px;
     height: 100%;
     width: 100%;
-    background-color: #FFF;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 `;

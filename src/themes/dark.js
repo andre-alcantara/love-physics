@@ -3,6 +3,11 @@ export default {
   title: '#FFF',
   secondaryText: '#E3C7C7',
   bottomTab: '#4D4E57',
-  placeholder: '#FFF'
+  placeholder: '#FFF',
+  divisor: '#4D4E57',
+  statusBarStyle: "light-content",
+  icon: '#FFF',
+  activeTintColor: '#282A36',
+  inactiveTintColor: '#949494'
 }  
 

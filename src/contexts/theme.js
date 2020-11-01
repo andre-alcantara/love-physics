@@ -1,13 +1,12 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-export const ThemeContext = createContext();
+export const StateContext = createContext();
 
-const ThemeProvider = ({ reducer, initialState, children }) => {
-  return (
-    <ThemeContext.Provider value={useReducer(reducer, initialState)}>
+export const StateProvider = ({ reducer, initialState, children }) => (
+    <StateContext.Provider value={useReducer(reducer, initialState)}>
       { children }
-    </ThemeContext.Provider>
-  )
-}
+    </StateContext.Provider>
+  );
 
-export const useThemeValue = () => useContext(ThemeContext)
+
+export const useStateValue = () => useContext(StateContext);

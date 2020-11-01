@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 export const ScientistCard = styled.View `
     width: 90%;
     height: 180px;
-    background-color: #FFF;
+    background-color: ${props => props.theme.bottomTab};
     align-self: center;
     margin-bottom: 15px;
     margin-top: 16px;
@@ -12,7 +12,7 @@ export const ScientistCard = styled.View `
 `;
 
 export const ScientistText = styled.Text `
-    color: #000;
+    color: ${props => props.theme.title};
     font-family: Montserrat_600SemiBold;
     font-size: 25px;
     position: absolute;
@@ -22,7 +22,7 @@ export const ScientistText = styled.Text `
 
 export const ScientistDesc = styled.Text `
     font-family: Montserrat_500Medium;
-    color: #808080;
+    color: ${props => props.theme.secondaryText};
     font-size: 14px;
     width: ${wp('55%')};
     margin-left: 130px;

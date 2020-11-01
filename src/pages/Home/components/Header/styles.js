@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export const Top = styled.SafeAreaView `
-    background-color: #fff;
+    background-color: ${props => props.theme.background};
     height: ${hp('28%')}
     border-bottom-width: 1;
-    border-bottom-color: #E1DEDE;
+    border-bottom-color: ${props => props.theme.divisor};
 `;
 
 export const HeaderView = styled.View `
@@ -17,7 +17,7 @@ export const HeaderView = styled.View `
 `;
 
 export const TextView = styled.View `
-    background-color: #FFF;
+    background-color: ${props => props.theme.background};
     justify-content: center;
     align-content: flex-start;
     width: 78%;
@@ -39,12 +39,13 @@ export const PrimaryText = styled.Text `
     font-family: Montserrat_800ExtraBold;
     font-size: 28px;
     margin-top: ${hp('1.3%')};
+    color: ${props => props.theme.title};
 `;
 
 export const SecondaryText = styled.Text `
     font-family: Montserrat_500Medium;
     font-size: 20px;
-    
+    color: ${props => props.theme.title};
 `;
 
 export const StarCount = styled.Text `

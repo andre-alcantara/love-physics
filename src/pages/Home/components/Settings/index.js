@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Character from '../../../../assets/characters/character1.svg';
@@ -8,10 +8,8 @@ import { ThemeProvider } from 'styled-components';
 import Switch from 'expo-dark-mode-switch';
 import Modal from 'react-native-modal';
 import Photo from './components/Photo';
-
-// themes
-import lightTheme from '../../../../themes/light';
-import darkTheme from '../../../../themes/dark';
+import { useStateValue } from '../../../../contexts/theme'
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { Wrapper, 
   Header, 
@@ -33,12 +31,34 @@ import { Wrapper,
 const Settings = ({ close }) => {
   const [visible, setVisible] = useState(false);
   const [visiblePhoto, setVisiblePhoto] = useState(false);
-  const [value, setValue] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [state] = useStateValue();
+  const [darkMode, setDarkMode] = useState(false);
+  const [, dispach] = useStateValue();
+
+  useEffect(() => {
+    async function getInitialState() {
+      const darkModeKey = await AsyncStorage.getItem('DarkModeKey');
+
+      if(darkModeKey === 'true') {
+        setDarkMode(true);
+        return;
+      }
+    }
+
+    getInitialState();
+  }, []);
+
+  function handleDarkMode() {
+    dispach({
+      type: !darkMode ? "enable" : "disable"
+
+    })
+    setDarkMode(!darkMode)
+  }
 
   const { user } = useContext(AuthContext);
   return (
-    <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+    
       <Wrapper>
         <Container>
         <Header>
@@ -71,7 +91,7 @@ const Settings = ({ close }) => {
               marginBottom: -6
             }}
             placeholder={user && user.name}
-            placeholderTextColor={dark ? darkTheme.placeholder : lightTheme.placeholder}
+            placeholderTextColor={state.theme.placeholder}
             disabled={true}
             rightIcon={
               <EditButton onPress={() => setVisible(true)}>
@@ -91,7 +111,7 @@ const Settings = ({ close }) => {
               marginBottom: -6
             }}
             placeholder={user && user.email}
-            placeholderTextColor={dark ? darkTheme.placeholder : lightTheme.placeholder}
+            placeholderTextColor={state.theme.placeholder}
             disabled={true}
             rightIcon={
               <EditButton onPress={() => setVisible(true)}>
@@ -102,7 +122,7 @@ const Settings = ({ close }) => {
         </InputView>
         <DarkModeView>
           <DarkModeText>Modo Escuro</DarkModeText>
-          <Switch value={dark} onChange={() => setDark(!dark)} />
+          <Switch value={darkMode} onChange={handleDarkMode} />
         </DarkModeView>
         
         <DarkModeView>
@@ -139,10 +159,11 @@ const Settings = ({ close }) => {
             inputStyle={{
               fontFamily: 'Montserrat_500Medium',
               fontSize: 17,
-              marginBottom: -6
+              marginBottom: -6,
+              color: state.theme.placeholder
             }}
             value={user && user.name}
-            placeholderTextColor={dark ? darkTheme.placeholder : lightTheme.placeholder}
+            placeholderTextColor={state.theme.placeholder}
           />
           <Input
             label={'E-mail'}
@@ -153,10 +174,11 @@ const Settings = ({ close }) => {
             inputStyle={{
               fontFamily: 'Montserrat_500Medium',
               fontSize: 17,
-              marginBottom: -6
+              marginBottom: -6,
+              color: state.theme.placeholder
             }}
             value={user && user.email}
-            placeholderTextColor={dark ? darkTheme.placeholder : lightTheme.placeholder}
+            placeholderTextColor={state.theme.placeholder}
           />
           <Edit>
             <Text style={{
@@ -206,7 +228,7 @@ const Settings = ({ close }) => {
         </Container>
       </Wrapper>
       
-    </ThemeProvider>
+    
   );
 }
 

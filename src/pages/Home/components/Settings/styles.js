@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Input } from 'react-native-elements';
 
 export const Wrapper = styled.SafeAreaView `
     flex: 1;
@@ -74,6 +73,7 @@ export const EditView = styled.View `
     background-color: #FFF;
     justify-content: center;
     border-radius: 10px;
+    background-color: ${props => props.theme.background};
 `;
 
 export const Content = styled.View `
@@ -81,6 +81,7 @@ export const Content = styled.View `
     height: 90%;
     align-self: center;
     justify-content: center;
+    background-color: ${props => props.theme.background};
 `;
 
 export const Edit = styled.TouchableOpacity `
@@ -93,4 +94,5 @@ export const Edit = styled.TouchableOpacity `
     margin-bottom: -45px;
     margin-top: 25px;
     border-radius: 8px;
+    
 `;

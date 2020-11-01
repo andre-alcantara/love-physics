@@ -3,6 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
+import { useStateValue } from '../contexts/theme';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -25,13 +27,16 @@ const icons = {
 }
 
 const DashboardRoutes = () => {
+  const [state] = useStateValue();
+
   return (
       <Tab.Navigator tabBarOptions={{
         style: {
-          backgroundColor: '#FFF',
+          backgroundColor: state.theme.bottomTab,
+          borderTopColor: state.theme.bottomTab,
         },
-        activeTintColor: '#FF5555',
-        inactiveTintColor: '#C6C2C2',
+        activeTintColor: state.theme.inactiveTintColor,
+        inactiveTintColor: state.theme.activeTintColor,
         showLabel: false,
       }}>
         <Tab.Screen options={ ({ route }) => ({

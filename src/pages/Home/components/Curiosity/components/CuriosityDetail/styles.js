@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.View `
     flex: 1;
+    background-color: ${props => props.theme.background};
 `;
 
 export const Header = styled.View `
@@ -10,7 +11,7 @@ export const Header = styled.View `
     height: 220px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-    background-color: #FFF;
+    background-color: ${props => props.theme.bottomTab};
     justify-content: center;
 `;
 
@@ -28,6 +29,7 @@ export const Name = styled.Text `
     margin-left: 14px;
     margin-top: 5px;
     text-align: center;
+    color: ${props => props.theme.title};
 `; 
 
 export const Life = styled.Text `
@@ -40,12 +42,14 @@ export const Close = styled.TouchableOpacity `
     position: absolute;
     align-self: flex-end;
     align-items: center;
+    color: ${props => props.theme.icon};
 `;
 
 export const Content = styled.ScrollView `
     align-self: center;
     width: 90%;
     padding-bottom: 10px;
+    
 `;
 
 export const Title = styled.Text `

@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import { useStateValue } from '../../../../../../contexts/theme';
+
 import { Wrapper, 
   ImageView, 
   Close, 
@@ -15,6 +17,8 @@ import { Wrapper,
 import Glasses from '../../../../../../assets/curiosity/glasses.svg';
 
 const CuriosityDetail = ({ title, close }) => {
+  const [state] = useStateValue();
+
   return (
     <Wrapper>
     <Header style={styles.shadow}>
@@ -26,7 +30,7 @@ const CuriosityDetail = ({ title, close }) => {
             alignSelf: "flex-end",
             
             
-          }} name="ios-arrow-down" size={28} color="black" />
+          }} name="ios-arrow-down" size={28} color={state.theme.icon} />
       </Close>
         <Glasses width={110} height={110} />
         <Name> { title } </Name>

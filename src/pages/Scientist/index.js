@@ -26,6 +26,7 @@ const Scientist = () => {
       <SearchBar 
         style={styles.shadow}
         placeholder='Digite para pesquisar...'
+        placeholderTextColor="#A9A9A9"
       />    
       <Icon>
         <Feather name="search" size={24} color="#A9A9A9" />

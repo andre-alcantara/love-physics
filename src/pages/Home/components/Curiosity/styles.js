@@ -10,7 +10,7 @@ export const Activities = styled.ScrollView `
 export const CuriosityCard = styled.View `
     width: 160px;
     height: 160px;
-    background-color: #FFF;
+    background-color: ${props => props.theme.bottomTab};
     align-self: center;
     margin-bottom: 15px;
     margin-top: 10px;
@@ -25,4 +25,5 @@ export const CuriosityText = styled.Text `
     font-family: Montserrat_600SemiBold;
     font-size: 14px;
     width: 120px;
+    color: ${props => props.theme.title};
 `;

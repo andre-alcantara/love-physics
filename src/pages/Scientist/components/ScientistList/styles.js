@@ -5,10 +5,9 @@ export const Button = styled.TouchableOpacity `
     height: 60px;
     align-self: center;
     justify-content: center;
-    background-color: #FFF;
     margin-top: 10px;
     border-radius: 10px;
-    
+    background-color: ${props => props.theme.bottomTab};
 `;
 
 export const TextView = styled.View `
@@ -25,6 +24,7 @@ export const Name = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 18px;
     align-self: center;
+    color: ${props => props.theme.title};
 `;
 
 export const Life = styled.Text `

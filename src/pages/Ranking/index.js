@@ -7,7 +7,7 @@ import PlayerCard from './components/PlayerCard';
 
 import Leaderboard from 'react-native-leaderboard';
 
-import { Feather } from '@expo/vector-icons';
+import { useStateValue } from '../../contexts/theme';
 
 import { Content, ListView } from '../Scientist/styles';
 import { Wrapper, 
@@ -19,6 +19,8 @@ import { Wrapper,
 
 
 const Ranking = () => {
+  const [state] = useStateValue();
+
   const [players, setPlayers] = useState([
     {
       id: '1',
@@ -66,6 +68,8 @@ const Ranking = () => {
         sortBy='stars' 
         labelBy='nickname'
         icon='avatar'
+        oddRowColor= {state.theme.bottomTab}
+        evenRowColor= {state.theme.bottomTab}
         scoreStyle={{
           color: '#FEB96C',
           fontSize: 30,
@@ -73,11 +77,13 @@ const Ranking = () => {
           padding: 12
         }}
         rankStyle={{
-          fontFamily: 'Montserrat_600SemiBold'
+          fontFamily: 'Montserrat_600SemiBold',
+          color: state.theme.title
         }}
         labelStyle={{
           fontFamily: 'Montserrat_600SemiBold',
           marginLeft: 13,
+          color: state.theme.title
         }}
       />
       </ListView>

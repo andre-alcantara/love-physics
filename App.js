@@ -1,44 +1,54 @@
 import React from 'react';
-import AuthProvider from './src/contexts/auth';
-import { ThemeProvider } from 'styled-components';
-import { NavigationContainer } from '@react-navigation/native';
-import { AppLoading } from 'expo';
-import { StatusBar } from 'expo-status-bar';
+import AsyncStorage from '@react-native-community/async-storage';
 
-import Routes from './src/routes/routes';
+// themes
+import lightTheme from './src/themes/light';
+import darkTheme from './src/themes/dark';
 
-import { useFonts, 
-Montserrat_500Medium,
-Montserrat_600SemiBold,
-Montserrat_700Bold,
-Montserrat_800ExtraBold,
-Montserrat_900Black
-} from '@expo-google-fonts/montserrat';
+import { StateProvider } from './src/contexts/theme';
+import { useStateValue } from './src/contexts/theme';
 
+import App from './index';
 
-const App = () => {
-  let [fontsLoaded] = useFonts({
-    Montserrat_500Medium,
-    Montserrat_600SemiBold,
-    Montserrat_700Bold,
-    Montserrat_800ExtraBold,
-    Montserrat_900Black
-  })
+const Index = () => {
+  const initialState = { theme: lightTheme };
 
-  if(!fontsLoaded) {
-    return <AppLoading />
+  async function updateStorage(state) {
+    try{
+      await AsyncStorage.setItem('DarkModeKey', state.toString());
+    }
+    catch(err){
+      console.log('Error', err)
+    }
+  }
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "enable":
+        updateStorage(true);
+        return {
+          ...state,
+          theme: darkTheme
+        };
+        case "disable":
+          updateStorage(false);
+          return {
+            ...state,
+            theme: lightTheme
+          };
+          default: 
+            return state;
+         
+    }
   }
 
   return (
-    <NavigationContainer>
-      <AuthProvider>
-        <StatusBar style="dark" />
-        <Routes />
-      </AuthProvider>
-    </NavigationContainer>
+    <StateProvider initialState={initialState} reducer={reducer}> 
+      <App />
+    </StateProvider>
   )
 }
 
-export default App;
+export default Index;
 
 console.disableYellowBox = true;
