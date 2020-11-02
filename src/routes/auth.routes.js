@@ -13,7 +13,6 @@ const AuthRoutes = () => {
       <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name='SignIn' component={SignIn} options={{ headerShown: false }} />
       <Stack.Screen name='SignUp' component={SignUp} options={{ headerShown: false }} />
-      <Stack.Screen name='Hello' component={Hello} options={{ headerShown: false }} />
     </Stack.Navigator> 
   )
 }

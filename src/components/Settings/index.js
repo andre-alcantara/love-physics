@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Image, Text } from 'react-native';
+import { Image, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Input } from 'react-native-elements';
 import { AuthContext } from '../../contexts/auth';
@@ -8,6 +8,8 @@ import Modal from 'react-native-modal';
 import Photo from '../Photo';
 import { useStateValue } from '../../contexts/theme';
 import AsyncStorage from '@react-native-community/async-storage';
+
+import Hello from '../../pages/Goodbye';
 
 import { Wrapper, 
   Header, 
@@ -28,6 +30,7 @@ import { Wrapper,
 
 const Settings = ({ close }) => {
   const [visible, setVisible] = useState(false);
+  const [visibleBye, setVisibleBye ] = useState(false)
   const [visiblePhoto, setVisiblePhoto] = useState(false);
   const [state] = useStateValue();
   const [darkMode, setDarkMode] = useState(false);
@@ -54,7 +57,7 @@ const Settings = ({ close }) => {
     setDarkMode(!darkMode)
   }
 
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
   return (
     
       <Wrapper>
@@ -132,10 +135,11 @@ const Settings = ({ close }) => {
         </DarkModeView>
         
         <DarkModeView>
-          <DarkModeText style={{
-            color: '#FF5555'
-          }}>Sair</DarkModeText>
-          
+          <TouchableOpacity onPress={() => setVisibleBye(true)}>
+            <DarkModeText style={{
+              color: '#FF5555'
+            }}>Sair do app</DarkModeText>
+          </TouchableOpacity>
         </DarkModeView>
 
         <Modal 
@@ -232,6 +236,14 @@ const Settings = ({ close }) => {
       </Modal>
 
         </Container>
+
+        <Modal 
+        onBackdropPress={() => setVisibleBye(false)}
+        isVisible={visibleBye}
+        coverScreen={true}
+        >
+          <Hello />
+        </Modal>
       </Wrapper>
       
     

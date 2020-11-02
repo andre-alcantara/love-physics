@@ -12,6 +12,7 @@ const Stack = createStackNavigator();
 import Home from '../pages/Home';
 import Scientist from '../pages/Scientist';
 import Ranking from '../pages/Ranking';
+import Hello from '../pages/Goodbye';
 
 const icons = {
   Home: {
@@ -24,6 +25,15 @@ const icons = {
     name: 'trophy-outline',
   },
 }
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name='Home' component={Home} options={{
+      headerShown: false
+    }}/>
+    <Stack.Screen name='Hello' component={Hello} />
+  </Stack.Navigator>
+);
 
 const DashboardRoutes = () => {
   const [state] = useStateValue();
@@ -45,7 +55,7 @@ const DashboardRoutes = () => {
             } 
           }) 
         } 
-        name='Home' component={Home} /> 
+        name='Home' component={HomeStack} /> 
 
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
