@@ -142,7 +142,7 @@ const Settings = () => {
           <TouchableOpacity onPress={() => navigation.navigate('GoodBye')}>
             <DarkModeText style={{
               color: '#FF5555'
-            }}>Sair porra</DarkModeText>
+            }}>Sair do app</DarkModeText>
           </TouchableOpacity>
         </DarkModeView>
 
