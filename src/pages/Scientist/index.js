@@ -36,7 +36,7 @@ const Scientist = () => {
       </Content>
         <FlatList 
             contentContainerStyle={{
-              paddingBottom: 120,
+              paddingBottom: 145,
               
             }}
             showsVerticalScrollIndicator={false}

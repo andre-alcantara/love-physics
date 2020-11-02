@@ -60,6 +60,7 @@ import { useFonts,
             <AuthProvider>
               <StatusBar 
                 barStyle={state.theme.statusBarStyle}
+                backgroundColor={state.theme.background}
               />
               <Routes />
             </AuthProvider>

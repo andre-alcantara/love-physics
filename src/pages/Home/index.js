@@ -13,11 +13,10 @@ import { Wrapper, Container,
   List
 } from './styles';
 
-import Header from './components/Header';
-import Card from './components/Card';
+import Header from '../../components/Header';
 import Curiosity from './components/Curiosity';
 import Curiosities from '../../data/curiosity';
-import Activity from './components/Activity';
+import Activity from '../../components/Activity';
 
 const Home = () => {
   const [state] = useStateValue();

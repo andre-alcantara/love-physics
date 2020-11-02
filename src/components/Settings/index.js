@@ -1,14 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Image, Text } from 'react-native';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import Character from '../../../../assets/characters/character1.svg';
+import { Ionicons } from '@expo/vector-icons';
 import { Input } from 'react-native-elements';
-import { AuthContext } from '../../../../contexts/auth';
-import { ThemeProvider } from 'styled-components';
+import { AuthContext } from '../../contexts/auth';
 import Switch from 'expo-dark-mode-switch';
 import Modal from 'react-native-modal';
-import Photo from './components/Photo';
-import { useStateValue } from '../../../../contexts/theme';
+import Photo from '../Photo';
+import { useStateValue } from '../../contexts/theme';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { Wrapper, 
