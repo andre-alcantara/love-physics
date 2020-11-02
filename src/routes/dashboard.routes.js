@@ -12,7 +12,6 @@ const Stack = createStackNavigator();
 import Home from '../pages/Home';
 import Scientist from '../pages/Scientist';
 import Ranking from '../pages/Ranking';
-import Profile from  '../pages/Profile';
 
 const icons = {
   Home: {

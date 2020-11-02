@@ -14,7 +14,7 @@ import { Wrapper, Container,
 } from './styles';
 
 import Header from '../../components/Header';
-import Curiosity from './components/Curiosity';
+import Curiosity from '../../components/Curiosity';
 import Curiosities from '../../data/curiosity';
 import Activity from '../../components/Activity';
 

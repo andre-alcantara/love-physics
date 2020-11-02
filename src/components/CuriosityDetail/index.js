@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { useStateValue } from '../../../../../../contexts/theme';
+import { useStateValue } from '../../contexts/theme';
 
 import { Wrapper, 
   ImageView, 
@@ -13,8 +13,8 @@ import { Wrapper,
   Content,
   Title,
   Detail } from './styles';
-
-import Glasses from '../../../../../../assets/curiosity/glasses.svg';
+  
+import Glasses from '../../assets/curiosity/glasses.svg';
 
 const CuriosityDetail = ({ title, close }) => {
   const [state] = useStateValue();

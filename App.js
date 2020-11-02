@@ -6,7 +6,6 @@ import lightTheme from './src/themes/light';
 import darkTheme from './src/themes/dark';
 
 import { StateProvider } from './src/contexts/theme';
-import { useStateValue } from './src/contexts/theme';
 
 import App from './index';
 
@@ -51,4 +50,3 @@ const Index = () => {
 
 export default Index;
 
-console.disableYellowBox = true;

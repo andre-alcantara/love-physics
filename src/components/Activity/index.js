@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View, Image } from 'react-native';
 
-import Introduce from '../Introduce';
+import Introduce from '../ActivityDetail';
 
 import { Activities, 
   ActivitiesText, 

@@ -5,7 +5,7 @@ import Scientists from '../../data/scientists';
 import { Feather } from '@expo/vector-icons';
 import { Wrapper, Icon,Content, SearchBar,  ListView, Header, TextView, Title, List } from './styles';
 
-import ScientistList from './components/ScientistList'; 
+import ScientistList from '../../components/ScientistList'; 
 
 const Scientist = () => {   
 

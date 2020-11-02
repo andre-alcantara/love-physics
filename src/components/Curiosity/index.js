@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, Modal } from 'react-native';
-import Curiosities from '../../../../data/curiosity'; 
-import CuriosityDetail from './components/CuriosityDetail';
+ 
+import CuriosityDetail from '../CuriosityDetail';
 
 import { Activities, 
   CuriosityCard, 
   CuriosityText,  
 } from './styles';
 
-import Glasses from '../../../../assets/curiosity/glasses.svg';
-import Sky from '../../../../assets/curiosity/sky.svg';
-import Mirage from '../../../../assets/curiosity/mirage.svg';
-import Fire from '../../../../assets/curiosity/fire.svg';
-import BlackHole from '../../../../assets/curiosity/blackhole.svg';
+import Glasses from '../../assets/curiosity/glasses.svg';
 
 const Curiosity = ({ title }) => {
   const [visible, setVisible] = useState(false);

@@ -6,7 +6,6 @@ const Stack = createStackNavigator();
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Welcome from '../pages/Welcome';
-import Hello from '../pages/Hello';
 
 const AuthRoutes = () => {
   return (
