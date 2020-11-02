@@ -47,14 +47,6 @@ export default function SignIn({ navigation }) {
       <StatusBar style="dark" />
       <Wrapper>
         
-        <Header>
-          <TouchableOpacity onPress={() => navigation.popToTop()}>
-            <AntDesign style={{ alignSelf: 'flex-end', marginTop: 12, marginBottom: -12  }} name="close" size={hp('3.5%')} color="black" />                                          
-          </TouchableOpacity>
-        </Header>
-        
-      
-        <Title>Login</Title>
         <Description>Apenas um minuto para você utilizar o LovePhysics!</Description>
         
         <Label style={{marginTop: hp('7%')}}>EMAIL</Label>
@@ -90,7 +82,7 @@ export default function SignIn({ navigation }) {
           onChangeText={(text) => setPassword(text)}
         />
        
-          <ForgotButton>
+          <ForgotButton onPress={() => navigation.navigate('ForgotPassword')}>
             <ForgotText>Esqueceu a senha?</ForgotText>
           </ForgotButton>
 
@@ -132,7 +124,7 @@ export default function SignIn({ navigation }) {
                     Não possui uma conta? 
                 </SignUpDescription>
 
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Criar Conta')}>
                     <SignUpText style={{
                       color: '#FF5555',
                       marginLeft: wp('0%'),

@@ -51,14 +51,10 @@ export default function SignUp({ navigation }) {
       
       <Wrapper>
         
-        <Header>
-          <TouchableOpacity onPress={() => navigation.popToTop()}>
-            <AntDesign style={{ alignSelf: 'flex-end', marginTop: 12, marginBottom: -12 }} name="close" size={hp('3.5%')} color="black" />                                          
-          </TouchableOpacity>
-        </Header>
+        
      
       
-        <Title>Criar Conta</Title>
+        
         <Description>Crie sua conta e experimente o LovePhysics!</Description>
         
         <Label style={{marginTop: hp('7%')}}>NICKNAME</Label>
@@ -132,7 +128,7 @@ export default function SignUp({ navigation }) {
                     Já possui uma conta? 
                 </SignUpDescription>
 
-                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                     <SignUpText style={{
                       color: '#FF5555',
                       marginLeft: wp('0%'),

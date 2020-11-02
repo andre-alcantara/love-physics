@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, FlatList, SafeAreaView, Image, TouchableOpacity, TouchableOpacityBase } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Swiper from 'react-native-swiper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { Wrapper, Container, Slide, Title, SignInButton, SignInText, SignUpButton, SignUpText } from './styles'
 
@@ -11,7 +12,6 @@ import Img2 from '../../img/img2.svg';
 import Img3 from '../../img/img3.svg';
 
 export default function Welcome({ navigation }) {
-
 
   return (
     <Wrapper>
@@ -45,11 +45,11 @@ export default function Welcome({ navigation }) {
         </Container>
         
 
-        <SignInButton onPress={() => navigation.navigate('SignIn')}>
+        <SignInButton onPress={() => navigation.replace('Login')}>
           <SignInText>Login</SignInText>
         </SignInButton>
 
-        <SignUpButton onPress={() => navigation.navigate('SignUp')}>
+        <SignUpButton onPress={() => navigation.navigate('Criar Conta')}>
           <SignUpText>Criar Conta</SignUpText>
         </SignUpButton>
         </Wrapper>
