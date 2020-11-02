@@ -60,6 +60,7 @@ export default function SignIn({ navigation }) {
         <Label style={{marginTop: hp('7%')}}>EMAIL</Label>
         <Input 
           containerStyle={{ marginTop: hp('1%') }}
+          autoCapitalize='none'
           inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
           placeholder='exemplo@exemplo.com'
           errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}

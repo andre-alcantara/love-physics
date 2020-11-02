@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Image, TouchableOpacity, Modal} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../contexts/auth';
-import Settings from '../Settings';
+
+import { useNavigation } from '@react-navigation/native';
 
 import { 
   Top, 
@@ -21,6 +22,7 @@ import Star from '../../assets/characters/star.svg';
 import Heart from '../../assets/characters/heart.svg';
 
 const Header = () => {
+  const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
   
   const { user, signOut } = useContext(AuthContext);
@@ -32,7 +34,7 @@ const Header = () => {
           <PrimaryText>Olá { user && user.name },</PrimaryText>
           <SecondaryText>Que bom te ver!</SecondaryText>
         </TextView>
-        <TouchableOpacity onPress={() => setVisible(true)}>
+        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Image
           style={{
             height: 65,
@@ -44,13 +46,6 @@ const Header = () => {
         </TouchableOpacity>    
       </HeaderView>
 
-        <Modal 
-          visible={visible}
-          onRequestClose={() => setVisible(false)}
-          animationType='slide'
-        >
-          <Settings close={() => setVisible(false)} />
-        </Modal>
 
       <StatsView>
         <StarView>

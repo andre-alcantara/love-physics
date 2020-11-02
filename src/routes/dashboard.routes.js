@@ -12,7 +12,8 @@ const Stack = createStackNavigator();
 import Home from '../pages/Home';
 import Scientist from '../pages/Scientist';
 import Ranking from '../pages/Ranking';
-import Hello from '../pages/Goodbye';
+import GoodBye from '../pages/Goodbye';
+import Settings from '../pages/Settings';
 
 const icons = {
   Home: {
@@ -26,16 +27,8 @@ const icons = {
   },
 }
 
-const HomeStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name='Home' component={Home} options={{
-      headerShown: false
-    }}/>
-    <Stack.Screen name='Hello' component={Hello} />
-  </Stack.Navigator>
-);
 
-const DashboardRoutes = () => {
+const HomeStack = () => {
   const [state] = useStateValue();
 
   return (
@@ -55,7 +48,7 @@ const DashboardRoutes = () => {
             } 
           }) 
         } 
-        name='Home' component={HomeStack} /> 
+        name='Home' component={Home} /> 
 
         <Tab.Screen options={ ({ route }) => ({
           tabBarIcon: ({ color, size }) => {
@@ -75,7 +68,24 @@ const DashboardRoutes = () => {
 
         
       </Tab.Navigator>
+
+      
     )
 }
+
+const DashboardRoutes = () => (
+  <Stack.Navigator>
+    <Stack.Screen name='HomeStack' component={HomeStack} options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name='GoodBye' component={GoodBye} options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name='Settings' component={Settings} options={{
+      headerShown: false
+    }} />
+  </Stack.Navigator>
+);
+
 
 export default DashboardRoutes;

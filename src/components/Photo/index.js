@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
-import { Edit } from '../Settings/styles';
 import CheckBox from 'react-native-check-box';
 
 import { 

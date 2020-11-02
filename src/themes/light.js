@@ -1,5 +1,6 @@
 export default {
   background: '#FFF',
+  backgroundExit: '#9BDCEA',
   title: '#000',
   secondaryText: '#808080',
   bottomTab: '#FFF',

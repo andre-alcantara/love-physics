@@ -18,7 +18,7 @@ import Curiosity from '../../components/Curiosity';
 import Curiosities from '../../data/curiosity';
 import Activity from '../../components/Activity';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [state] = useStateValue();
 
   return (

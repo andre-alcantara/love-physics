@@ -5,9 +5,11 @@ import { Input } from 'react-native-elements';
 import { AuthContext } from '../../contexts/auth';
 import Switch from 'expo-dark-mode-switch';
 import Modal from 'react-native-modal';
-import Photo from '../Photo';
+import Photo from '../../components/Photo';
 import { useStateValue } from '../../contexts/theme';
 import AsyncStorage from '@react-native-community/async-storage';
+
+import { useNavigation } from '@react-navigation/native';
 
 import Hello from '../../pages/Goodbye';
 
@@ -28,7 +30,9 @@ import { Wrapper,
   Edit
 } from './styles';
 
-const Settings = ({ close }) => {
+const Settings = () => {
+  const navigation = useNavigation();
+
   const [visible, setVisible] = useState(false);
   const [visibleBye, setVisibleBye ] = useState(false)
   const [visiblePhoto, setVisiblePhoto] = useState(false);
@@ -64,7 +68,7 @@ const Settings = ({ close }) => {
         <Container>
         <Header>
           <TitleView>
-            <Back onPress={close}>
+            <Back onPress={navigation.goBack}>
               <Ionicons name="md-arrow-round-back" size={35} color="#5EBACE" />
             </Back>
             <Title>Ajustes</Title>
@@ -133,12 +137,12 @@ const Settings = ({ close }) => {
           <DarkModeText>Modo Escuro</DarkModeText>
           <Switch value={darkMode} onChange={handleDarkMode} />
         </DarkModeView>
-        
+
         <DarkModeView>
-          <TouchableOpacity onPress={() => setVisibleBye(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate('GoodBye')}>
             <DarkModeText style={{
               color: '#FF5555'
-            }}>Sair do app</DarkModeText>
+            }}>Sair porra</DarkModeText>
           </TouchableOpacity>
         </DarkModeView>
 
@@ -237,13 +241,7 @@ const Settings = ({ close }) => {
 
         </Container>
 
-        <Modal 
-        onBackdropPress={() => setVisibleBye(false)}
-        isVisible={visibleBye}
-        coverScreen={true}
-        >
-          <Hello />
-        </Modal>
+        
       </Wrapper>
       
     
