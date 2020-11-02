@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export const Background = styled.ImageBackground `
-    width: ${wp('100%')};
-    height: ${hp('100%')};
-    position: absolute;
+export const Background = styled.SafeAreaView`
+    flex: 1;
+    background-color: #FFF;
 `; 
 
 export const Wrapper = styled.SafeAreaView `
-    flex: 1;
     align-self: center;
-    width: 90%;
-    margin-top: ${hp('3.5%')}px;
+    width: 100%;
+    align-items: center;
+    margin-top: -30px;
 `;
+
 export const Header = styled.View `
     width: 90%;
     align-self: center;
@@ -22,54 +22,53 @@ export const Header = styled.View `
     margin-bottom: ${hp('-1%')}px;
 `;
 
-export const Title = styled.Text `
-    font-family: Montserrat_800ExtraBold;
-    font-size: ${hp('3.5%')}px;
-    text-align: center;
-    margin-top: ${hp('4.3%')}px;
-`;
 
 export const Description = styled.Text `
-    margin-top: ${hp('2.3%')}px;
+    margin-top: 10px;
     font-family: Montserrat_500Medium;
-    font-size: ${hp('2.3%')}px;
+    font-size: 16px;
     color: #808080;
     text-align: center;
 `;
 
 export const Label = styled.Text `
     align-self: flex-start;
-    margin-left: 3%;
-    margin-top: ${hp('3.5%')}px;
+    margin-left: 5%;
+    margin-top: 25px;
     margin-bottom: ${hp('-0.23%')}px;
-    font-size: ${hp('1.7%')}px;
+    font-size: 14px;
     font-family: Montserrat_700Bold;
 `;
 
 export const ForgotButton = styled.TouchableOpacity `
-    align-self: flex-end;
-    margin-top: ${hp('1.6%')};
-    margin-right: ${wp('2.2%')};
+    align-self: center;
+    margin-top: 20px;
+    width: 90%;
 `;
 
 export const ForgotText = styled.Text `
     font-family: Montserrat_600SemiBold;
-    font-size: ${hp('2%')}px; 
+    font-size: 15px; 
     color: #FF5555;
+    font-family: Montserrat_700Bold;
+    font-size: 15px;
+    align-self: flex-end;
 `;
 
 export const SignInButton = styled.TouchableOpacity `
     align-self: center;
+    align-items: center;
+    justify-content: center;
     background-color: #FF5555;
     width: 90%;
-    padding: 12px;
+    height: 50px;
     margin-top: ${hp('4%')};
-    border-radius: 15px;
+    border-radius: 8px;
 `;
 
 export const SignInText = styled.Text `
-    font-family: Montserrat_600SemiBold;
-    font-size: ${hp('2%')}px;
+    font-family: Montserrat_700Bold;
+    font-size: 15px;
     text-align: center;
     color: #FFF;
 `;
@@ -78,26 +77,33 @@ export const SignUpView = styled.View `
     margin-top: ${hp('4%')}px;
     flex-direction: row;
     align-self: center;
+    justify-content: center;
 `;
 
 export const SignUpDescription = styled.Text `
     font-family: Montserrat_500Medium;
-    font-size: ${hp('2%')}px;
+    font-size: 17px;
 `;
 
 export const SignUpButton = styled.TouchableOpacity `
     align-self: center;
     background-color: #FFF;
     width: 90%;
+    border-width: 0.3px;
     padding: 11px;
-    margin-top: ${hp('1.3%')};
-    border-radius: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
     flex-direction: row;
+`;
+
+export const Icon = styled.TouchableOpacity `
+    position: absolute
+    
 `;
 
 export const SignUpText = styled.Text `
     font-family: Montserrat_700Bold;
-    font-size: ${hp('2%')}px;
+    font-size: 17px;
     text-align: center;
     margin-left: ${wp('8%')}px;
     color: #000;

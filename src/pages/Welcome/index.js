@@ -49,7 +49,7 @@ export default function Welcome({ navigation }) {
           <SignInText>Login</SignInText>
         </SignInButton>
 
-        <SignUpButton onPress={() => navigation.navigate('Criar Conta')}>
+        <SignUpButton onPress={() => navigation.replace('Criar Conta')}>
           <SignUpText>Criar Conta</SignUpText>
         </SignUpButton>
         </Wrapper>

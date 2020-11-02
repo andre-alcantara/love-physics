@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, TouchableOpacity, Platform , KeyboardAvoidingView} from 'react-native';
-import { Input } from 'react-native-elements';
+import { View, TouchableOpacity, TextInput , KeyboardAvoidingView} from 'react-native';
 import { StatusBar } from 'expo-status-bar'
 import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -12,19 +11,19 @@ import {
     Wrapper, 
     Header,
     TextView,
-    Title, 
     Description, 
     InputView,
     Label, 
     ForgotButton,
     ForgotText, 
-    SignInButton,
-    SignInText,
     SignUpView,
     SignUpDescription,
     SignUpButton,
     SignUpText
 } from './styles';
+
+import { Input, Title } from '../ForgotPassword/styles';
+import { SignInButton, SignInText } from '../SignIn/styles';
 
 import Logo from '../../img/google.svg';
 import Facebook from '../../img/facebook.svg';
@@ -42,82 +41,49 @@ export default function SignUp({ navigation }) {
   }
 
   return (
-    <Background source={require('../../img/background.png')}>
+    <Background>
 
-      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true} enableAutomaticScroll={(Platform.OS === 'ios')}>
+
        <KeyboardAvoidingView>
 
        
-      
+       <Title>Crie sua conta</Title>
       <Wrapper>
         
         
      
-      
-        
-        <Description>Crie sua conta e experimente o LovePhysics!</Description>
-        
-        <Label style={{marginTop: hp('7%')}}>NICKNAME</Label>
-        <Input 
-          maxLength={8}
-          autoCapitalize='none'
-          autoCorrect={false}
-          containerStyle={{ marginTop: hp('1%') }}
-          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
-          placeholder='Seu Nickname...'
-          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
-          errorMessage='Até 8 caracteres'
-          onChangeText={(text) => setName(text)}
-          value={name}
-        />
-
-        <Label>EMAIL</Label>
-        <Input 
+      <Label style={{marginTop: hp('7%')}}>Nickname</Label>
+      <Input 
+        maxLength={8}
+        placeholder='Seu nickname'
         autoCapitalize='none'
-          containerStyle={{ marginTop: hp('1%') }}
-          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
-          placeholder='exemplo@exemplo.com'
-          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
-          errorMessage='Error Message'
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-        />
-
-        <Label>SENHA</Label>
+        autoCorrect={false}
+        autoFocus={true}
+        value={name}
+        onChangeText={(text) => setName(text)}
+      />
+        
+      <Label>Email</Label>
+      <Input 
+        placeholder='exemplo@exemplo.com'
+        autoCapitalize='none'
+        autoCorrect={false}
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+        <Label>Senha</Label>
         <Input 
           placeholder='Sua senha...'
-          errorStyle={{ fontFamily: 'Montserrat_600SemiBold' }}
-          inputStyle={{ fontFamily: 'Montserrat_500Medium', fontSize: hp('2.2%') }}
-          errorMessage='Error Message'
-          rightIcon={
-            (secureText) ?
-            <TouchableOpacity onPress={() => setSecureText(false)}>
-              <Feather name="eye" size={24} color="#A9A9A9" />
-            </TouchableOpacity>
-            :
-            <TouchableOpacity onPress={() => setSecureText(true)}>
-              <Feather name="eye-off" size={24} color="#A9A9A9" />
-            </TouchableOpacity>
-          }
           secureTextEntry={secureText}
-          onChangeText={(text) => setPassword(text)}
           value={password}
+          onChangeText={(text) => setPassword(text)}
         />
+       
        
           
 
           <SignInButton 
-          onPress={handleSignUp}
-          style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
-          }}>
+          onPress={handleSignUp}>
             <SignInText>Criar Conta</SignInText>
           </SignInButton>
               
@@ -137,7 +103,7 @@ export default function SignUp({ navigation }) {
             </SignUpView>
         </Wrapper>
         </KeyboardAvoidingView>
-        </KeyboardAwareScrollView>
+
       </Background>
     
   );

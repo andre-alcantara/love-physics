@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export const Background = styled.ImageBackground `
-    width: ${wp('100%')};
-    height: ${hp('100%')};
-    position: absolute;
+export const Background = styled.SafeAreaView `
+    flex: 1;
+    background-color: #FFF;
 `; 
 
 export const Wrapper = styled.SafeAreaView `
     align-self: center;
-    width: 90%;
-    margin-top: ${hp('3.5%')}px;
+    width: 100%;
+    margin-top: -30px;
 `;
 
 export const Header = styled.View `
@@ -40,7 +39,7 @@ export const Description = styled.Text `
 
 export const Label = styled.Text `
     align-self: flex-start;
-    margin-left: 3%;
+    margin-left: 5%;
     margin-top: ${hp('3.5%')}px;
     margin-bottom: ${hp('-0.23%')}px;
     font-size: ${hp('1.7%')}px;
