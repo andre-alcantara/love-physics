@@ -3,7 +3,7 @@ import { Image, TouchableOpacity, Text } from 'react-native';
 import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-import Lesson from '../Lesson';
+import Lesson from '../../components/Lesson';
 
 import { Wrapper, 
   ExitButton, 
@@ -13,13 +13,15 @@ import { Wrapper,
   TitleView,
 } from './styles';
 
-const Introduce = ({ close, title, icon, color }) => {
+const ActivityDetail = ({ route, navigation }) => {
+  const { title, color, icon, id } = route.params;
+
   return (
     <Wrapper style={{
       backgroundColor: color
     }}>
       <Exit>
-        <ExitButton onPress={close}>
+        <ExitButton onPress={() => navigation.goBack()}>
           <AntDesign style={{ alignSelf: 'flex-end' }} name="close" size={28} color="black" />                                          
         </ExitButton>
       </Exit>
@@ -44,4 +46,4 @@ const Introduce = ({ close, title, icon, color }) => {
   );
 }
 
-export default Introduce;
+export default ActivityDetail;

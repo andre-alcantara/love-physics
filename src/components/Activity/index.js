@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, View, Image } from 'react-native';
 
-import Introduce from '../ActivityDetail';
+
+import { useNavigation } from '@react-navigation/native';
 
 import { Activities, 
   ActivitiesText, 
@@ -11,11 +12,17 @@ import { Activities,
 
 import Start from '../../assets/button/start.svg';
 
-const Activity = ({ title, color, icon }) => {
+const Activity = ({ title, color, icon, id }) => {
+  const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
   return (
-    <Activities onPress={() => setVisible(true)}>
+    <Activities onPress={() => navigation.navigate('ActivityDetail', {
+      title: title,
+      color: color,
+      icon: icon,
+      id: id,
+    })}>
       <View style={{
         marginLeft: 20,
         height: 300, 
@@ -48,18 +55,7 @@ const Activity = ({ title, color, icon }) => {
       </View>
 
       
-      <Modal 
-          visible={visible}
-          onRequestClose={() => setVisible(false)}
-          animationType='slide'
-      >
-        <Introduce 
-          close={() => setVisible(false)} 
-          title={title} 
-          icon={icon}
-          color={color}
-          />
-      </Modal>
+  
     </Activities>
 
     

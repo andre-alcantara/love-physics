@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { useStateValue } from '../../contexts/theme';
-
+import { useNavigation } from '@react-navigation/native';
 
 import { Content, 
   Difficulty, 
@@ -20,6 +20,8 @@ import { Content,
 
 
 const Lesson = ({ color }) => {
+  const navigation = useNavigation();
+
   const [state] = useStateValue();
 
   return (
@@ -61,7 +63,7 @@ const Lesson = ({ color }) => {
             </MaterialText>
           </Videos>
         
-          <Quiz>
+          <Quiz onPress={() => navigation.navigate('Quiz')}>
             <AntDesign name="star" size={40} color="#FFF" />
             <MaterialText style={{
               color: '#FFF',

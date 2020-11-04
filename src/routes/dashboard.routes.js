@@ -14,6 +14,8 @@ import Scientist from '../pages/Scientist';
 import Ranking from '../pages/Ranking';
 import GoodBye from '../pages/Goodbye';
 import Settings from '../pages/Settings';
+import ActivityDetail from '../pages/ActivityDetail';
+import Quiz from '../pages/Quiz';
 
 const icons = {
   Home: {
@@ -84,6 +86,14 @@ const DashboardRoutes = () => (
     <Stack.Screen name='Settings' component={Settings} options={{
       headerShown: false
     }} />
+    <Stack.Screen name='ActivityDetail' component={ActivityDetail} options={{
+      headerShown: false
+    }}
+    />
+    <Stack.Screen name='Quiz' component={Quiz} options={{
+      headerShown: false
+    }}
+    />
   </Stack.Navigator>
 );
 
