@@ -1,33 +1,40 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
 import firebase from '../services/firebaseConnection';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
-export const AuthContext = createContext({});
+export const ScientistsContext = createContext({});
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ScientistsProvider = ({ children }) => {
+  const [scientists, setScientists] = useState([]);
 
-  useEffect(() => {
-    async function listScientist() {
-      let scientist = await firebase.database().ref('scientists')
+  // useEffect(() => {
+  //   async function listScientist() {
+  //     await firebase.database().ref('scientists').on('value', (snapshot)=>{
+  //       setScientists([]);
 
-      if(storageUser) {
-        setUser(JSON.parse(storageUser));
-        setLoading(false);
-      }
-      setLoading(false);
-    }
+  //       snapshot.forEach((value) =>{
+  //         let scientist = {
+  //           key: value.key,
+  //           award: value.val().award,
+  //           image: value.val().image,
+  //           life: value.val().life,
+  //           name: value.val().name,
+  //           who: value.val().who,
+  //         };
+  //         setScientists(oldScientist => [...oldScientist, scientist]);
+  //       })
 
-    loadStorage();
-  }, []);
-
+  //     });
+  //   }
+  //   listScientist()
+  // }, []);
+  // console.log(scientists)
   return (
-    <AuthContext.Provider value={{  }}>
+    <ScientistsContext.Provider value={{ scientists }}>
       { children }
-    </AuthContext.Provider>
+    </ScientistsContext.Provider>
   );
 }
 
-export default AuthProvider;
+export default ScientistsProvider;
