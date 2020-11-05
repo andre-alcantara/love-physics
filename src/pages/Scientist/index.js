@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, FlatList, StatusBar } from 'react-native';
 import Scientists from '../../data/scientists';
+
+import firebase from '../../services/firebaseConnection';
+
 
 import { Feather } from '@expo/vector-icons';
 import { Wrapper, Icon,Content, SearchBar,  ListView, Header, TextView, Title, List } from './styles';
 
 import ScientistList from '../../components/ScientistList'; 
+import scientists from '../../data/scientists';
 
 const Scientist = () => {   
+  const [scientist, setScientist] = useState([]);
+ 
+
+
+  useEffect(() => {
+    async function loadScientist() {
+      await firebase.database().ref('scientists/1/name')
+      .once('value').then(snapshot => {
+        setScientist([]);
+
+        setScientist(snapshot.val());
+      });
+
+    }
+  
+    loadScientist();
+    
+
+  }, []);
+
+  console.log(scientist)
+
 
   return (
     <Wrapper>      
@@ -41,11 +67,8 @@ const Scientist = () => {
             }}
             showsVerticalScrollIndicator={false}
             keyExtractor={item => item.id}
-            data={Scientists}
-            renderItem={({ item }) => <ScientistList scientist={item.name} 
-            life={item.life} id={item.id} image={item.image} who={item.who}
-            award={item.award}
-            />
+            data={scientist}
+            renderItem={({ item }) => <ScientistList data={item.name} />
           } 
           /> 
       </ListView> 

@@ -5,7 +5,7 @@ import { Button, Name, ImageView } from './styles';
 
 import ScientistDetail from '../ScientistDetail';
 
-const ScientistList = ({ scientist, life, who, image, award }) => {
+const ScientistList = ({ data }) => {
   const [visible, setVisible] = useState(false);
 
   return (  
@@ -17,11 +17,11 @@ const ScientistList = ({ scientist, life, who, image, award }) => {
       >
         <ScientistDetail 
           close={() => setVisible(false)} 
-          scientist = {scientist}
-          image = {image}
-          life = {life}
-          who={who}
-          award={award}
+          scientist = {() => {}}
+          image = {() => {}}
+          life = {() => {}}
+          who={() => {}}
+          award={() => {}}
         />
       </Modal>
 
@@ -32,7 +32,7 @@ const ScientistList = ({ scientist, life, who, image, award }) => {
       </ImageView>
         
       
-        <Name>{scientist}</Name>
+        <Name></Name>
         
       
     </Button>
