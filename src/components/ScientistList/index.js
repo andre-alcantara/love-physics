@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { StyleSheet, Modal, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Modal, Image, TouchableOpacity } from 'react-native';
 import firebase from '../../services/firebaseConnection';
 
 import { Button, Name, ImageView } from './styles';
@@ -32,7 +32,7 @@ const ScientistList = ({ data }) => {
     }
     listScientist();
   }, []);
-  console.log(scientists)
+
   return (  
     <Button style={styles.button} onPress={() => setVisible(true)}>
       <Modal 
@@ -42,22 +42,29 @@ const ScientistList = ({ data }) => {
       >
         <ScientistDetail 
           close={() => setVisible(false)} 
-          scientist = {() => {}}
-          image = {() => {}}
-          life = {() => {}}
-          who={() => {}}
-          award={() => {}}
+          scientist = {data.name}
+          image = {data.image}
+          life = {data.life}
+          who={data.who}
+          award={data.award}
         />
       </Modal>
+      
 
       <ImageView>
-        { 
-          // FOTO NO BANCO (Gustavo) 
-        }
+      <Image 
+          style={{
+            height: 45,
+            width: 45
+          }}
+    
+          source={{uri : `${data.image}` }}
+        />
+
       </ImageView>
         
       
-        <Name></Name>
+        <Name>{data.name}</Name>
         
       
     </Button>

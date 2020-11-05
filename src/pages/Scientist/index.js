@@ -12,27 +12,33 @@ import ScientistList from '../../components/ScientistList';
 import scientists from '../../data/scientists';
 
 const Scientist = () => {   
-  const [scientist, setScientist] = useState([]);
+  const [scientists, setScientists] = useState([]);
  
 
 
   useEffect(() => {
-    async function loadScientist() {
-      await firebase.database().ref('scientists/1/name')
-      .once('value').then(snapshot => {
-        setScientist([]);
+    async function listScientist() {
+      await firebase.database().ref('scientists').on('value', (snapshot)=>{
+        setScientists([]);
 
-        setScientist(snapshot.val());
+        snapshot.forEach((value) =>{
+          let scientist = {
+            key: value.key,
+            award: value.val().award,
+            image: value.val().image,
+            life: value.val().life,
+            name: value.val().name,
+            who: value.val().who,
+          };
+          setScientists(oldScientist => [...oldScientist, scientist]);
+        })
+
       });
-
     }
-  
-    loadScientist();
-    
-
+    listScientist();
   }, []);
 
-  console.log(scientist)
+ 
 
 
   return (
@@ -41,7 +47,7 @@ const Scientist = () => {
     
       <Header>
         <TextView>
-          <Title>Físicos</Title>
+          <Title>Cientistas</Title>
         </TextView>
                                                                  
       </Header>
@@ -61,14 +67,15 @@ const Scientist = () => {
       
       </Content>
         <FlatList 
+          
             contentContainerStyle={{
               paddingBottom: 145,
               
             }}
             showsVerticalScrollIndicator={false}
-            keyExtractor={item => item.id}
-            data={scientist}
-            renderItem={({ item }) => <ScientistList data={item.name} />
+            keyExtractor={item => item.key}
+            data={scientists}
+            renderItem={({ item }) => <ScientistList data={item} />
           } 
           /> 
       </ListView> 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, Text, SafeAreaView } from 'react-native';
 
 import { Wrapper, 
   ImageView, 
@@ -27,7 +27,17 @@ const ScientistDetail = ({ close, life, scientist, image, who, award }) => {
               
             }} name="ios-arrow-down" size={28} color="black" />
         </Close>
-          { image }
+
+        <Image 
+          style={{
+            height: 110,
+            width: 110
+          }}
+    
+          source={{uri : `${image}` }}
+        />
+
+          
         </ImageView>
         <Name> { scientist } </Name>
         <Life> { life } </Life>
