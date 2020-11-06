@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, FlatList, StatusBar } from 'react-native';
 import Scientists from '../../data/scientists';
 
@@ -10,36 +10,11 @@ import { Wrapper, Icon,Content, SearchBar,  ListView, Header, TextView, Title, L
 
 import ScientistList from '../../components/ScientistList'; 
 import scientists from '../../data/scientists';
+import { ScientistsContext } from '../../contexts/scientist';
 
 const Scientist = () => {   
-  const [scientists, setScientists] = useState([]);
- 
-
-
-  useEffect(() => {
-    async function listScientist() {
-      await firebase.database().ref('scientists').on('value', (snapshot)=>{
-        setScientists([]);
-
-        snapshot.forEach((value) =>{
-          let scientist = {
-            key: value.key,
-            award: value.val().award,
-            image: value.val().image,
-            life: value.val().life,
-            name: value.val().name,
-            who: value.val().who,
-          };
-          setScientists(oldScientist => [...oldScientist, scientist]);
-        })
-
-      });
-    }
-    listScientist();
-  }, []);
-
- 
-
+  const { scientists } = useContext(ScientistsContext);
+  console.log(scientists);
 
   return (
     <Wrapper>      

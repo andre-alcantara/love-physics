@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, } from 'react';
 import { StyleSheet, Modal, Image, TouchableOpacity } from 'react-native';
 import firebase from '../../services/firebaseConnection';
 
@@ -8,30 +8,6 @@ import ScientistDetail from '../ScientistDetail';
 
 const ScientistList = ({ data }) => {
   const [visible, setVisible] = useState(false);
-
-  const [scientists, setScientists] = useState([]);
-
-  useEffect(() => {
-    async function listScientist() {
-      await firebase.database().ref('scientists').on('value', (snapshot)=>{
-        setScientists([]);
-
-        snapshot.forEach((value) =>{
-          let scientist = {
-            key: value.key,
-            award: value.val().award,
-            image: value.val().image,
-            life: value.val().life,
-            name: value.val().name,
-            who: value.val().who,
-          };
-          setScientists(oldScientist => [...oldScientist, scientist]);
-        })
-
-      });
-    }
-    listScientist();
-  }, []);
 
   return (  
     <Button style={styles.button} onPress={() => setVisible(true)}>

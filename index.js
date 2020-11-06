@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import AuthProvider from './src/contexts/auth';
+import ScientistsProvider from './src/contexts/scientist'
 import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppLoading } from 'expo';
@@ -58,11 +59,13 @@ import { useFonts,
         <ThemeProvider theme={state.theme}>
           <NavigationContainer>
             <AuthProvider>
-              <StatusBar 
-                barStyle={state.theme.statusBarStyle}
-                backgroundColor={state.theme.background}
-              />
-              <Routes />
+              <ScientistsProvider>
+                <StatusBar 
+                  barStyle={state.theme.statusBarStyle}
+                  backgroundColor={state.theme.background}
+                />
+                <Routes />
+              </ScientistsProvider>
             </AuthProvider>
           </NavigationContainer>
         </ThemeProvider>
