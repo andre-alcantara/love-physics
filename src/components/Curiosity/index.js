@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import firebase from '../../services/firebaseConnection'
  
 import CuriosityDetail from '../CuriosityDetail';
 
@@ -12,6 +13,29 @@ import Glasses from '../../assets/curiosity/glasses.svg';
 
 const Curiosity = ({ title }) => {
   const [visible, setVisible] = useState(false);
+
+  const [curiosities, setCuriosities] = useState([])
+
+  useEffect(() => {
+    async function listCuriosity() {
+      await firebase.database().ref('curiosity').once('value', (snapshot)=>{
+        setCuriosities([]);
+
+        snapshot.forEach((value) =>{
+          let curiosity = {
+            key: value.key,
+            title: value.val().title,
+            description: value.val().description,
+            image: value.val().image,
+          };
+          setCuriosities(oldCuriosity => [...oldCuriosity, curiosity]);
+        })
+
+      });
+    }
+    listCuriosity();
+  }, []);
+  console.log(curiosities);
 
   return (
 
