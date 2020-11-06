@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
 import CheckBox from 'react-native-check-box';
+import firebase from '../../services/firebaseConnection'
 
 import { 
   ProfileView, 
@@ -13,6 +14,28 @@ import {
 
 const Photo = () => {
   const [checked, setChecked] = useState(false);
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    async function listPhotos() {
+      await firebase.database().ref('assets/profilePhotos').on('value', (snapshot)=>{
+        setPhotos([]);
+
+        snapshot.forEach((value) =>{
+          let photo = {
+            key: value.key,
+            checked: value.val().checked,
+            unchecked: value.val().unchecked,
+          };
+          setPhotos(oldPhotos => [...oldPhotos, photo]);
+        })
+
+      });
+    }
+    listPhotos()
+  }, []);
+
+  console.log(photos)
 
   return (
     <ProfileView horizontal={true} showsHorizontalScrollIndicator={false}>
