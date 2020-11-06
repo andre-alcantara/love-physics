@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
 import Activities from '../../data/activity';
+import { CuriositiesContext } from '../../contexts/curiosity'
 
 import { useStateValue } from '../../contexts/theme';
 
@@ -20,6 +21,9 @@ import Activity from '../../components/Activity';
 
 const Home = ({ navigation }) => {
   const [state] = useStateValue();
+  
+  const { curiosities } = useContext(CuriositiesContext);
+  console.log(curiosities)
 
   return (
   <Wrapper>

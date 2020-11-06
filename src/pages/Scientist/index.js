@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, FlatList, StatusBar } from 'react-native';
-import Scientists from '../../data/scientists';
+import { StyleSheet, FlatList, StatusBar } from 'react-native';;
 
 import firebase from '../../services/firebaseConnection';
 
@@ -9,12 +8,11 @@ import { Feather } from '@expo/vector-icons';
 import { Wrapper, Icon,Content, SearchBar,  ListView, Header, TextView, Title, List } from './styles';
 
 import ScientistList from '../../components/ScientistList'; 
-import scientists from '../../data/scientists';
+
 import { ScientistsContext } from '../../contexts/scientist';
 
 const Scientist = () => {   
   const { scientists } = useContext(ScientistsContext);
-  console.log(scientists);
 
   return (
     <Wrapper>      

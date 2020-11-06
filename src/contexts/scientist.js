@@ -1,6 +1,5 @@
-import React, { useState, createContext, useEffect, useContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import firebase from '../services/firebaseConnection';
-import AsyncStorage from '@react-native-community/async-storage';
 
 
 export const ScientistsContext = createContext({});

@@ -14,28 +14,28 @@ import Glasses from '../../assets/curiosity/glasses.svg';
 const Curiosity = ({ title }) => {
   const [visible, setVisible] = useState(false);
 
-  const [curiosities, setCuriosities] = useState([])
+  // const [curiosities, setCuriosities] = useState([])
 
-  useEffect(() => {
-    async function listCuriosity() {
-      await firebase.database().ref('curiosity').once('value', (snapshot)=>{
-        setCuriosities([]);
+  // useEffect(() => {
+  //   async function listCuriosity() {
+  //     await firebase.database().ref('curiosity').once('value', (snapshot)=>{
+  //       setCuriosities([]);
 
-        snapshot.forEach((value) =>{
-          let curiosity = {
-            key: value.key,
-            title: value.val().title,
-            description: value.val().description,
-            image: value.val().image,
-          };
-          setCuriosities(oldCuriosity => [...oldCuriosity, curiosity]);
-        })
+  //       snapshot.forEach((value) =>{
+  //         let curiosity = {
+  //           key: value.key,
+  //           title: value.val().title,
+  //           description: value.val().description,
+  //           image: value.val().image,
+  //         };
+  //         setCuriosities(oldCuriosity => [...oldCuriosity, curiosity]);
+  //       })
 
-      });
-    }
-    listCuriosity();
-  }, []);
-  console.log(curiosities);
+  //     });
+  //   }
+  //   listCuriosity();
+  // }, []);
+  // console.log(curiosities);
 
   return (
 
