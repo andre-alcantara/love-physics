@@ -9,6 +9,8 @@ import Photo from '../../components/Photo';
 import { useStateValue } from '../../contexts/theme';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import firebase from '../../services/firebaseConnection';
+
 import { useNavigation } from '@react-navigation/native';
 
 import Hello from '../../pages/Goodbye';
@@ -33,6 +35,8 @@ import { Wrapper,
 const Settings = () => {
   const navigation = useNavigation();
 
+  const [photos, setPhotos] = useState([]);
+
   const [visible, setVisible] = useState(false);
   const [visibleBye, setVisibleBye ] = useState(false)
   const [visiblePhoto, setVisiblePhoto] = useState(false);
@@ -40,6 +44,26 @@ const Settings = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [, dispach] = useStateValue();
 
+  useEffect(() => {
+    async function listPhotos() {
+      await firebase.database().ref('assets/profilePhotos').on('value', (snapshot)=>{
+        setPhotos([]);
+
+        snapshot.forEach((value) =>{
+          let photo = {
+            key: value.key,
+            checked: value.val().checked,
+            unchecked: value.val().unchecked,
+          };
+          setPhotos(oldPhotos => [...oldPhotos, photo]);
+        })
+
+      });
+    }
+    listPhotos();
+    
+  }, []);
+ 
   useEffect(() => {
     async function getInitialState() {
       const darkModeKey = await AsyncStorage.getItem('DarkModeKey');
@@ -61,7 +85,7 @@ const Settings = () => {
     setDarkMode(!darkMode)
   }
 
-  const { user, signOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     
       <Wrapper>
@@ -82,7 +106,7 @@ const Settings = () => {
             width: 100,
             
           }} 
-            source={{uri :'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2FToyFace_Colored_01.png?alt=media&token=20360901-6689-4201-a23f-0f5370867a80'}}
+            source={{uri : `${user.image}` }}
           />
             
               <EditText>Alterar</EditText>
@@ -221,7 +245,7 @@ const Settings = () => {
             marginLeft: 7
         }}>Alterar carinha</Title>
 
-       <Photo />
+       <Photo photo={photos} />
        <Edit style={{
          marginBottom: 10,
          marginTop: -30,

@@ -23,8 +23,7 @@ const Home = ({ navigation }) => {
   const [state] = useStateValue();
   
   const { curiosities } = useContext(CuriositiesContext);
-  console.log(curiosities)
-
+  
   return (
   <Wrapper>
 

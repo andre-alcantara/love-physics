@@ -9,7 +9,7 @@ let firebaseConfig = {
   projectId: "lovephysics-34f8e",
   storageBucket: "lovephysics-34f8e.appspot.com",
   messagingSenderId: "861476843780",
-  appId: "1:861476843780:web:c99b7e5e02ae33be5fe051"
+  appId: "1:861476843780:web:c99b7e5e02ae33be5fe051",
 };
 
 if(!firebase.apps.length) {

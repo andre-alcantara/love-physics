@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import firebase from '../../services/firebaseConnection'
+
+import { AuthContext } from '../../contexts/auth';
 
 import { 
   ProfileView, 
@@ -12,91 +14,77 @@ import {
   ChooseText,
 } from './styles';
 
-const Photo = () => {
+const Photo = ({ photo }) => {
   const [checked, setChecked] = useState(false);
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState(photo);
 
-  useEffect(() => {
-    async function listPhotos() {
-      await firebase.database().ref('assets/profilePhotos').on('value', (snapshot)=>{
-        setPhotos([]);
+  const { user } = useContext(AuthContext);
 
-        snapshot.forEach((value) =>{
-          let photo = {
-            key: value.key,
-            checked: value.val().checked,
-            unchecked: value.val().unchecked,
-          };
-          setPhotos(oldPhotos => [...oldPhotos, photo]);
-        })
 
-      });
-    }
-    listPhotos()
-  }, []);
-
-  console.log(photos)
+  
 
   return (
     <ProfileView horizontal={true} showsHorizontalScrollIndicator={false}>
+
+     
       
       <CheckBox
         style={{flex: 1, marginLeft: 6}}
         onClick={() => setChecked(true)}
         isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face1.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face1Un.png')} style={{ width:120, height: 120 }} /> }
+        checkedImage={<Image source={{uri : `${photo[0].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[0].unchecked}` }} style={{ width:120, height: 120 }} /> }
       />  
       <CheckBox
-        style={{flex: 1, marginLeft: 15}}
+        style={{flex: 1, marginLeft: 10}}
         onClick={() => setChecked(true)}
         isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face2.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face2Un.png')} style={{ width:120, height: 120 }} /> }
+        checkedImage={<Image source={{uri : `${photo[1].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[1].unchecked}` }} style={{ width:120, height: 120 }} /> }
       />  
       <CheckBox
-        style={{flex: 1, marginLeft: 15}}
+        style={{flex: 1, marginLeft: 10}}
         onClick={() => setChecked(true)}
         isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face3.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face3Un.png')} style={{ width:120, height: 120 }} /> }
-      />
-      <CheckBox
-        style={{flex: 1, marginLeft: 15}}
-        onClick={() => setChecked(true)}
-        isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face4.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face4Un.png')} style={{ width:120, height: 120 }} /> }
-      />
-      <CheckBox
-        style={{flex: 1, marginLeft: 15}}
-        onClick={() => setChecked(true)}
-        isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face5.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face5Un.png')} style={{ width:120, height: 120 }} /> }
-      />
-      <CheckBox
-        style={{flex: 1, marginLeft: 15}}
-        onClick={() => setChecked(true)}
-        isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face6.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face6Un.png')} style={{ width:120, height: 120 }} /> }
-      />
-      <CheckBox
-        style={{flex: 1, marginLeft: 15}}
-        onClick={() => setChecked(true)}
-        isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face7.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face7Un.png')} style={{ width:120, height: 120 }} /> }
+        checkedImage={<Image source={{uri : `${photo[2].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[2].unchecked}` }} style={{ width:120, height: 120 }} /> }
       />  
       <CheckBox
-        style={{flex: 1, marginLeft: 15}}
+        style={{flex: 1, marginLeft: 10}}
         onClick={() => setChecked(true)}
         isChecked={checked}
-        checkedImage={<Image source={require('../../assets/users/face8.png')} style={{ width:120, height: 120 }} /> }
-        unCheckedImage={<Image source={require('../../assets/users/face8Un.png')} style={{ width:120, height: 120 }} /> }
-      />
-      
+        checkedImage={<Image source={{uri : `${photo[3].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[3].unchecked}` }} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 10}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={{uri : `${photo[4].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[4].unchecked}` }} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 10}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={{uri : `${photo[5].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[5].unchecked}` }} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 10}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={{uri : `${photo[6].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[6].unchecked}` }} style={{ width:120, height: 120 }} /> }
+      />  
+      <CheckBox
+        style={{flex: 1, marginLeft: 10}}
+        onClick={() => setChecked(true)}
+        isChecked={checked}
+        checkedImage={<Image source={{uri : `${photo[7].checked}` }} style={{ width:120, height: 120 }} /> }
+        unCheckedImage={<Image source={{uri : `${photo[7].unchecked}` }} style={{ width:120, height: 120 }} /> }
+      /> 
+     
     </ProfileView>
   );
 }
