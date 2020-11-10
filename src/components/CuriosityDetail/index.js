@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Image, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { useStateValue } from '../../contexts/theme';
@@ -16,7 +16,7 @@ import { Wrapper,
   
 import Glasses from '../../assets/curiosity/glasses.svg';
 
-const CuriosityDetail = ({ title, close }) => {
+const CuriosityDetail = ({ title, close, desc, image }) => {
   const [state] = useStateValue();
 
   return (
@@ -32,7 +32,16 @@ const CuriosityDetail = ({ title, close }) => {
             
           }} name="ios-arrow-down" size={28} color={state.theme.icon} />
       </Close>
-        <Glasses width={110} height={110} />
+      <Image
+          style={{
+            height: 110,
+            width: 110,
+            
+          }} 
+          source={{uri : `${ image }` }}
+            
+          />
+
         <Name> { title } </Name>
       </ImageView>
       
@@ -41,7 +50,7 @@ const CuriosityDetail = ({ title, close }) => {
     
     <Content showsVerticalScrollIndicator={false} >
       <Detail>
-        
+        {desc}
       </Detail>
 
     

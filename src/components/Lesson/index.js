@@ -19,8 +19,9 @@ import { Content,
 } from './styles';
 
 
-const Lesson = ({ color }) => {
+const Lesson = ({ color, questions }) => {
   const navigation = useNavigation();
+
 
   const [state] = useStateValue();
 
@@ -63,7 +64,9 @@ const Lesson = ({ color }) => {
             </MaterialText>
           </Videos>
         
-          <Quiz onPress={() => navigation.navigate('Quiz')}>
+          <Quiz onPress={() => navigation.navigate('Quiz', {
+            questions: questions
+          })}>
             <AntDesign name="star" size={40} color="#FFF" />
             <MaterialText style={{
               color: '#FFF',

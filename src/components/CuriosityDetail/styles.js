@@ -62,6 +62,7 @@ export const Title = styled.Text `
 
 export const Detail = styled.Text `
     font-family: Montserrat_500Medium;
-    margin-top: 20px;
-    font-size: 15px;
+    margin-top: 30px;
+    font-size: 17px;
+    color: ${props => props.theme.title};
 `;

@@ -44,8 +44,6 @@ const Home = ({ navigation }) => {
         }}
         contentContainerStyle={{
           paddingRight: 20,
-        
-
         }}
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}
@@ -73,9 +71,10 @@ const Home = ({ navigation }) => {
           paddingRight: 30,
         }}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        data={Curiosities}
-        renderItem={({ item }) => <Curiosity title={item.title} id={item.id}
+        keyExtractor={item => item.key}
+        data={curiosities}
+        renderItem={({ item }) => <Curiosity title={item.title} id={item.key}
+        desc={item.description} image={item.image}
         /> } 
     /> 
 

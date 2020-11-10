@@ -6,7 +6,7 @@ export default [
   { id: 1,
     title: 'Matemática',
     color: '#AFB1EA',
-    icon: 'lesson/math.png'
+    icon: 'lesson/math.png',
   },
   { id: 2,
     title: 'Velocidade',

@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { ProgressBar, Colors } from 'react-native-paper';
 
-import Answers from '../../data/answers';
+import questions from '../../data/answers';
 
 import { Wrapper, 
   StarContainer, 
@@ -19,7 +19,8 @@ import { Wrapper,
 
 import { DarkModeView } from '../Settings/styles';
 
-const Quiz = () => {
+const Quiz = ({ navigation, route }) => {
+
   return (
     <Wrapper>
 
@@ -45,36 +46,35 @@ const Quiz = () => {
       <QuestionView>
         <Question
           numberOfLines={10}
-        >Um veículo move-se com velocidade constante de 36 km/h. Ao seu lado, 
-        um outro veículo trafega com velocidade constante de 54 km/h. 
-        Assinale a alternativa que indica qual será a distância, em km, entre 
-        esses veículos após um intervalo de tempo de 5 minutos.
+        >{questions[0].question}
         </Question>
       </QuestionView>
 
+  
+        <AnswersView>
+          <Answer>
+            {questions[0].answers[0].text}
+          </Answer>
+       </AnswersView>
 
-      <List 
-        scrollEnabled={false}
-        style={{
-          heigth: 300,
-    
-        }}
-        contentContainerStyle={{
- 
-        
-          
-        }}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        data={Answers}
-        renderItem={({ item }) =>
-    
-      <AnswersView>
-        <Answer>
-          { item.answer }
-        </Answer>
-      </AnswersView>
-        } />
+       <AnswersView>
+          <Answer>
+            {questions[0].answers[1].text}
+          </Answer>
+       </AnswersView>
+       <AnswersView>
+          <Answer>
+            {questions[0].answers[2].text}
+          </Answer>
+       </AnswersView>
+       <AnswersView>
+          <Answer>
+            {questions[0].answers[3].text}
+          </Answer>
+       </AnswersView>
+   
+     
+  
     </Wrapper>
   );
 }

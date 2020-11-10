@@ -4,6 +4,7 @@ import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Lesson from '../../components/Lesson';
+import questions from '../../data/answers';
 
 import { Wrapper, 
   ExitButton, 
@@ -15,6 +16,7 @@ import { Wrapper,
 
 const ActivityDetail = ({ route, navigation }) => {
   const { title, color, icon, id } = route.params;
+
 
   return (
     <Wrapper style={{
@@ -41,7 +43,7 @@ const ActivityDetail = ({ route, navigation }) => {
         </TitleView>
       </Header>
       
-      <Lesson color={color} />
+      <Lesson color={color} questions={questions} />
     </Wrapper>
   );
 }
