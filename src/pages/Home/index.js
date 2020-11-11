@@ -26,9 +26,6 @@ const Home = ({ navigation }) => {
   const { curiosities } = useContext(CuriositiesContext);
   const { listMatters, matters } = useContext(QuestionsContext);
 
-  listMatters();
-  console.log(matters)
-  
   return (
   <Wrapper>
 
