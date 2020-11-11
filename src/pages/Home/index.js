@@ -5,7 +5,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
 import Activities from '../../data/activity';
-import { CuriositiesContext } from '../../contexts/curiosity'
+import { CuriositiesContext } from '../../contexts/curiosity';
+import { QuestionsContext } from '../../contexts/questions';
 
 import { useStateValue } from '../../contexts/theme';
 
@@ -23,6 +24,10 @@ const Home = ({ navigation }) => {
   const [state] = useStateValue();
   
   const { curiosities } = useContext(CuriositiesContext);
+  const { listMatters, matters } = useContext(QuestionsContext);
+
+  listMatters();
+  console.log(matters)
   
   return (
   <Wrapper>

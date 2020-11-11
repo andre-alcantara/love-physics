@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AuthProvider from './src/contexts/auth';
 import ScientistsProvider from './src/contexts/scientist';
 import CuriositiesProvider from './src/contexts/curiosity';
+import QuestionsProvider from './src/contexts/questions';
 import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppLoading } from 'expo';
@@ -62,11 +63,13 @@ import { useFonts,
             <AuthProvider>
               <CuriositiesProvider>
                 <ScientistsProvider>
-                  <StatusBar 
-                    barStyle={state.theme.statusBarStyle}
-                    backgroundColor={state.theme.background}
-                  />
-                  <Routes />
+                  <QuestionsProvider>
+                    <StatusBar 
+                      barStyle={state.theme.statusBarStyle}
+                      backgroundColor={state.theme.background}
+                    />
+                    <Routes />
+                  </QuestionsProvider>
                 </ScientistsProvider>
               </CuriositiesProvider>
             </AuthProvider>
