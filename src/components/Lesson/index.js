@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Image } from 'react-native';
+import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import { useStateValue } from '../../contexts/theme';
@@ -19,8 +19,10 @@ import { Content,
 } from './styles';
 
 
-const Lesson = ({ color, questions }) => {
+const Lesson = ({ color, question }) => {
   const navigation = useNavigation();
+
+  const questions = question.matterContent;
 
 
   const [state] = useStateValue();
@@ -28,24 +30,32 @@ const Lesson = ({ color, questions }) => {
   return (
     <Content horizontal={true} showsHorizontalScrollIndicator={false}>
       
-      <Card>  
+    <FlatList 
+      style={{
+        height: '100%',
+        marginTop: 60
+      }}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        data={questions}
+        renderItem={({ item }) => 
+        <Card>  
         <Difficulty style={{
           backgroundColor: color
         }}>
           <DifficultyText>
-            FÁCIL
+            {item.difficulty}
           </DifficultyText>
         </Difficulty>
 
         <SubTitle>
-          Velocidade Média
+          {item.title}
         </SubTitle>
-
+          
         <DescriptionScroll>
           <Description>
-            Velocidade média é a razão entre o deslocamento e o intervalo de tempo 
-            em que um movimento acontece. Deslocamento é uma grandeza vetorial, 
-            medida pela diferença entre as posições final e inicial de um movimento.
+            {item.description}
           </Description>
         </DescriptionScroll>
        
@@ -65,7 +75,7 @@ const Lesson = ({ color, questions }) => {
           </Videos>
         
           <Quiz onPress={() => navigation.navigate('Quiz', {
-            questions: questions
+            question: item.questions
           })}>
             <AntDesign name="star" size={40} color="#FFF" />
             <MaterialText style={{
@@ -78,26 +88,12 @@ const Lesson = ({ color, questions }) => {
           </Quiz>
         </Material>
       </Card>
+      } 
+    />  
 
-      <Card>  
-        <Difficulty style={{
-          backgroundColor: color
-        }}>
-          <DifficultyText>
-            INTERMEDIÁRIO
-          </DifficultyText>
-        </Difficulty>
-      </Card>
+     
 
-      <Card>  
-        <Difficulty style={{
-          backgroundColor: color
-        }}>
-          <DifficultyText>
-            AVANÇADO
-          </DifficultyText>
-        </Difficulty>
-      </Card>
+    
     </Content>
     
   );

@@ -26,6 +26,7 @@ const CuriositiesProvider = ({ children }) => {
     }
     listCuriosities()
   }, []);
+  
   return (
     <CuriositiesContext.Provider value={{ curiosities }}>
       { children }

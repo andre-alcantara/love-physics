@@ -15,12 +15,13 @@ import { Wrapper,
 } from './styles';
 
 const ActivityDetail = ({ route, navigation }) => {
-  const { title, color, icon, id } = route.params;
+  const { question } = route?.params;
 
+  
 
   return (
     <Wrapper style={{
-      backgroundColor: color
+      backgroundColor: question.matterColor
     }}>
       <Exit>
         <ExitButton onPress={() => navigation.goBack()}>
@@ -34,16 +35,16 @@ const ActivityDetail = ({ route, navigation }) => {
           width: 103,
           height: 100
         }}
-        source={{uri: `https://lovephysics.blob.core.windows.net/${icon}`}}
+        source={{uri: `https://lovephysics.blob.core.windows.net/`}}
         />
         <TitleView>
           <Title>
-            {title}
+            {question.matterName}
           </Title>
         </TitleView>
       </Header>
       
-      <Lesson color={color} questions={questions} />
+      <Lesson color={question.matterColor} question={question} />
     </Wrapper>
   );
 }

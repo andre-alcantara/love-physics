@@ -4,7 +4,6 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { ProgressBar, Colors } from 'react-native-paper';
 
-import questions from '../../data/answers';
 
 import { Wrapper, 
   StarContainer, 
@@ -20,26 +19,23 @@ import { Wrapper,
 import { DarkModeView } from '../Settings/styles';
 
 const Quiz = ({ navigation, route }) => {
+  const { question } = route?.params;
+
+
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [progressBar, setProgressBar] = useState(0);
 
-  {console.log(questions[questionIndex])}
-  console.log(questionIndex)
-
   const answer = (correct) => {
-
-    {console.log(correct)}
-    if(correct == true) {
-      alert('Acerto');
+    if(correct == 'true') {
+      setQuestionIndex(questionIndex + 1);
       setProgressBar(progressBar + 0.20)
-      setQuestionIndex(questionIndex + 1)
-    } else {
-      return alert('Errou')
+    }
+    else {
+      alert('Você errou')
     }
     
-    
-  }
-
+  } 
   return (
     <Wrapper>
 
@@ -65,32 +61,33 @@ const Quiz = ({ navigation, route }) => {
       <QuestionView>
         <Question
           numberOfLines={10}
-        >{questions[questionIndex].question}
+        >
+          { question[questionIndex].question }
         </Question>
       </QuestionView>
 
-        <AnswersView onPress={() => answer(questions[questionIndex].answers[0].correct)}>
+        <AnswersView onPress={() => answer(question[questionIndex].answers[0].correct)}>
           <Answer>
-          {questions[questionIndex].answers[0].text}
+          { question[questionIndex].answers[0].answer }
           </Answer>
        </AnswersView>
 
-       <AnswersView onPress={() => answer(questions[questionIndex].answers[1].correct)}>
+       <AnswersView onPress={() => answer(question[questionIndex].answers[1].correct)}>
           <Answer>
-          {questions[questionIndex].answers[1].text}
+          { question[questionIndex].answers[1].answer }
           </Answer>
        </AnswersView>
 
-       <AnswersView onPress={() => answer(questions[questionIndex].answers[2].correct)}>
+       <AnswersView onPress={() => answer(question[questionIndex].answers[2].correct)}>
           <Answer>
-            {questions[questionIndex].answers[2].text}
+          { question[questionIndex].answers[2].answer }
           </Answer>
        </AnswersView>
 
-       <AnswersView onPress={() => answer(questions[questionIndex].answers[3].correct)}>
+       <AnswersView onPress={() => answer(question[questionIndex].answers[3].correct)}>
           <Answer>
-            {questions[questionIndex].answers[3].text}
-           
+            
+          { question[questionIndex].answers[3].answer }
           </Answer>
        </AnswersView>
   

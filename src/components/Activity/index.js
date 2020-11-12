@@ -12,36 +12,28 @@ import { Activities,
 
 import Start from '../../assets/button/start.svg';
 
-const Activity = ({ title, color, icon, id }) => {
+const Activity = ({ question }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
+
   return (
     <Activities onPress={() => navigation.navigate('ActivityDetail', {
-      title: title,
-      color: color,
-      icon: icon,
-      id: id,
+     question: question
     })}>
       <View style={{
         marginLeft: 20,
         height: 300, 
         width: 260,
-        backgroundColor: color,
+        backgroundColor: question.matterColor,
         borderRadius: 20,
         paddingLeft: 25,
         paddingTop: 25,
         
       }} >
-       <Image 
-        style={{
-          width: 135,
-          height: 130,
-        }}
-        source={{uri: `https://lovephysics.blob.core.windows.net/${icon}`}}
-        />
+       
       <ActivitiesText>
-        {title}
+        {question.matterName}
       </ActivitiesText>
 
 

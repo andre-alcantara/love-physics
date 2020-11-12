@@ -25,8 +25,8 @@ const Home = ({ navigation }) => {
   
   const { curiosities } = useContext(CuriositiesContext);
   const { matters } = useContext(QuestionsContext);
-  
-  console.log(matters);
+
+
 
   return (
   <Wrapper>
@@ -50,14 +50,9 @@ const Home = ({ navigation }) => {
           paddingRight: 20,
         }}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        data={Activities}
-        renderItem={({ item }) => <Activity  
-          title={item.title} 
-          id={item.id}
-          color={item.color}
-          icon={item.icon}
-          /> } 
+        keyExtractor={item => item.key}
+        data={matters}
+        renderItem={({ item }) => <Activity question={item} /> } 
     /> 
     </View>
       
