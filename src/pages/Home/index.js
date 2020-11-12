@@ -24,7 +24,9 @@ const Home = ({ navigation }) => {
   const [state] = useStateValue();
   
   const { curiosities } = useContext(CuriositiesContext);
-  const { listMatters, matters } = useContext(QuestionsContext);
+  const { matters } = useContext(QuestionsContext);
+  
+  console.log(matters);
 
   return (
   <Wrapper>

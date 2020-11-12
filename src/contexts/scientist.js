@@ -9,7 +9,7 @@ const ScientistsProvider = ({ children }) => {
 
   useEffect(() => {
     async function listScientist() {
-      await firebase.database().ref('scientists').orderByValue('name').on('value', (snapshot)=>{
+      await firebase.database().ref('scientists').orderByChild('name').on('value', (snapshot)=>{
         setScientists([]);
 
         snapshot.forEach((value) =>{
