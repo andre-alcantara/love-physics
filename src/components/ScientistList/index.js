@@ -9,6 +9,8 @@ import ScientistDetail from '../ScientistDetail';
 const ScientistList = ({ data }) => {
   const [visible, setVisible] = useState(false);
 
+  console.log(data.nationality)
+
   return (  
     <Button style={styles.button} onPress={() => setVisible(true)}>
       <Modal 
@@ -23,6 +25,7 @@ const ScientistList = ({ data }) => {
           life = {data.life}
           who={data.who}
           award={data.award}
+          nationality={data.nationality}
         />
       </Modal>
       

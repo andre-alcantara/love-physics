@@ -12,9 +12,8 @@ import { Wrapper,
   Title,
   Detail } from './styles';
 
-const ScientistDetail = ({ close, life, scientist, image, who, award }) => {
+const ScientistDetail = ({ close, life, scientist, image, who, award, nationality }) => {
   
-
   return (
     <Wrapper>
       <Header style={styles.shadow}>
@@ -41,7 +40,7 @@ const ScientistDetail = ({ close, life, scientist, image, who, award }) => {
         </ImageView>
         <Name> { scientist } </Name>
         <Life> { life } </Life>
-        <Life>Alemanha</Life>
+        <Life>{ nationality }</Life>
         
       </Header>
       

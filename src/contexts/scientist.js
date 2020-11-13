@@ -20,6 +20,7 @@ const ScientistsProvider = ({ children }) => {
             life: value.val().life,
             name: value.val().name,
             who: value.val().who,
+            nationality: value.val().nationality
           };
           setScientists(oldScientist => [...oldScientist, scientist]);
         })

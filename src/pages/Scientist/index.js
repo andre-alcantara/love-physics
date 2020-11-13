@@ -22,7 +22,7 @@ const Scientist = () => {
         <TextView>
           <Title>Cientistas</Title>
         </TextView>
-                                                                 
+                                                         
       </Header>
 
       
