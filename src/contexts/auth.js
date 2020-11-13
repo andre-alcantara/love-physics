@@ -32,9 +32,9 @@ const AuthProvider = ({ children }) => {
           uid: uid,
           name: snapshot.val().name,
           email: value.user.email,
-          image: value.val().image,
+          image: snapshot.val().image,
           star: 0,
-        heart: 0,
+          heart: 0,
         };
         setUser(data);
         storageUser(data);
