@@ -22,9 +22,9 @@ import { Content,
 const Lesson = ({ color, question }) => {
   const navigation = useNavigation();
 
+  const star = '49';
+
   const questions = question.matterContent;
-
-
   const [state] = useStateValue();
 
   return (
@@ -40,6 +40,7 @@ const Lesson = ({ color, question }) => {
         keyExtractor={item => item.id}
         data={questions}
         renderItem={({ item }) => 
+        
         <Card>  
         <Difficulty style={{
           backgroundColor: color
@@ -74,9 +75,21 @@ const Lesson = ({ color, question }) => {
             </MaterialText>
           </Videos>
         
-          <Quiz onPress={() => navigation.navigate('Quiz', {
-            question: item.questions
-          })}>
+          <Quiz onPress={() => {
+            alert(item.star);
+            alert(star);
+            if(star >= item.star) {
+              navigation.navigate('Quiz', {
+                question: item.questions
+              });
+            }
+            else {
+              alert('Você não tem estrelas suficientes');
+              console.log(item.star)
+            }
+          
+
+          }}>
             <AntDesign name="star" size={40} color="#FFF" />
             <MaterialText style={{
               color: '#FFF',

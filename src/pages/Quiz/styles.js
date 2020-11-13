@@ -42,6 +42,7 @@ export const QuestionView = styled.View `
 export const Question = styled.Text `
     font-size: 20px;
     font-family: Montserrat_600SemiBold;
+    color: ${props => props.theme.title};
 `;
 
 export const AnswersView = styled.TouchableOpacity `
@@ -49,7 +50,7 @@ export const AnswersView = styled.TouchableOpacity `
     width: 90%;
     margin-top: 15px;
     border-width: 2px;
-    border-color: #A9A9A9;
+    border-color: ${props => props.theme.divisor};
     align-self: center;
     border-radius: 8px;
     justify-content: center;
@@ -59,6 +60,7 @@ export const AnswersView = styled.TouchableOpacity `
 export const Answer = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 20px;
+    color: ${props => props.theme.title};
 `;
 
 export const List = styled.FlatList `
