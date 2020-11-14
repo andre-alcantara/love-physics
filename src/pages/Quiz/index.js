@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -21,16 +21,33 @@ import { DarkModeView } from '../Settings/styles';
 const Quiz = ({ navigation, route }) => {
   const { question } = route?.params;
 
-
+  
 
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [length, setLength] = useState(question.length - 1)
   const [progressBar, setProgressBar] = useState(0);
+
+
 
   const answer = (correct) => {
     if(correct == 'true') {
-      setQuestionIndex(questionIndex + 1);
-      setProgressBar(progressBar + 0.20)
-    }
+      if(questionIndex < length){ 
+
+        setQuestionIndex(questionIndex + 1);
+        setProgressBar(progressBar + 0.20)
+        console.log('Posição: ' + questionIndex);
+       
+      }
+      else if(questionIndex >= length) {
+        alert('parabens')
+        console.log('Posição: ' + questionIndex);
+      
+      }
+        
+
+        }
+      
+
     else {
       alert('Você errou')
     }
@@ -62,13 +79,13 @@ const Quiz = ({ navigation, route }) => {
         <Question
           numberOfLines={10}
         >
-          { question[questionIndex].question }
+          { question[questionIndex]?.question }
         </Question>
       </QuestionView>
 
         <AnswersView onPress={() => answer(question[questionIndex].answers[0].correct)}>
           <Answer>
-          { question[questionIndex].answers[0].answer }
+          { question[questionIndex]?.answers[0].answer }
           </Answer>
        </AnswersView>
 
