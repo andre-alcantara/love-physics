@@ -88,7 +88,7 @@ const Quiz = ({ navigation, route }) => {
         width: 300,
         borderRadius: 25, 
         alignSelf: 'center'
-      }} progress={progressBar} color={'#339F33'}/>
+      }} progress={progressBar} color={'#9BDCEA'}/>
       </DarkModeView>
 
       <View style={{height: '40%', alignItems: "center"}}>
@@ -136,7 +136,10 @@ const Quiz = ({ navigation, route }) => {
        </VerifyButton>
   
        <Modalize ref={modalizeWrong} 
-   
+        modalStyle={{
+          backgroundColor: '#CA7B7B',
+          
+        }}
        modalHeight={400}
        closeOnOverlayTap={false} 
        closeSnapPointStraightEnabled={false} 
@@ -146,6 +149,7 @@ const Quiz = ({ navigation, route }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
+              backgroundColor: '#CA7B7B'
             }}>
               <Text>Reposta errada :(</Text>
               <Text>Explicação</Text>
@@ -159,6 +163,10 @@ const Quiz = ({ navigation, route }) => {
 
 
        <Modalize ref={modalizeRef} 
+       modalStyle={{
+        backgroundColor: '#55A755',
+        
+      }}
        modalHeight={300}
        closeOnOverlayTap={false} 
        closeSnapPointStraightEnabled={false} 
