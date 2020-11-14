@@ -3,7 +3,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 export const Top = styled.SafeAreaView `
     background-color: ${props => props.theme.background};
-    height: ${hp('28%')}
+    height: 30%;
     border-bottom-width: 1;
     border-bottom-color: ${props => props.theme.divisor};
 `;
@@ -12,7 +12,7 @@ export const HeaderView = styled.View `
     flex-direction: row;
     align-self: center;
     width: 90%;
-    margin-top: ${hp('2%')};
+    margin-top: 10px;
 `;
 
 export const TextView = styled.View `
@@ -23,12 +23,12 @@ export const TextView = styled.View `
     margin-bottom: 30px;
 `;
 
-export const StarView = styled.View `
-    margin-left: ${wp('5%')};
-    background-color: #FFC107; 
+export const StarView = styled.TouchableOpacity `
+    margin-left: 10px;
+    background-color: #FF5555; 
     align-content: flex-start;
-    height: ${hp('7%')};
-    width: ${wp('32%')};
+    height: 70%;
+    width: 120px;
     justify-content: center;
     padding-left: 10px;
     border-radius: 12px;
@@ -37,7 +37,7 @@ export const StarView = styled.View `
 export const PrimaryText = styled.Text `
     font-family: Montserrat_800ExtraBold;
     font-size: 28px;
-    margin-top: ${hp('1.3%')};
+    margin-top: 8px;
     color: ${props => props.theme.title};
 `;
 
@@ -51,7 +51,7 @@ export const StarCount = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 18.3px;
     position: absolute;
-    margin-left: ${wp('18%')};
+    margin-left: 10px;
     color: #FFF;
     text-align: center;
 `;
@@ -71,14 +71,15 @@ export const HeartCount = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 18.3px;
     position: absolute;
-    margin-left: ${wp('19%')};
+    margin-left: 60px;
     color: #FFF;
     text-align: center;
 `;
 
 export const StatsView = styled.View `
     flex-direction: row;
-    height: 700px;
-    margin-top:${hp('-1%')};
+   
+    
+    margin-top:-2px;
 `;
 

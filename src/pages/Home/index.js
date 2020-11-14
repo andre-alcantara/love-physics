@@ -1,10 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, AntDesign } from  '@expo/vector-icons';
-import Activities from '../../data/activity';
+import { StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import { CuriositiesContext } from '../../contexts/curiosity';
 import { QuestionsContext } from '../../contexts/questions';
 
@@ -17,10 +12,11 @@ import { Wrapper, Container,
 
 import Header from '../../components/Header';
 import Curiosity from '../../components/Curiosity';
-import Curiosities from '../../data/curiosity';
 import Activity from '../../components/Activity';
 
 const Home = ({ navigation }) => {
+
+  
   const [state] = useStateValue();
   
   const { curiosities } = useContext(CuriositiesContext);
@@ -34,6 +30,12 @@ const Home = ({ navigation }) => {
   <Container>
     
   <Header />
+
+
+
+
+
+
     <Content showsVerticalScrollIndicator={false}>
       <Title>Atividades</Title>
 

@@ -1,3 +1,4 @@
+import { TouchableOpacity } from 'expo-dark-mode-switch/build/Elements';
 import styled from 'styled-components';
 
 export const Wrapper = styled.SafeAreaView `
@@ -27,12 +28,10 @@ export const StarCount = styled.Text `
     margin-right: 10px;
 `;
 
-export const QuestionView = styled.View `
+export const QuestionView = styled.ScrollView `
     background-color: ${props => props.theme.description};
     margin-top: 20px;
     height: 30%;
-    align-items: center;
-    justify-content: center;
     padding-left: 15px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -64,5 +63,13 @@ export const Answer = styled.Text `
 `;
 
 export const List = styled.FlatList `
+
+`;
+
+export const VerifyButton = styled.TouchableOpacity `
+
+`;
+
+export const VerifyText = styled.Text `
 
 `;
