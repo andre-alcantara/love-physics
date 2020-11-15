@@ -62,14 +62,36 @@ export const Answer = styled.Text `
     color: ${props => props.theme.title};
 `;
 
+export const Title = styled.Text `
+    font-family: Montserrat_700Bold;
+    font-size: 21px;
+    color: ${props => props.theme.title};
+    text-align: center;
+`;
+
+export const SubTitle = styled.Text `
+    font-family: Montserrat_600SemiBold;
+    font-size: 17px;
+    color: ${props => props.theme.secondaryText};
+    margin-top: 10px;
+    text-align: center;
+`;
+
 export const List = styled.FlatList `
 
 `;
 
 export const VerifyButton = styled.TouchableOpacity `
-
+    background-color: #9BDCEA;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    height: 50px;
+    border-radius: 8px;
 `;
 
 export const VerifyText = styled.Text `
-
+    font-size: 18px;
+    color: #121212;
+    font-family: 'Montserrat_700Bold';
 `;

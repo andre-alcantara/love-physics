@@ -3,7 +3,11 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Modalize } from 'react-native-modalize';
 
-import { ProgressBar, Colors } from 'react-native-paper';
+import { useStateValue } from '../../contexts/theme';
+
+import LottieView from 'lottie-react-native';
+
+import { ProgressBar, Colors} from 'react-native-paper';
 
 
 import { Wrapper, 
@@ -15,11 +19,13 @@ import { Wrapper,
   AnswersView,
   Answer,
   VerifyButton,
-  VerifyText
+  VerifyText,
+  Title,
+  SubTitle
 } from './styles';
 
-import { DarkModeView } from '../Settings/styles';
-import { set } from 'react-native-reanimated';
+import { Container, DarkModeView } from '../Settings/styles';
+import { ceil, set } from 'react-native-reanimated';
 
 
 const Quiz = ({ navigation, route }) => {
@@ -28,12 +34,13 @@ const Quiz = ({ navigation, route }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [length, setLength] = useState(question.length - 1)
   const [progressBar, setProgressBar] = useState(0);
-  const [color, setColor] = useState('#282A36');
+  const [state] = useStateValue();
 
 
   const modalizeRef = useRef(null);
   const modalizeWrong = useRef(null);
   const modalizeExit = useRef(null);
+  const modalizeEnd = useRef(null);
 
   const onOpen = () => {
     modalizeRef.current?.open();
@@ -42,35 +49,40 @@ const Quiz = ({ navigation, route }) => {
   const onExit = () => {
     modalizeExit.current?.open();
   }
+  const onWrong = () => {
+    modalizeWrong.current?.open();
+  }
 
- // answer(question[questionIndex].answers[0].correct)
 
 
   const answer = (correct) => {
     if(correct == 'true') {
-
       if(questionIndex < length){ 
-        
         onOpen();
-      }
-
-      else if(questionIndex >= length) {
-        alert('parabens')
-        console.log('Posição: ' + questionIndex);
       }
     }
     
     else {
-      modalizeWrong.current?.open();
+      onWrong();
 
-    }
+    } 
   } 
 
   const nextQuestion = () => {
-    setQuestionIndex(questionIndex + 1);
-    setProgressBar(progressBar + (1 / question.length));
-    modalizeRef.current?.close();
-    modalizeWrong.current?.close();
+    if(questionIndex == length) {
+      setProgressBar(progressBar + (1 / question.length));
+      modalizeEnd.current?.open();
+      modalizeRef.current?.close();
+      modalizeWrong.current?.close();
+    }
+    else {
+      setQuestionIndex(questionIndex + 1);
+      setProgressBar(progressBar + (1 / question.length));
+      modalizeRef.current?.close();
+      modalizeWrong.current?.close();
+    }
+   
+    
   }
 
   return (
@@ -78,12 +90,12 @@ const Quiz = ({ navigation, route }) => {
 
       <DarkModeView>
         <ExitButton onPress={onExit}>
-          <AntDesign  name="close" size={28} color="black" />
+          <AntDesign  name="close" size={28} color={state.theme.title} />
         </ExitButton>
        
         
       <ProgressBar style={{
-        marginTop: 0,
+        marginTop: -3,
         height: 20,
         width: 300,
         borderRadius: 25, 
@@ -96,6 +108,7 @@ const Quiz = ({ navigation, route }) => {
         alignItems: 'center',
         justifyContent: 'center',
         flexGrow: 1,
+        paddingBottom: 15
       }}>
         <Question
           numberOfLines={10}
@@ -131,71 +144,152 @@ const Quiz = ({ navigation, route }) => {
           </Answer>
        </AnswersView>
 
-       <VerifyButton>
-         <VerifyText></VerifyText>
-       </VerifyButton>
+       
+ 
   
        <Modalize ref={modalizeWrong} 
-        modalStyle={{
-          backgroundColor: '#CA7B7B',
-          
-        }}
-       modalHeight={400}
+       modalStyle={{
+        backgroundColor: state.theme.background,
+        
+      }}
+       modalHeight={ question[questionIndex].correction.length > 300 ? 500 : 250  }
+
        closeOnOverlayTap={false} 
        closeSnapPointStraightEnabled={false} 
        panGestureEnabled={false}
        >
-            <View style={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: '#CA7B7B'
-            }}>
-              <Text>Reposta errada :(</Text>
-              <Text>Explicação</Text>
-              <Text>{ question[questionIndex].correction }</Text>
-              <TouchableOpacity onPress={nextQuestion}>
-                <Text>Continuar</Text>
-              </TouchableOpacity>
-            </View>
+            <Wrapper>
+              <Container style={{
+                justifyContent: 'center'
+              }}>
+                
+
+                <Title style={{
+                  color: '#FF5555',   
+                  alignSelf: 'flex-start',
+                  marginTop: 20,
+                  marginBottom: -7 
+                }}>💔 Resposta correta:</Title>
+                <SubTitle style={{  
+                  marginTop: 20,
+                  textAlign: 'flex-start', 
+                  color: '#FF7676'
+                  }}>
+                    { question[questionIndex].correction }</SubTitle>
+                <VerifyButton style={{
+                  backgroundColor: '#CA7B7B',               
+                  }} onPress={nextQuestion}>
+                  <VerifyText>CONTINUAR</VerifyText>
+                </VerifyButton>
+                
+              </Container>
+            
+            </Wrapper>
          
           </Modalize>
-
 
        <Modalize ref={modalizeRef} 
        modalStyle={{
-        backgroundColor: '#55A755',
+        backgroundColor: state.theme.background,
         
       }}
-       modalHeight={300}
+       modalHeight={160}
        closeOnOverlayTap={false} 
        closeSnapPointStraightEnabled={false} 
        panGestureEnabled={false}
        >
-            <View style={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <Text>Certa resposta!</Text>
-              <TouchableOpacity onPress={nextQuestion}>
-                <Text>Continuar</Text>
-              </TouchableOpacity>
-            </View>
+            <Wrapper>
+              <Container style={{
+                justifyContent: 'center'
+              }}>
+                
+
+                <Title style={{
+                  color: state.theme.right,   
+                  alignSelf: 'flex-start',
+                  marginTop: 20,
+                  marginBottom: -7 
+                }}>❤️ Certa Resposta!</Title>
+                <VerifyButton style={{
+                  backgroundColor: '#3FDC5F',               
+                  }} onPress={nextQuestion}>
+                  <VerifyText>CONTINUAR</VerifyText>
+                </VerifyButton>
+                
+              </Container>
+            
+            </Wrapper>
          
           </Modalize>
 
-          <Modalize ref={modalizeExit} snapPoint={180}>
-            <View style={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "center",
+          <Modalize ref={modalizeExit} modalHeight={400} 
+          
+          modalStyle={{
+        backgroundColor: state.theme.background
+        
+      }}>
+            <Wrapper style={{
+              
             }}>
-              <Text>Certa resposta!</Text>
-              <TouchableOpacity onPress={nextQuestion}>
-                <Text>Continuar</Text>
-              </TouchableOpacity>
-            </View>
+              <Container>
+                <LottieView style={{
+                height: 160,
+                alignSelf: "center"
+                }} source={require('../../../heartCry.json')} autoPlay loop />
+
+                <Title>Tem certeza que deseja sair?</Title>
+                <SubTitle>Todo o seu progresso não será salvo.</SubTitle>
+                <VerifyButton onPress={nextQuestion}>
+                  <VerifyText>VOLTAR</VerifyText>
+                </VerifyButton>
+                <TouchableOpacity onPress={() => navigation.goBack()}
+                 style={{
+                  marginTop: 30,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  alignSelf: "center"
+                }}>
+                  <VerifyText style={{
+                    color: '#ff5555',
+                    textAlign: 'center'
+                  }}>SAIR DA LIÇÃO </VerifyText>
+                </TouchableOpacity>
+              </Container>
+            
+            </Wrapper>
+
+          </Modalize>
+
+          <Modalize ref={modalizeEnd} modalHeight={400} 
+          closeOnOverlayTap={false} 
+          closeSnapPointStraightEnabled={false} 
+          panGestureEnabled={false}
+          modalStyle={{
+        backgroundColor: state.theme.background
+        
+      }}>
+            <Wrapper style={{
+              
+            }}>
+              <Container>
+                <LottieView style={{
+                height: 180,
+             
+                alignSelf: "center"
+                }} source={require('../../../heart.json')} autoPlay loop />
+
+                <Title>Parabéns! 🥳🎉</Title>
+                <SubTitle>Você ganhou 30 corações!</SubTitle>
+                <VerifyButton onPress={nextQuestion}>
+                  <VerifyText>OBRIGADO</VerifyText>
+                </VerifyButton>
+                
+              </Container>
+            
+            </Wrapper>
+
+              
+            
          
           </Modalize>
      
