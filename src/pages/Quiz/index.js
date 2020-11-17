@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Image, View, TouchableOpacity, Platform } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Modalize } from 'react-native-modalize';
 
@@ -232,10 +232,16 @@ const Quiz = ({ navigation, route }) => {
               
             }}>
               <Container>
-                <LottieView style={{
-                height: 160,
-                alignSelf: "center"
-                }} source={require('../../../heartCry.json')} autoPlay loop />
+                {Platform.OS === 'ios' ?
+                  <LottieView style={{
+                    height: 20,
+                    alignSelf: "center"
+                    }} source={require('../../../heartCry.json')} autoPlay loop />
+                    :
+                  <Title>Vai toma no cu</Title>
+                }
+
+                
 
                 <Title>Tem certeza que deseja sair?</Title>
                 <SubTitle>Todo o seu progresso não será salvo.</SubTitle>
@@ -272,11 +278,16 @@ const Quiz = ({ navigation, route }) => {
               
             }}>
               <Container>
-                <LottieView style={{
-                height: 180,
-             
-                alignSelf: "center"
-                }} source={require('../../../heart.json')} autoPlay loop />
+              {Platform.OS === 'ios' ?
+                  <LottieView style={{
+                    height: 180,
+                 
+                    alignSelf: "center"
+                    }} source={require('../../../heart.json')} autoPlay loop />
+                    :
+                    <Title>Vai toma no cu</Title>
+                }
+                
 
                 <Title>Parabéns! 🥳🎉</Title>
                 <SubTitle>Você ganhou 30 corações!</SubTitle>
