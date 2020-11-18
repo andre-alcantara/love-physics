@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, FlatList, Text } from 'react-native';
+import firebase from '../../services/firebaseConnection'
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import PlayerCard from './components/PlayerCard';
@@ -20,7 +21,26 @@ import { Wrapper,
 
 const Ranking = () => {
   const [state] = useStateValue();
+  const [users, setUsers] = useState([])
 
+  useEffect(() => {
+    async function listUsers(){
+      await firebase.database().ref('users').orderByChild('heart').on('value', (snapshot) => {
+        setUsers([]);
+        snapshot.forEach((value) => {
+          let user = {
+            key: value.key,
+            image: value.val().image,
+            name: value.val().name,
+            heart: value.val().heart
+          }
+          setUsers(oldUser => [...oldUser, user])
+        })
+      })
+    }
+    listUsers()
+    console.log(users)
+  }, [])
 
   const [players, setPlayers] = useState([
     {
