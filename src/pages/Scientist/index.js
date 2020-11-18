@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { StyleSheet, FlatList, StatusBar } from 'react-native';;
 import { Modalize } from 'react-native-modalize';
 import firebase from '../../services/firebaseConnection';
@@ -11,13 +11,12 @@ import ScientistList from '../../components/ScientistList';
 import { ScientistsContext } from '../../contexts/scientist';
 
 const Scientist = () => {   
-  const { scientists } = useContext(ScientistsContext);
-
-  const modalizeRef = useRef(null);
-
-  const onOpen = () => {
-    modalizeRef.current?.open();
-  }
+  const { listScientist, scientists } = useContext(ScientistsContext);
+  const [search, setSearch] = useState('')
+  useEffect(() => {
+      listScientist('');
+  }, [])
+  
 
   return (
     <Wrapper>      
@@ -32,6 +31,7 @@ const Scientist = () => {
       <SearchBar 
         style={styles.shadow}
         placeholder='Digite para pesquisar...'
+        onChangeText={(text) => listScientist(text)}
         placeholderTextColor="#A9A9A9"
       />    
       <Icon>
