@@ -1,6 +1,7 @@
 import React, { useContext, useState, } from 'react';
 import { StyleSheet, Modal, Image, TouchableOpacity } from 'react-native';
-import firebase from '../../services/firebaseConnection';
+import { Modalize } from 'react-native-modalize';
+import { useStateValue } from '../../contexts/theme';
 
 import { Button, Name, ImageView } from './styles';
 

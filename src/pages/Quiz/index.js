@@ -34,6 +34,7 @@ const Quiz = ({ navigation, route }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [length, setLength] = useState(question.length - 1)
   const [progressBar, setProgressBar] = useState(0);
+  const [count, setCount] = useState(0);
   const [state] = useStateValue();
 
 
@@ -49,6 +50,7 @@ const Quiz = ({ navigation, route }) => {
   const onExit = () => {
     modalizeExit.current?.open();
   }
+
   const onWrong = () => {
     modalizeWrong.current?.open();
   }
@@ -57,8 +59,9 @@ const Quiz = ({ navigation, route }) => {
 
   const answer = (correct) => {
     if(correct == 'true') {
-      if(questionIndex < length){ 
-        onOpen();
+      setCount(count + 1);
+      if(questionIndex <= length) { 
+        onOpen();        
       }
     }
     
@@ -234,7 +237,7 @@ const Quiz = ({ navigation, route }) => {
               <Container>
                 {Platform.OS === 'ios' ?
                   <LottieView style={{
-                    height: 20,
+                    height: 180,
                     alignSelf: "center"
                     }} source={require('../../../heartCry.json')} autoPlay loop />
                     :
@@ -266,7 +269,7 @@ const Quiz = ({ navigation, route }) => {
 
           </Modalize>
 
-          <Modalize ref={modalizeEnd} modalHeight={400} 
+          <Modalize ref={modalizeEnd} modalHeight={360} 
           closeOnOverlayTap={false} 
           closeSnapPointStraightEnabled={false} 
           panGestureEnabled={false}
@@ -287,11 +290,17 @@ const Quiz = ({ navigation, route }) => {
                     :
                     <Title>Vai toma no cu</Title>
                 }
+                 
+                 <Title>Parabéns 🥳🎉</Title>
+                { 
+                count == question.length 
+                ?       
+                  <SubTitle>Você acertou todas as { count } de questões!</SubTitle>
+                :
+                  <SubTitle>Você acertou { count } de { question.length } questões!</SubTitle>
+                }
                 
-
-                <Title>Parabéns! 🥳🎉</Title>
-                <SubTitle>Você ganhou 30 corações!</SubTitle>
-                <VerifyButton onPress={nextQuestion}>
+                <VerifyButton onPress={() => navigation.popToTop()}>
                   <VerifyText>OBRIGADO</VerifyText>
                 </VerifyButton>
                 

@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { StyleSheet, FlatList, StatusBar } from 'react-native';;
-
+import { Modalize } from 'react-native-modalize';
 import firebase from '../../services/firebaseConnection';
-
 
 import { Feather } from '@expo/vector-icons';
 import { Wrapper, Icon,Content, SearchBar,  ListView, Header, TextView, Title, List } from './styles';
@@ -14,19 +13,20 @@ import { ScientistsContext } from '../../contexts/scientist';
 const Scientist = () => {   
   const { scientists } = useContext(ScientistsContext);
 
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  }
+
   return (
     <Wrapper>      
-      
-    
       <Header>
         <TextView>
           <Title>Cientistas</Title>
-        </TextView>
-                                                         
+        </TextView>                                      
       </Header>
 
-      
-      
       <ListView>
         <Content>
       <SearchBar 
@@ -40,17 +40,16 @@ const Scientist = () => {
       
       </Content>
         <FlatList 
-          
-            contentContainerStyle={{
-              paddingBottom: 145,
-              
-            }}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={item => item.key}
-            data={scientists}
-            renderItem={({ item }) => <ScientistList data={item} />
+          contentContainerStyle={{
+            paddingBottom: 145,
+          }}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={item => item.key}
+          data={scientists}
+          renderItem={({ item }) => 
+            <ScientistList data={item} />
           } 
-          /> 
+        /> 
       </ListView> 
     </Wrapper>
   ); 

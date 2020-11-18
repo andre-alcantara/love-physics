@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import { CuriositiesContext } from '../../contexts/curiosity';
 import { QuestionsContext } from '../../contexts/questions';
@@ -22,14 +22,26 @@ const Home = ({ navigation }) => {
   const { curiosities } = useContext(CuriositiesContext);
   const { matters } = useContext(QuestionsContext);
 
-
-
+  const [position, setPosition]= useState(0);
+  
+  async function array() {
+    var qtd = 0;
+    for(var i = 0; i < matters.length; i++ ) {
+      for(var j = 0; j < matters[i].matterContent.length; j++) {
+        qtd += matters[i].matterContent[j].questions.length;
+      }
+    }
+    setPosition(qtd)
+  }
+  array();
+  
+  
   return (
   <Wrapper>
 
   <Container>
     
-  <Header />
+  <Header question={position} />
 
 
 

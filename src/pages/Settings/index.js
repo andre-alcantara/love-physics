@@ -38,7 +38,9 @@ const Settings = () => {
   const [photos, setPhotos] = useState([]);
 
   const [visible, setVisible] = useState(false);
-  const [visibleBye, setVisibleBye ] = useState(false)
+  const [visibleBye, setVisibleBye ] = useState(false);
+  const [visibleNickname, setVisibleNickname] = useState(false);
+  const [visibleEmail, setVisibleEmail] = useState(false);
   const [visiblePhoto, setVisiblePhoto] = useState(false);
   const [state] = useStateValue();
   const [darkMode, setDarkMode] = useState(false);
@@ -131,7 +133,7 @@ const Settings = () => {
             placeholderTextColor={state.theme.placeholder}
             disabled={true}
             rightIcon={
-              <EditButton onPress={() => setVisible(true)}>
+              <EditButton onPress={() => setVisibleNickname(true)}>
                 <EditText>Editar</EditText>
               </EditButton>
             }
@@ -151,7 +153,7 @@ const Settings = () => {
             placeholderTextColor={state.theme.placeholder}
             disabled={true}
             rightIcon={
-              <EditButton onPress={() => setVisible(true)}>
+              <EditButton onPress={() => setVisibleEmail(true)}>
                 <EditText>Editar</EditText>
               </EditButton>
             }
@@ -170,9 +172,10 @@ const Settings = () => {
           </TouchableOpacity>
         </DarkModeView>
 
+        { /* MODAL EMAIL */ }
         <Modal 
-        onBackdropPress={() => setVisible(false)}
-        isVisible={visible}
+        onBackdropPress={() => setVisibleEmail(false)}
+        isVisible={visibleEmail}
         coverScreen={true}
         >
         <EditView>
@@ -181,7 +184,7 @@ const Settings = () => {
           <Title style={{
           marginTop:-40,
           marginLeft: 7
-        }}>Editar dados</Title>
+        }}>Editar e-mail</Title>
 
         <InputView 
           style={{
@@ -189,7 +192,7 @@ const Settings = () => {
           }}
         >
           <Input
-            label={'Nickname'}
+            label={'Novo e-mail'}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
               color: '#5EBACE'
@@ -204,7 +207,8 @@ const Settings = () => {
             placeholderTextColor={state.theme.placeholder}
           />
           <Input
-            label={'E-mail'}
+            label={'Sua senha'}
+            secureTextEntry={true}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
               color: '#5EBACE'
@@ -215,7 +219,8 @@ const Settings = () => {
               marginBottom: -6,
               color: state.theme.placeholder
             }}
-            value={user && user.email}
+            
+            
             placeholderTextColor={state.theme.placeholder}
           />
           <Edit>
@@ -231,6 +236,72 @@ const Settings = () => {
 
         </EditView>
       </Modal>
+
+      { /* MODAL NICKNAME */ } 
+      <Modal 
+        onBackdropPress={() => setVisibleNickname(false)}
+        isVisible={visibleNickname}
+        coverScreen={true}
+        >
+        <EditView>
+          <Content>
+  
+          <Title style={{
+          marginTop:-40,
+          marginLeft: 7
+        }}>Editar nickname</Title>
+
+        <InputView 
+          style={{
+            marginTop: 40
+          }}
+        >
+          <Input
+            label={'Novo nickname'}
+            labelStyle={{
+              fontFamily: 'Montserrat_600SemiBold',
+              color: '#5EBACE'
+            }}
+            inputStyle={{
+              fontFamily: 'Montserrat_500Medium',
+              fontSize: 17,
+              marginBottom: -6,
+              color: state.theme.placeholder
+            }}
+            value={user && user.name}
+            placeholderTextColor={state.theme.placeholder}
+          />
+          <Input
+            label={'Sua senha'}
+            secureTextEntry={true}
+            labelStyle={{
+              fontFamily: 'Montserrat_600SemiBold',
+              color: '#5EBACE'
+            }}
+            inputStyle={{
+              fontFamily: 'Montserrat_500Medium',
+              fontSize: 17,
+              marginBottom: -6,
+              color: state.theme.placeholder
+            }}
+            
+            
+            placeholderTextColor={state.theme.placeholder}
+          />
+          <Edit>
+            <Text style={{
+              fontFamily: 'Montserrat_600SemiBold',
+              color: '#FFF',
+              fontSize: 16
+            }}>Salvar alterações</Text>
+          </Edit>
+        </InputView>
+          </Content>
+          
+
+        </EditView>
+      </Modal>
+
       <Modal 
         onBackdropPress={() => setVisiblePhoto(false)}
         isVisible={visiblePhoto}

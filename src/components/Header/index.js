@@ -3,6 +3,7 @@ import { Image, TouchableOpacity, Text, View} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../contexts/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Entypo } from '@expo/vector-icons';
 
 import { 
   Top, 
@@ -17,10 +18,9 @@ import {
   HeartView,
   } from './styles';
 
-import Star from '../../assets/characters/star.svg';
 import Heart from '../../assets/characters/heart.svg';
 
-const Header = () => {
+const Header = ({ question }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
@@ -30,8 +30,9 @@ const Header = () => {
     modalizeRef.current?.open();
   }
 
+
   
-  const { user, signOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <Top>
@@ -58,14 +59,14 @@ const Header = () => {
       <StatsView>
         <StarView onPress={onOpen} style={{marginLeft: 20}}>
         <Heart height={30} width={30} />
-            <HeartCount>100</HeartCount>
+            <HeartCount>{ user.heart }</HeartCount>
           </StarView>
 
-         
-
-          <StarView onPress={() => {}}>
-        <Heart height={30} width={30} />
-            <HeartCount>100</HeartCount>
+          <StarView style={{
+            backgroundColor: '#54AD67'
+          }} onPress={() => {}}>
+          <Entypo name="open-book" size={32} color="white" />
+            <HeartCount>0/{question}</HeartCount>
           </StarView>
       
         

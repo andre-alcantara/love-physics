@@ -24,6 +24,7 @@ const Lesson = ({ color, question }) => {
 
   const star = '49';
 
+
   const questions = question.matterContent;
   const [state] = useStateValue();
 
@@ -76,8 +77,7 @@ const Lesson = ({ color, question }) => {
           </Videos>
         
           <Quiz onPress={() => {
-            alert(item.star);
-            alert(star);
+           
             if(star >= item.star) {
               navigation.navigate('Quiz', {
                 question: item.questions

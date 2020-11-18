@@ -1,6 +1,7 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { StyleSheet, Image, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+import { useStateValue } from '../../contexts/theme';
 
 import { Wrapper, 
   ImageView, 
@@ -10,10 +11,13 @@ import { Wrapper,
   Header,
   Content,
   Title,
-  Detail } from './styles';
+  Detail,
+  TitleView,
+  InfoView
+} from './styles';
 
 const ScientistDetail = ({ close, life, scientist, image, who, award, nationality }) => {
-  
+  const [state] = useStateValue();
   return (
     <Wrapper>
       <Header style={styles.shadow}>
@@ -24,23 +28,31 @@ const ScientistDetail = ({ close, life, scientist, image, who, award, nationalit
           <Ionicons style={{
               alignSelf: "flex-end",
               
-            }} name="ios-arrow-down" size={28} color="black" />
+            }} name="ios-arrow-down" size={28} color={state.theme.title} />
         </Close>
-
-        <Image 
-          style={{
-            height: 110,
-            width: 110
-          }}
-    
-          source={{uri : `${image}` }}
-        />
-
-          
         </ImageView>
-        <Name> { scientist } </Name>
-        <Life> { life } </Life>
-        <Life>{ nationality }</Life>
+
+        <TitleView>
+          <Image 
+            style={{
+              height: 110,
+              width: 110
+            }}
+      
+            source={{uri : `${image}` }}
+          />
+
+            
+          <InfoView>
+            <Name>{ scientist }</Name>
+            <Life>{ life } </Life>
+            <Life>{ nationality }</Life>
+          </InfoView>
+          
+        </TitleView>
+
+      
+        
         
       </Header>
       

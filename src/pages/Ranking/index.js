@@ -21,6 +21,7 @@ import { Wrapper,
 const Ranking = () => {
   const [state] = useStateValue();
 
+
   const [players, setPlayers] = useState([
     {
       id: '1',

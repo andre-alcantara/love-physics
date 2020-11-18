@@ -28,7 +28,7 @@ export const StarView = styled.TouchableOpacity `
     background-color: #FF5555; 
     align-content: flex-start;
     height: 70%;
-    width: 120px;
+    width: 130px;
     justify-content: center;
     padding-left: 10px;
     border-radius: 12px;
@@ -71,6 +71,7 @@ export const HeartCount = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 18.3px;
     position: absolute;
+    width: 55px;
     margin-left: 60px;
     color: #FFF;
     text-align: center;
