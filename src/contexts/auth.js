@@ -20,7 +20,24 @@ const AuthProvider = ({ children }) => {
     }
 
     loadStorage();
+    
+    async function loadUser() {
+      await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
+        let data = {
+          uid: user.uid,
+          name: snapshot.val().name,
+          email: user.email,
+          image: snapshot.val().image,
+          heart: snapshot.val().heart,
+        };
+        setUser(data);
+        storageUser(data);
+      })
+    }
+    loadUser()
   }, []);
+  
+  
 
   async function signIn(email, password) {
     await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -72,30 +89,30 @@ const AuthProvider = ({ children }) => {
 
   async function updateUser(email, nickname){
     var user = await firebase.auth().currentUser;
+    console.log(user)
     var uid = user.uid;
     await user.updateEmail(email)
     .then(function() {
-      console.log('Foi irmão')
+      console.log('Foi irmão');
     }).catch(function(error) {
-      console.log('INFERNO 1')
+      console.log('INFERNO 1');
     });
   
     await firebase.database.ref('users').child(uid).update({
       name: nickname,
     }).then(function() {
-      console.log('Foi irmão')
+      console.log('Foi irmão');
     }).catch(function(error) {
       console.log('INFERNO 2')
     });
   }
 
   async function updateImage(imageURL){
-
     var user = await firebase.auth().currentUser;
     var uid = user.uid;
 
     await firebase.database().ref('users').child(uid).update({
-      image: imageURL,
+      image: imageURL.checked,
     }).then(function() {
       console.log('Foi irmão')
     }).catch(function(error) {
@@ -118,7 +135,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUser, updateImage }}>
+    <AuthContext.Provider value={{ signed:!!user, user, loading, signUp, signIn, signOut, updateUser, updateImage }}>
       { children }
     </AuthContext.Provider>
   );
