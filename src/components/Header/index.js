@@ -1,9 +1,10 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { Image, TouchableOpacity, Text, View} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../contexts/auth';
 import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
+import firebase from '../../services/firebaseConnection';
 
 import { 
   Top, 
@@ -32,9 +33,24 @@ const Header = ({ question }) => {
 
 
   
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
-
+  useEffect( () => {
+    async function loadUser() {
+      await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
+        let data = {
+          uid: user.uid,
+          name: snapshot.val().name,
+          email: user.email,
+          image: snapshot.val().image,
+          heart: snapshot.val().heart,
+        };
+        setUser(data);
+      })
+    }
+    loadUser()
+  },[]);
+  console.log(user)
   return (
     <Top>
       <HeaderView>

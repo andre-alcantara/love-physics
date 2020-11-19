@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import { CuriositiesContext } from '../../contexts/curiosity';
 import { QuestionsContext } from '../../contexts/questions';
@@ -34,7 +34,6 @@ const Home = ({ navigation }) => {
     setPosition(qtd)
   }
   array();
-  
   
   return (
   <Wrapper>
