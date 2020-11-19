@@ -11,5 +11,6 @@ export default {
   activeTintColor: '#C6C2C2',
   inactiveTintColor: '#282A36',
   description: '#F8EFEF',
-  right: '#2CA444'
+  right: '#2CA444',
+  heart: '#FF5555'
 }

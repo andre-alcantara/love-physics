@@ -42,28 +42,7 @@ const Ranking = () => {
     
   }, [])
 
-  const [players, setPlayers] = useState([
-    {
-      id: '1',
-      nickname: 'FocaLeonel',
-      stars: 140, 
-    },
-    {
-      id: '2',
-      nickname: 'BrenoJFS',
-      stars: 120
-    },
-    {
-      id: '3',
-      nickname: 'BrenoJFS',
-      stars: 180
-    },
-    {
-      id: '4',
-      nickname: 'BrenoJFS',
-      stars: 120
-    },
-  ]);
+  console.log(users);
 
   return (
     <Wrapper>
@@ -88,11 +67,12 @@ const Ranking = () => {
         data={users} 
         sortBy='heart' 
         labelBy='name'
-        icon='avatar'
+        icon='image'
+        onRowPress={(item, index) => {}}
         oddRowColor= {state.theme.bottomTab}
         evenRowColor= {state.theme.bottomTab}
         scoreStyle={{
-          color: '#FEB96C',
+          color: state.theme.heart,
           fontSize: 30,
           fontFamily: 'Montserrat_600SemiBold',
           padding: 12
