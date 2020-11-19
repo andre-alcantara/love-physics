@@ -82,7 +82,7 @@ export const SignUpView = styled.View `
 
 export const SignUpDescription = styled.Text `
     font-family: Montserrat_500Medium;
-    font-size: ${hp('2%')}px;
+    font-size: 15px;
 `;
 
 export const SignUpButton = styled.TouchableOpacity `
@@ -97,7 +97,7 @@ export const SignUpButton = styled.TouchableOpacity `
 
 export const SignUpText = styled.Text `
     font-family: Montserrat_700Bold;
-    font-size: ${hp('2%')}px;
+    font-size: 15px;
     text-align: center;
     margin-left: ${wp('8%')}px;
     color: #000;

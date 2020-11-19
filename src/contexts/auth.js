@@ -33,7 +33,6 @@ const AuthProvider = ({ children }) => {
           name: snapshot.val().name,
           email: value.user.email,
           image: snapshot.val().image,
-          star: 0,
           heart: 0,
         };
         setUser(data);
@@ -50,7 +49,6 @@ const AuthProvider = ({ children }) => {
     .then(async (value) => {
       let uid = value.user.uid;
       await firebase.database().ref('users').child(uid).set({
-        star: 0,
         heart: 0,
         name: name,
         image: 'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2Fprofile1Che.png?alt=media&token=dae4ff40-9a8d-4175-a66e-b0a60ba3c3a0',
@@ -61,6 +59,7 @@ const AuthProvider = ({ children }) => {
           name: name,
           email: value.user.email,
           image: 'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2Fprofile1Che.png?alt=media&token=dae4ff40-9a8d-4175-a66e-b0a60ba3c3a0',
+          heart: 0,
         };
         setUser(data);
         storageUser(data);

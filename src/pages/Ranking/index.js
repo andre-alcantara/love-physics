@@ -39,7 +39,7 @@ const Ranking = () => {
       })
     }
     listUsers()
-    console.log(users)
+    
   }, [])
 
   const [players, setPlayers] = useState([
@@ -85,9 +85,9 @@ const Ranking = () => {
         
       
       <Leaderboard 
-        data={players} 
-        sortBy='stars' 
-        labelBy='nickname'
+        data={users} 
+        sortBy='heart' 
+        labelBy='name'
         icon='avatar'
         oddRowColor= {state.theme.bottomTab}
         evenRowColor= {state.theme.bottomTab}
@@ -109,19 +109,6 @@ const Ranking = () => {
       />
       </ListView>
 
-    {/*}
-      <Scroll>
-        <Feather name="award" size={24} color="#FEB96C" />
-        <Feather name="award" size={24} color="#FEB96C" />
-        <Feather name="award" size={24} color="#FEB96C" />
-        <FlatList 
-          keyExtractor={item => item.id}
-          data={players}
-          renderItem={({ item }) => <Leaderboard nickname={item.nickname} 
-          stars={item.stars} /> } 
-        />
-      </Scroll>
-    {*/}
       
 
 
