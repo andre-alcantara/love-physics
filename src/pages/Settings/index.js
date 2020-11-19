@@ -55,7 +55,6 @@ const Settings = () => {
           let photo = {
             key: value.key,
             checked: value.val().checked,
-            unchecked: value.val().unchecked,
           };
           setPhotos(oldPhotos => [...oldPhotos, photo]);
         })
@@ -307,27 +306,19 @@ const Settings = () => {
         isVisible={visiblePhoto}
         coverScreen={true}
       >
-        <EditView>
+        <EditView style={{
+          height: 280
+        }}>
           <Content>
   
           <Title style={{
-            marginTop:20,
-            marginBottom: 20, 
+            marginTop:-20,
+            marginBottom: 70, 
             marginLeft: 7
         }}>Alterar carinha</Title>
 
        <Photo photo={photos} />
-       <Edit style={{
-         marginBottom: 10,
-         marginTop: -30,
-       }}>
-        <Text style={{
-          fontFamily: 'Montserrat_600SemiBold',
-          color: '#FFF',
-          fontSize: 16,
-          
-        }}>Salvar alterações</Text>
-      </Edit>
+       
           </Content>
           
 

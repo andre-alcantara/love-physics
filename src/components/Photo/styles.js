@@ -11,7 +11,7 @@ export const ProfileView = styled.ScrollView.attrs(props => ({
     `
         flex-direction: row;
         margin-top: -35px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     `;
 
 export const Current = styled.Text `
@@ -51,3 +51,11 @@ export const ChooseText = styled.Text `
     font-family: Montserrat_600SemiBold;
     color: #FF5555;
 `; 
+
+export const CurrentView = styled.View `
+    background-color: #FF5555;
+    width: 90;
+    margin-left: 9px;
+    height: 90;
+    margin-bottom: 50px;
+`;
