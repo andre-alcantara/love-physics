@@ -8,7 +8,7 @@ export const Wrapper = styled.View `
 export const Header = styled.View `
     align-items: center;
     padding-top: 30px;
-    height: 220px;
+    height: 230px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     background-color: ${props => props.theme.bottomTab};
