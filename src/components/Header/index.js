@@ -50,7 +50,7 @@ const Header = ({ question }) => {
     }
     loadUser()
   },[]);
-  console.log(user)
+  console.log(user.image)
   return (
     <Top>
       <HeaderView>
@@ -68,6 +68,7 @@ const Header = ({ question }) => {
           source={{uri : `${ user.image }` }}
             
           />
+         
          
         </TouchableOpacity>    
       </HeaderView>

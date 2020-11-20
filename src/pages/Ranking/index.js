@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, FlatList, Text } from 'react-native';
+import React, { useEffect, useState, useContext, useRef } from 'react';
+import { StyleSheet, View, Image } from 'react-native';
 import firebase from '../../services/firebaseConnection'
+import { AuthContext } from '../../contexts/auth';
+import { QuestionsContext } from '../../contexts/questions';
+
+import { Modalize } from 'react-native-modalize';
+import Modal from 'react-native-modal';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import PlayerCard from './components/PlayerCard';
-//import Leaderboard from './components/Leaderboard';
 
 import Leaderboard from 'react-native-leaderboard';
 
@@ -16,12 +20,34 @@ import { Wrapper,
   TextView, 
   Title,
 } from './styles';
+import { EditView } from '../Settings/styles';
+import { HeartCount, StarView } from '../../components/Header/styles';
 
-
+import Heart from '../../assets/characters/heart.svg';
+import { Entypo } from '@expo/vector-icons';
 
 const Ranking = () => {
   const [state] = useStateValue();
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
+  const [name, setName] = useState('');
+  const [heart, setHeart] = useState('');
+  const [image, setImage] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState();
+  console.log(position) 
+
+  const { user, setUser } = useContext(AuthContext);
+  const { matters } = useContext(QuestionsContext);
+
+  const modalizeRef = useRef(null);
+
+  const onOpen = (index) => {
+    setName(index.name);
+    setHeart(index.heart);
+    setImage(index.image);
+    setVisible(true);
+    modalizeRef.current?.open();
+  }
 
   useEffect(() => {
     async function listUsers(){
@@ -42,7 +68,18 @@ const Ranking = () => {
     
   }, [])
 
-  console.log(users);
+  async function array() {
+    var qtd = 0;
+    for(var i = 0; i < matters.length; i++ ) {
+      for(var j = 0; j < matters[i].matterContent.length; j++) {
+        qtd += matters[i].matterContent[j].questions.length;
+      }
+    }
+    setPosition(qtd)
+  }
+  array();
+
+ 
 
   return (
     <Wrapper>
@@ -68,7 +105,7 @@ const Ranking = () => {
         sortBy='heart' 
         labelBy='name'
         icon='image'
-        onRowPress={(item, index) => {}}
+        onRowPress={(item) => onOpen(item)}
         oddRowColor= {state.theme.bottomTab}
         evenRowColor= {state.theme.bottomTab}
         scoreStyle={{
@@ -89,8 +126,58 @@ const Ranking = () => {
       />
       </ListView>
 
-      
+      <Modal 
+        onBackdropPress={() => setVisible(false)}
+        isVisible={visible}
+        coverScreen={true}
+      >
+        <EditView style={{
+          alignItems: 'center',
+          height: 320,
+          width: 320,
+        }}>
 
+          <Image
+          style={{
+            height: 120,
+            width: 120,
+            marginBottom: 20
+          }} 
+          source={{uri : `${ image }` }}
+            
+          />
+
+          <Title style={{
+            marginBottom: 20,
+            color: state.theme.title
+          }}>{name}</Title>
+
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}>
+            <StarView style={{
+              height: 60,
+              paddingLeft: 17 ,
+              marginLeft: 0
+            }}>
+              <Heart height={30} width={30} />
+              <HeartCount>{heart}</HeartCount>
+            </StarView>
+
+            <StarView style={{
+              height: 60,
+              backgroundColor: '#54AD67'
+            }} onPress={() => {}}>
+            <Entypo name="open-book" size={32} color="white" />
+              <HeartCount>0/{position}</HeartCount>
+            </StarView>
+          </View>
+         
+          
+        </EditView>
+       
+      </Modal>
 
       
     </Wrapper>  

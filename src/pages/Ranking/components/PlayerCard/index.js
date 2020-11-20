@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { AuthContext } from '../../../../contexts/auth';
@@ -11,20 +11,31 @@ import {
   Nickname,
   Stat,
   Number,
-  EndStat
+  EndStat,
+  StartStat
 } from './styles';
 
 export default function PlayerCard() {
   const { user } = useContext(AuthContext);
+
 
   return (
     <View style={styles.container}>
     <LinearGradient
       colors={['#FF5555', '#E38686']}
       style={styles.statsView}>
+       
 
       <CenterStat>
-        <Character height={75} width={75} />
+      <Image
+          style={{
+            height: 75,
+            width: 75,
+            marginLeft: 10
+          }} 
+          source={{uri : `${ user.image }` }}
+            
+          />
         
       </CenterStat>
 

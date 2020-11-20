@@ -109,6 +109,7 @@ const Settings = () => {
           }} 
             source={{uri : `${user.image}` }}
           />
+          {console.log(user.image)}
             
               <EditText>Alterar</EditText>
             </EditButton>
@@ -317,7 +318,7 @@ const Settings = () => {
             marginLeft: 7
         }}>Alterar carinha</Title>
 
-       <Photo photo={photos} />
+       <Photo photo={photos} close={() => setVisiblePhoto(false)}/>
        
           </Content>
           

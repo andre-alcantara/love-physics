@@ -114,6 +114,7 @@ const AuthProvider = ({ children }) => {
     await firebase.database().ref('users').child(uid).update({
       image: imageURL.checked,
     }).then(function() {
+      console.log(imageURL)
       console.log('Foi irmão')
     }).catch(function(error) {
       console.log('INFERNO 3')

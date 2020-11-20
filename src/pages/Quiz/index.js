@@ -7,7 +7,7 @@ import { useStateValue } from '../../contexts/theme';
 
 import LottieView from 'lottie-react-native';
 
-import { ProgressBar, Colors} from 'react-native-paper';
+import { ProgressBar} from 'react-native-paper';
 
 
 import { Wrapper, 
@@ -25,7 +25,6 @@ import { Wrapper,
 } from './styles';
 
 import { Container, DarkModeView } from '../Settings/styles';
-import { ceil, set } from 'react-native-reanimated';
 
 
 const Quiz = ({ navigation, route }) => {

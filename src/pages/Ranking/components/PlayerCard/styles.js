@@ -15,9 +15,12 @@ export const Nickname = styled.Text `
 `;
 
 export const StartStat = styled.View `
+    width: 40%;
     align-self: flex-start;
+    height: 100%;
     justify-content: center;
     align-items: center;
+    position: absolute;
 `;
 
 export const Position = styled.View `
@@ -38,7 +41,7 @@ export const Number = styled.Text `
 `;
 
 export const EndStat = styled.View `
-    width: 50%;
+    width: 53%;
     align-self: flex-end;
     height: 100%;
     justify-content: center;

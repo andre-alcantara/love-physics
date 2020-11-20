@@ -23,7 +23,7 @@ export const TextView = styled.View `
     margin-bottom: 30px;
 `;
 
-export const StarView = styled.TouchableOpacity `
+export const StarView = styled.View `
     margin-left: 10px;
     background-color: #FF5555; 
     align-content: flex-start;
