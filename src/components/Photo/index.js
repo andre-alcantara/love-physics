@@ -22,7 +22,7 @@ const Photo = ({ photo, close }) => {
 
   const navigation = useNavigation();
 
-  const { updateImage } = useContext(AuthContext);
+  const { updateImage, user } = useContext(AuthContext);
   console.log('-------------///-------------')
 
   const handlePhoto = (currentPhoto) => {

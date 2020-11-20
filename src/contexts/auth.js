@@ -21,6 +21,7 @@ const AuthProvider = ({ children }) => {
 
     loadStorage();
   }, []);
+  
 
   async function signIn(email, password) {
     await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -119,7 +120,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUser, updateImage }}>
+    <AuthContext.Provider value={{ signed:!!user, user, loading, signUp, signIn, signOut, updateUser, updateImage }}>
       { children }
     </AuthContext.Provider>
   );

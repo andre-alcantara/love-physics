@@ -46,7 +46,6 @@ const Home = ({ navigation }) => {
 
 
 
-
     <Content showsVerticalScrollIndicator={false}>
       <Title>Atividades</Title>
 

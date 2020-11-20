@@ -87,6 +87,7 @@ const Settings = () => {
   }
 
   const { user } = useContext(AuthContext);
+
   return (
     
       <Wrapper>

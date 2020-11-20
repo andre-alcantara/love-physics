@@ -35,22 +35,8 @@ const Header = ({ question }) => {
   
   const { user, setUser } = useContext(AuthContext);
 
-  useEffect( () => {
-    async function loadUser() {
-      await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
-        let data = {
-          uid: user.uid,
-          name: snapshot.val().name,
-          email: user.email,
-          image: snapshot.val().image,
-          heart: snapshot.val().heart,
-        };
-        setUser(data);
-      })
-    }
-    loadUser()
-  },[]);
-  console.log(user.image)
+  console.log(user.image); 
+
   return (
     <Top>
       <HeaderView>
