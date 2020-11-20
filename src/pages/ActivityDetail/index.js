@@ -35,7 +35,7 @@ const ActivityDetail = ({ route, navigation }) => {
           width: 103,
           height: 100
         }}
-        source={{uri: `https://lovephysics.blob.core.windows.net/`}}
+        source={{uri: `${question.matterIcon}`}}
         />
         <TitleView>
           <Title>

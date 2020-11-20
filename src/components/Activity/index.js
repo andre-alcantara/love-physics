@@ -16,6 +16,7 @@ const Activity = ({ question }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
+  console.log(question.matterIcon)
 
   return (
     <Activities onPress={() => navigation.navigate('ActivityDetail', {
@@ -31,6 +32,16 @@ const Activity = ({ question }) => {
         paddingTop: 25,
         
       }} >
+
+      <Image
+        style={{
+          height: 110,
+          width: 114,
+            
+        }} 
+        source={{uri : `${ question.matterIcon }` }}
+            
+        />
        
       <ActivitiesText>
         {question.matterName}

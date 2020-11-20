@@ -41,11 +41,6 @@ const Home = ({ navigation }) => {
   <Container>
     
   <Header question={position} />
-
-
-
-
-
     <Content showsVerticalScrollIndicator={false}>
       <Title>Atividades</Title>
 

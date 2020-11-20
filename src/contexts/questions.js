@@ -17,7 +17,8 @@ const QuestionsProvider = ({ children }) => {
             key : value.key,
             matterName : value.val().matterName,
             matterColor : value.val().matterColor,
-            matterContent : value.val().matterContent
+            matterContent : value.val().matterContent,
+            matterIcon : value.val().matterIcon
           }
           setMatters(oldMatter => [...oldMatter, matter]);
         });

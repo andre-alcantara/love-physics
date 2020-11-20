@@ -54,8 +54,6 @@ const Quiz = ({ navigation, route }) => {
     modalizeWrong.current?.open();
   }
 
-
-
   const answer = (correct) => {
     if(correct == 'true') {
       setCount(count + 1);
@@ -66,7 +64,6 @@ const Quiz = ({ navigation, route }) => {
     
     else {
       onWrong();
-
     } 
   } 
 
@@ -230,24 +227,27 @@ const Quiz = ({ navigation, route }) => {
         backgroundColor: state.theme.background
         
       }}>
-            <Wrapper style={{
-              
-            }}>
+            <Wrapper>
               <Container>
                 {Platform.OS === 'ios' ?
                   <LottieView style={{
-                    height: 180,
+                    height: 170,
                     alignSelf: "center"
                     }} source={require('../../../heartCry.json')} autoPlay loop />
                     :
-                  <Title>Vai toma no cu</Title>
+                  <Image 
+                  style={{
+                    width: 170,
+                    height: 170,
+                    alignSelf: 'center'
+                  }}
+                  source={require('../../assets/heartCry.png')} 
+                  />
                 }
-
-                
 
                 <Title>Tem certeza que deseja sair?</Title>
                 <SubTitle>Todo o seu progresso não será salvo.</SubTitle>
-                <VerifyButton onPress={nextQuestion}>
+                <VerifyButton onPress={() => modalizeExit.current?.close()}>
                   <VerifyText>VOLTAR</VerifyText>
                 </VerifyButton>
                 <TouchableOpacity onPress={() => navigation.goBack()}
@@ -287,10 +287,31 @@ const Quiz = ({ navigation, route }) => {
                     alignSelf: "center"
                     }} source={require('../../../heart.json')} autoPlay loop />
                     :
-                    <Title>Vai toma no cu</Title>
+                    <Image 
+                      style={{
+                        width: 120,
+                        height: 120,
+                        marginBottom: 30,
+                        marginTop: 30,
+                        alignSelf: 'center'
+                      }}
+                      source={require('../../assets/heartEnd.png')} 
+                    />
                 }
+
+                {
+                  count == question.length 
+                  ?       
+                  <Title>Parabéns 🥳🎉</Title>
+                  :
+                  count < 3
+                  ?
+                  <Title>Que pena 😕</Title>
+                  :
+                  <Title>Parabéns 🥳🎉</Title>
+                }
+
                  
-                 <Title>Parabéns 🥳🎉</Title>
                 { 
                 count == question.length 
                 ?       
