@@ -24,10 +24,11 @@ export const ImageView = styled.View `
 export const Name = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 21px;
-    margin-bottom: 3px;
+    margin-bottom: -10px;
     width: 340px;
     margin-left: 14px;
-    margin-top: 5px;
+    margin-top: 15px;
+    margin-bottom: 5px;
     text-align: center;
     color: ${props => props.theme.title};
 `; 

@@ -21,14 +21,14 @@ const Curiosity = ({ title, desc, image }) => {
       <CuriosityCard style={[styles.shadowCard, { marginLeft: 22 }]}>
       <Image
           style={{
-            height: 60,
-            width: 90,
-            
+            height: 70,
+            width: 70,
+            marginBottom: 10,
           }} 
           source={{uri : `${ image }` }}
             
           />
-        <CuriosityText style={{
+        <CuriosityText numberOfLines={2} style={{
           marginTop: 7,
           marginBottom: -7,
         }}>{ title }</CuriosityText>

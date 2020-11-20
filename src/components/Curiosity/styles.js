@@ -24,6 +24,6 @@ export const CuriosityText = styled.Text `
     text-align: center;
     font-family: Montserrat_600SemiBold;
     font-size: 14px;
-    width: 120px;
+    width: 130px;
     color: ${props => props.theme.title};
 `;

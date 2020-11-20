@@ -34,8 +34,8 @@ const CuriosityDetail = ({ title, close, desc, image }) => {
       </Close>
       <Image
           style={{
-            height: 110,
-            width: 110,
+            height: 100,
+            width: 100,
             
           }} 
           source={{uri : `${ image }` }}
