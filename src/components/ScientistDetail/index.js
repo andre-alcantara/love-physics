@@ -57,17 +57,17 @@ const ScientistDetail = ({ close, life, scientist, image, who, award, nationalit
       </Header>
       
       <Content showsVerticalScrollIndicator={false} >
-        <Title> Quem foi? </Title>
+        <Title>🧐 Quem foi? </Title>
         <Detail>
           { who }
         </Detail>
-        <Title> Prêmios </Title>
+        <Title>🎖 Prêmios </Title>
         <Detail style={{
           width: 240
         }}>
           { award }
         </Detail>
-        <Title> Descobertas </Title>
+        <Title>💡 Descobertas </Title>
         <Detail style={{
           width: 240
         }}>

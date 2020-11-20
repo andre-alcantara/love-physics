@@ -21,6 +21,23 @@ const AuthProvider = ({ children }) => {
 
     loadStorage();
   }, []);
+
+  async function loadUser() {
+    await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
+      let data = {
+        uid: user.uid,
+        name: snapshot.val().name,
+        email: user.email,
+        image: snapshot.val().image,
+        heart: snapshot.val().heart,
+      };
+      setUser(data);
+      storageUser(data);
+    })
+    loadUser()
+  }
+
+
   
 
   async function signIn(email, password) {
@@ -120,7 +137,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed:!!user, user, loading, signUp, signIn, signOut, updateUser, updateImage }}>
+    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUser, updateImage, loadUser }}>
       { children }
     </AuthContext.Provider>
   );

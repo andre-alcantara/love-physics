@@ -35,7 +35,7 @@ const Header = ({ question }) => {
   
   const { user, setUser } = useContext(AuthContext);
 
-  console.log(user.image); 
+  
 
   return (
     <Top>
