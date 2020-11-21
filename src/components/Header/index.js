@@ -33,7 +33,7 @@ const Header = ({ question }) => {
 
 
   
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   
 

@@ -86,8 +86,19 @@ const Settings = () => {
     setDarkMode(!darkMode)
   }
 
-  const { user } = useContext(AuthContext);
+  const { user, updateUserEmail, updateNickname } = useContext(AuthContext);
+  const [nick, setNick] = useState(user && user.name);
+  const [email, setEmail] = useState(user && user.email);
+  const [password, setPassword] = useState('')
 
+  function updateEmail() {
+    updateUserEmail(email, password);
+    setPassword('');
+  }
+  function updateNick() {
+    updateNickname(nick, password);
+    setPassword('');
+  }
   
   return (
     
@@ -205,11 +216,14 @@ const Settings = () => {
               marginBottom: -6,
               color: state.theme.placeholder
             }}
-            value={user && user.name}
+            onChangeText={(text) => setEmail(text)}
+            value={email}
             placeholderTextColor={state.theme.placeholder}
           />
           <Input
             label={'Sua senha'}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
             secureTextEntry={true}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
@@ -225,7 +239,7 @@ const Settings = () => {
             
             placeholderTextColor={state.theme.placeholder}
           />
-          <Edit>
+          <Edit onPress={updateEmail} >
             <Text style={{
               fontFamily: 'Montserrat_600SemiBold',
               color: '#FFF',
@@ -270,11 +284,14 @@ const Settings = () => {
               marginBottom: -6,
               color: state.theme.placeholder
             }}
-            value={user && user.name}
+            onChangeText={(text) => setNick(text)}
+            value={nick}
             placeholderTextColor={state.theme.placeholder}
           />
           <Input
             label={'Sua senha'}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
             secureTextEntry={true}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
@@ -290,7 +307,7 @@ const Settings = () => {
             
             placeholderTextColor={state.theme.placeholder}
           />
-          <Edit>
+          <Edit onPress={updateNick}>
             <Text style={{
               fontFamily: 'Montserrat_600SemiBold',
               color: '#FFF',

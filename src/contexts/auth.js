@@ -20,25 +20,23 @@ const AuthProvider = ({ children }) => {
     }
 
     loadStorage();
-  }, []);
 
-  async function loadUser() {
-    await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
-      let data = {
-        uid: user.uid,
-        name: snapshot.val().name,
-        email: user.email,
-        image: snapshot.val().image,
-        heart: snapshot.val().heart,
-      };
-      setUser(data);
-      storageUser(data);
-    })
+    async function loadUser() {
+      await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
+        let data = {
+          uid: user.uid,
+          name: snapshot.val().name,
+          email: user.email,
+          image: snapshot.val().image,
+          heart: snapshot.val().heart,
+          answered: snapshot.val().answered,
+        };
+        setUser(data);
+        storageUser(data);
+      })
+    }
     loadUser()
-  }
-
-
-  
+  }, []);
 
   async function signIn(email, password) {
     await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -51,7 +49,8 @@ const AuthProvider = ({ children }) => {
           name: snapshot.val().name,
           email: value.user.email,
           image: snapshot.val().image,
-          heart: 0,
+          heart: snapshot.val().heart,
+          answered: snapshot.val().answered,
         };
         setUser(data);
         storageUser(data);
@@ -78,6 +77,7 @@ const AuthProvider = ({ children }) => {
           email: value.user.email,
           image: 'https://firebasestorage.googleapis.com/v0/b/lovephysics-34f8e.appspot.com/o/images%2FprofilePhotos%2Fprofile1Che.png?alt=media&token=dae4ff40-9a8d-4175-a66e-b0a60ba3c3a0',
           heart: 0,
+          answered: 0,
         };
         setUser(data);
         storageUser(data);
@@ -88,39 +88,133 @@ const AuthProvider = ({ children }) => {
     })
   }
 
-  async function updateUser(email, nickname){
-    var user = await firebase.auth().currentUser;
-    var uid = user.uid;
-    await user.updateEmail(email)
-    .then(function() {
-      console.log('Foi irmão')
-    }).catch(function(error) {
-      console.log('INFERNO 1')
-    });
-  
-    await firebase.database.ref('users').child(uid).update({
-      name: nickname,
-    }).then(function() {
-      console.log('Foi irmão')
-    }).catch(function(error) {
-      console.log('INFERNO 2')
-    });
+  async function updateUserEmail(email, password){
+
+    let oldEmail = user.email;
+    console.log(oldEmail)
+
+    firebase.auth()
+    .signInWithEmailAndPassword(oldEmail, password)
+    .then(async (userCredential) => {
+      userCredential.user.updateEmail(email)
+      .then(() => {
+        console.log('Foi irmão')
+        let data = {
+          uid: user.uid,
+          name: user.name,
+          email: email,
+          image: user.image,
+          heart: user.heart,
+          answered: user.answered,
+        }
+        setUser(data);
+        storageUser(data);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  async function updateNickname(nickname, password) {
+
+    let oldEmail = user.email;
+    console.log(oldEmail);
+
+    firebase.auth()
+    .signInWithEmailAndPassword(oldEmail, password)
+    .then(async () => {
+      await firebase.database().ref('users').child(user.uid).update({
+        name: nickname,
+      })
+      .then(() => {
+        console.log('Foi irmão')
+        let data = {
+          uid: user.uid,
+          name: nickname,
+          email: user.email,
+          image: user.image,
+          heart: user.heart,
+          answered: user.answered,
+        }
+        setUser(data);
+        storageUser(data);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   async function updateImage(imageURL){
 
-    var user = await firebase.auth().currentUser;
-    var uid = user.uid;
-
-    await firebase.database().ref('users').child(uid).update({
+    await firebase.database().ref('users').child(user.uid).update({
       image: imageURL,
-    }).then(function() {
-      console.log(imageURL)
+    }).then(() => {
+      let data = {
+        uid: user.uid,
+        name: user.name,
+        email: user.email,
+        image: imageURL,
+        heart: user.heart,
+        answered: user.answered,
+      }
+      setUser(data);
+      storageUser(data);
       console.log('Foi irmão')
-    }).catch(function(error) {
-      console.log('INFERNO 3')
+    }).catch((error) => {
+      console.log(error)
     });
+  }
 
+  async function updateHeart(heart) {
+
+    await firebase.database().ref('users').child(user.uid).update({
+      heart: heart,
+    }).then(() => {
+      let data = {
+        uid: user.uid,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        heart: heart,
+        answered: user.answered,
+      }
+      setUser(data);
+      storageUser(data);
+      console.log('Foi irmão')
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
+
+  async function updateAnswered(qtd) {
+
+    await firebase.database().ref('users').child(user.uid).update({
+      answered: qtd
+    })
+    .then(() => {
+      let data = {
+        uid: user.uid,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        heart: user.heart,
+        answered: qtd,
+      }
+      setUser(data);
+      storageUser(data);
+      console.log('Foi irmão')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   async function storageUser(data) {
@@ -137,7 +231,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUser, updateImage, loadUser }}>
+    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUserEmail, updateNickname, updateImage, updateHeart, updateAnswered }}>
       { children }
     </AuthContext.Provider>
   );
