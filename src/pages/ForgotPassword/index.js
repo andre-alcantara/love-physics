@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 import { Wrapper, Title, SubTitle, Input, SendButton, SendText } from './styles';
 
 
+
 const ForgotPassword = () => {
+  const { updatePassword } = useContext(AuthContext);
   const [email, setEmail] = useState('');
+
+  function send() {
+    updatePassword(email);
+    setEmail('');
+  }
 
   return (
     <Wrapper>
       <Title>Insira seu email</Title>
       <SubTitle>
-        Nós te enviaremos uma senha temporária, uma vez dentro do app para o email inserido,
-        clique na sua foto de perfil e atualize sua senha.
+        Insira o e-mail de sua conta e nos enviaremos um pedido de troca de senha.
       </SubTitle>
       <Input 
         placeholder='exemplo@exemplo.com'
@@ -20,7 +26,7 @@ const ForgotPassword = () => {
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
-      <SendButton>
+      <SendButton onPress={send} >
         <SendText>Enviar</SendText>
       </SendButton>
     </Wrapper>

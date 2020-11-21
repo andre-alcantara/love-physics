@@ -42,7 +42,7 @@ export default function PlayerCard() {
       
 
       <EndStat>
-        <Number style={{ color: '#FFF' }}>100</Number>
+        <Number style={{ color: '#FFF' }}>{ user.heart }</Number>
         <Stat style={{ color: '#FFF' }}>Corações</Stat>
       </EndStat>
       

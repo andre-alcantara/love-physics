@@ -61,18 +61,18 @@ import { useFonts,
         <ThemeProvider theme={state.theme}>
           <NavigationContainer>
             <AuthProvider>
-            <QuestionsProvider>
-              <CuriositiesProvider>
-                <ScientistsProvider>
-                  
-                    <StatusBar 
-                      barStyle={state.theme.statusBarStyle}
-                      backgroundColor={state.theme.background}
-                    />
-                    <Routes />
-                  
-                </ScientistsProvider>
-              </CuriositiesProvider>
+              <QuestionsProvider>
+                <CuriositiesProvider>
+                  <ScientistsProvider>
+                    
+                      <StatusBar 
+                        barStyle={state.theme.statusBarStyle}
+                        backgroundColor={state.theme.background}
+                      />
+                      <Routes />
+                    
+                  </ScientistsProvider>
+                </CuriositiesProvider>
               </QuestionsProvider>
             </AuthProvider>
           </NavigationContainer>
