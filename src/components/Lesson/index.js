@@ -62,7 +62,7 @@ const Lesson = ({ color, question }) => {
         </DescriptionScroll>
        
         <MaterialText>
-          Materiais de apoio:
+          📚 Materiais de apoio:
         </MaterialText>
         <Material>
           <Videos>

@@ -24,7 +24,7 @@ export const DifficultyText = styled.Text `
 `;
 
 export const Card = styled.View `
-    width: 310px;
+    width: 335px;
     height: 90%;
     background-color: ${props => props.theme.background};
     margin-left: 18px;
@@ -79,7 +79,7 @@ export const Material = styled.View `
 
 export const Videos = styled.TouchableOpacity `
     height: 110;
-    width: 130;
+    width: 141;
     background-color: ${props => props.theme.description};
     border-radius: 8px;
     align-items: center;   
@@ -88,7 +88,7 @@ export const Videos = styled.TouchableOpacity `
 
 export const Quiz = styled.TouchableOpacity `
     height: 110;
-    width: 130;
+    width: 141;
     background-color: #FF5555;
     margin-left: 10px;
     border-radius: 8px;
