@@ -57,7 +57,21 @@ const AuthProvider = ({ children }) => {
       })
     })
     .catch((error) => {
-      alert(error.code)
+      if (error === "auth/invalid-email") {
+
+      }
+      else if (error === "auth/user-disabled") {
+
+      }
+      else if (error === "auth/user-not-found") {
+
+      }
+      else if (error === "auth/wrong-password") {
+
+      }
+      else {
+        
+      }
     })
   }
   
@@ -65,6 +79,7 @@ const AuthProvider = ({ children }) => {
     await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(async (value) => {
       let uid = value.user.uid;
+      await value.user.sendEmailVerification();
       await firebase.database().ref('users').child(uid).set({
         heart: 0,
         name: name,
@@ -85,7 +100,18 @@ const AuthProvider = ({ children }) => {
       })
     })
     .catch((error) => {
-      alert(error.code)
+      if (error === "auth/email-already-in-use") {
+        
+      }
+      else if (error === "auth/invalid-email") {
+
+      }
+      else if (error === "auth/weak-password") {
+
+      }
+      else {
+
+      }
     })
   }
 
@@ -97,7 +123,7 @@ const AuthProvider = ({ children }) => {
     firebase.auth()
     .signInWithEmailAndPassword(oldEmail, password)
     .then(async (userCredential) => {
-      userCredential.user.updateEmail(email)
+      await userCredential.user.updateEmail(email)
       .then(() => {
         console.log('Foi irmão')
         var data = {
@@ -114,6 +140,7 @@ const AuthProvider = ({ children }) => {
       .catch((error) => {
         console.log(error)
       })
+      await userCredential.user.sendEmailVerification()
     })
     .catch((error) => {
       console.log(error)
