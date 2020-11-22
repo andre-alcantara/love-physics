@@ -45,7 +45,7 @@ export const Question = styled.Text `
 `;
 
 export const AnswersView = styled.TouchableOpacity `
-    height: 50px;
+    height: 60px;
     width: 90%;
     margin-top: 15px;
     border-width: 2px;

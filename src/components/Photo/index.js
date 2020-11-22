@@ -23,37 +23,12 @@ const Photo = ({ photo, close }) => {
   const navigation = useNavigation();
 
   const { updateImage, user } = useContext(AuthContext);
-  console.log('-------------///-------------')
 
   const handlePhoto = (currentPhoto) => {
     updateImage(currentPhoto);
     close();
   }
 
-
-  // const renderPhotos = () => {
-  //   return photo.map(currentPhoto => {
-  //     return (
-  //       <TouchableOpacity
-        
-  //       key={currentPhoto.key}
-  //       onPress={() => {
-  //         handlePhoto(currentPhoto.checked, currentPhoto.key)
-  //       }
-  //       }
-  //       >
-  //         <Image 
-  //           style={{  
-  //             width: 120,
-  //             height: 120,
-  //             marginLeft: 8,
-  //           }}
-  //           source={{ uri: `${currentPhoto.checked}` }}
-  //         />
-  //       </TouchableOpacity>
-  //     )
-  //   })
-  // }
 
 
   return (

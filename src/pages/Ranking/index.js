@@ -34,7 +34,6 @@ const Ranking = () => {
   const [image, setImage] = useState('');
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState();
-  console.log(position) 
 
   const { user, setUser } = useContext(AuthContext);
   const { matters } = useContext(QuestionsContext);
@@ -99,10 +98,9 @@ const Ranking = () => {
           <PlayerCard />
         </Content>
         
-      
       <Leaderboard 
         data={users} 
-        sortBy='heart' 
+        sortBy='heart'
         labelBy='name'
         icon='image'
         onRowPress={(item) => onOpen(item)}

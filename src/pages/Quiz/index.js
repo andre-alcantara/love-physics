@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import { Image, View, TouchableOpacity, Platform } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Modalize } from 'react-native-modalize';
+import { AuthContext } from '../../contexts/auth';
 
 import { useStateValue } from '../../contexts/theme';
 
@@ -34,7 +35,11 @@ const Quiz = ({ navigation, route }) => {
   const [length, setLength] = useState(question.length - 1)
   const [progressBar, setProgressBar] = useState(0);
   const [count, setCount] = useState(0);
+  const [heart, setHeart] = useState(0);
+
   const [state] = useStateValue();
+
+  const { updateHeart, updateAnswered, user } = useContext(AuthContext);
 
 
   const modalizeRef = useRef(null);
@@ -56,6 +61,7 @@ const Quiz = ({ navigation, route }) => {
 
   const answer = (correct) => {
     if(correct == 'true') {
+      setHeart(heart + 2);
       setCount(count + 1);
       if(questionIndex <= length) { 
         onOpen();        
@@ -70,6 +76,8 @@ const Quiz = ({ navigation, route }) => {
   const nextQuestion = () => {
     if(questionIndex == length) {
       setProgressBar(progressBar + (1 / question.length));
+      updateHeart(user.heart + heart);
+      updateAnswered(user.answered + count);
       modalizeEnd.current?.open();
       modalizeRef.current?.close();
       modalizeWrong.current?.close();
@@ -304,11 +312,11 @@ const Quiz = ({ navigation, route }) => {
                   ?       
                   <Title>Parabéns 🥳🎉</Title>
                   :
-                  count < 3
+                  count < 2
                   ?
                   <Title>Que pena 😕</Title>
                   :
-                  <Title>Parabéns 🥳🎉</Title>
+                  <Title>Muito bem!</Title>
                 }
 
                  
@@ -319,6 +327,8 @@ const Quiz = ({ navigation, route }) => {
                 :
                   <SubTitle>Você acertou { count } de { question.length } questões!</SubTitle>
                 }
+
+                <SubTitle>Corações recebidos: {heart}</SubTitle>  
                 
                 <VerifyButton onPress={() => navigation.popToTop()}>
                   <VerifyText>OBRIGADO</VerifyText>

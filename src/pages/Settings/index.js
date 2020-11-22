@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Input } from 'react-native-elements';
 import { AuthContext } from '../../contexts/auth';
@@ -37,8 +37,6 @@ const Settings = () => {
 
   const [photos, setPhotos] = useState([]);
 
-  const [visible, setVisible] = useState(false);
-  const [visibleBye, setVisibleBye ] = useState(false);
   const [visibleNickname, setVisibleNickname] = useState(false);
   const [visibleEmail, setVisibleEmail] = useState(false);
   const [visiblePhoto, setVisiblePhoto] = useState(false);
@@ -87,17 +85,36 @@ const Settings = () => {
   }
 
   const { user, updateUserEmail, updateNickname } = useContext(AuthContext);
-  const [nick, setNick] = useState(user && user.name);
+  const [nickname, setNickname] = useState(user && user.name);
   const [email, setEmail] = useState(user && user.email);
   const [password, setPassword] = useState('')
 
   function updateEmail() {
-    updateUserEmail(email, password);
-    setPassword('');
+    if(password === '') {
+      Alert.alert(
+        "Digite a senha",
+        "Por favor, digite sua senha para atualizar seu e-mail",
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      updateUserEmail(email, password);
+      setPassword('');
+      setVisibleEmail(false);
+    }
   }
+
   function updateNick() {
-    updateNickname(nick, password);
-    setPassword('');
+    if(password === '') {
+      alert('Você precisa digitar sua senha!');
+    } else {
+      updateNickname(nickname, password);
+      setPassword('');
+      setVisibleNickname(false);
+    }
+    
   }
   
   return (
@@ -205,6 +222,7 @@ const Settings = () => {
           }}
         >
           <Input
+            autoCapitalize='none'
             label={'Novo e-mail'}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
@@ -273,6 +291,7 @@ const Settings = () => {
           }}
         >
           <Input
+          maxLength={8}
             label={'Novo nickname'}
             labelStyle={{
               fontFamily: 'Montserrat_600SemiBold',
@@ -284,8 +303,8 @@ const Settings = () => {
               marginBottom: -6,
               color: state.theme.placeholder
             }}
-            onChangeText={(text) => setNick(text)}
-            value={nick}
+            onChangeText={(text) => setNickname(text)}
+            value={nickname}
             placeholderTextColor={state.theme.placeholder}
           />
           <Input

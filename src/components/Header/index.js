@@ -59,8 +59,9 @@ const Header = ({ question }) => {
         </TouchableOpacity>    
       </HeaderView>
 
-
+      
       <StatsView>
+        
         <StarView onPress={onOpen} style={{marginLeft: 20}}>
         <Heart height={30} width={30} />
             <HeartCount>{ user.heart }</HeartCount>
@@ -70,7 +71,7 @@ const Header = ({ question }) => {
             backgroundColor: '#54AD67'
           }} onPress={() => {}}>
           <Entypo name="open-book" size={32} color="white" />
-            <HeartCount>0/{question}</HeartCount>
+            <HeartCount>{ user.answered }</HeartCount>
           </StarView>
       
         

@@ -216,7 +216,8 @@ const AuthProvider = ({ children }) => {
       }
       setUser(data);
       storageUser(data);
-      console.log('Foi irmão')
+      console.log('Foi irmão');
+      console.log(heart)
     }).catch((error) => {
       console.log(error)
     });

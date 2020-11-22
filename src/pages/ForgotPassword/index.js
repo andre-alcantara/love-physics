@@ -17,9 +17,10 @@ const ForgotPassword = () => {
     <Wrapper>
       <Title>Insira seu email</Title>
       <SubTitle>
-        Insira o e-mail de sua conta e nos enviaremos um pedido de troca de senha.
+        Insira o e-mail de sua conta e nós enviaremos um pedido de troca de senha 🔒.
       </SubTitle>
       <Input 
+        autoCapitalize='none'
         placeholder='exemplo@exemplo.com'
         autoCorrect={false}
         autoFocus={true}
