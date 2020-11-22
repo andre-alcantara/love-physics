@@ -22,19 +22,17 @@ const Photo = ({ photo, close }) => {
 
   const navigation = useNavigation();
 
-  const { updateImage, user } = useContext(AuthContext);
+  const { updateImage } = useContext(AuthContext);
 
   const handlePhoto = (currentPhoto) => {
     updateImage(currentPhoto);
     close();
   }
 
-
-
   return (
    
     <View>
-      <ProfileView horizontal={true}>
+      <ProfileView horizontal={true} showsHorizontalScrollIndicator={false}>
       
         <TouchableOpacity onPress={() => {handlePhoto(photo[0].checked)}}>
           <Image 
@@ -48,7 +46,11 @@ const Photo = ({ photo, close }) => {
 
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {handlePhoto(photo[1].checked)}}>
+        <TouchableOpacity 
+        style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[1].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -59,7 +61,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[2].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[2].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -70,7 +75,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[3].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[3].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -81,7 +89,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[4].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[4].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -92,7 +103,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[5].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[5].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -103,7 +117,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[6].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[6].checked)}}>
           <Image 
               style={{  
                 width: 120,
@@ -114,7 +131,10 @@ const Photo = ({ photo, close }) => {
             />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {handlePhoto(photo[7].checked)}}>
+        <TouchableOpacity style={{
+          marginLeft: 6
+        }}
+        onPress={() => {handlePhoto(photo[7].checked)}}>
           <Image 
               style={{  
                 width: 120,

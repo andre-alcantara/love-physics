@@ -58,16 +58,16 @@ const AuthProvider = ({ children }) => {
     })
     .catch((error) => {
       if (error === "auth/invalid-email") {
-
+        
       }
       else if (error === "auth/user-disabled") {
-
+        
       }
       else if (error === "auth/user-not-found") {
-
+        
       }
       else if (error === "auth/wrong-password") {
-
+        
       }
       else {
         
