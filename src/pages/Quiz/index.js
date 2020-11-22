@@ -61,7 +61,7 @@ const Quiz = ({ navigation, route }) => {
 
   const answer = (correct) => {
     if(correct == 'true') {
-      setHeart(heart + 2);
+      setHeart(heart + 5);
       setCount(count + 1);
       if(questionIndex <= length) { 
         onOpen();        

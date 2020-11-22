@@ -22,14 +22,10 @@ const CuriosityDetail = ({ title, close, desc, image }) => {
   return (
     <Wrapper>
     <Header style={styles.shadow}>
-     
-   
       <ImageView>
       <Close onPress={close}>
         <Ionicons style={{
             alignSelf: "flex-end",
-            
-            
           }} name="ios-arrow-down" size={28} color={state.theme.icon} />
       </Close>
       <Image
@@ -48,7 +44,7 @@ const CuriosityDetail = ({ title, close, desc, image }) => {
       
     </Header>
     
-    <Content showsVerticalScrollIndicator={false} >
+    <Content showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
       <Detail>
         {desc}
       </Detail>

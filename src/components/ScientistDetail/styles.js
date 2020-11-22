@@ -46,7 +46,6 @@ export const Content = styled.ScrollView `
     align-self: center;
     width: 90%;
     height: 100%;
-    margin-bottom: 10px;
 `;
 
 export const Title = styled.Text `

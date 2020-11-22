@@ -56,7 +56,7 @@ const ScientistDetail = ({ close, life, scientist, image, who, award, nationalit
         
       </Header>
       
-      <Content showsVerticalScrollIndicator={false} >
+      <Content showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
         <Title>🧐 Quem foi? </Title>
         <Detail>
           { who }

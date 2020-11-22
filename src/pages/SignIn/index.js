@@ -48,7 +48,7 @@ export default function SignIn({ navigation }) {
         
       
         
-      <Label style={{marginTop: hp('7%')}}>Email</Label>
+      <Label style={{marginTop: hp('7%')}}>E-mail</Label>
       <Input 
         placeholder='exemplo@exemplo.com'
         autoCapitalize='none'
@@ -79,15 +79,6 @@ export default function SignIn({ navigation }) {
             <SignInText>Entrar</SignInText>
           </SignInButton>
               
-         <SignUpButton>
-            <Logo style={{
-              marginLeft: wp('3.3%')
-            }} width={40} height={wp('5.5%')} />
-            <SignUpText>Entrar com Google</SignUpText>
-          </SignUpButton> 
-
-           
-
             <SignUpView>
                 <SignUpDescription>
                     Não possui uma conta? 

@@ -63,7 +63,7 @@ export default function SignUp({ navigation }) {
         onChangeText={(text) => setName(text)}
       />
         
-      <Label>Email</Label>
+      <Label>E-mail</Label>
       <Input 
         placeholder='exemplo@exemplo.com'
         autoCapitalize='none'
@@ -78,12 +78,8 @@ export default function SignUp({ navigation }) {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-       
-       
-          
 
-          <SignInButton 
-          onPress={handleSignUp}>
+          <SignInButton onPress={handleSignUp}>
             <SignInText>Criar Conta</SignInText>
           </SignInButton>
               

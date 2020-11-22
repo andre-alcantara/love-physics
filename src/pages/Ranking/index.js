@@ -32,6 +32,7 @@ const Ranking = () => {
   const [name, setName] = useState('');
   const [heart, setHeart] = useState('');
   const [image, setImage] = useState('');
+  const [answered, setAnswered] = useState('');
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState();
 
@@ -43,6 +44,7 @@ const Ranking = () => {
   const onOpen = (index) => {
     setName(index.name);
     setHeart(index.heart);
+    setAnswered(index.answered);
     setImage(index.image);
     setVisible(true);
     modalizeRef.current?.open();
@@ -57,7 +59,8 @@ const Ranking = () => {
             key: value.key,
             image: value.val().image,
             name: value.val().name,
-            heart: value.val().heart
+            heart: value.val().heart,
+            answered: value.val().answered
           }
           setUsers(oldUser => [...oldUser, user])
         })
@@ -136,13 +139,12 @@ const Ranking = () => {
         }}>
 
           <Image
-          style={{
-            height: 120,
-            width: 120,
-            marginBottom: 20
-          }} 
-          source={{uri : `${ image }` }}
-            
+            style={{
+              height: 120,
+              width: 120,
+              marginBottom: 20
+            }} 
+            source={{uri : `${ image }` }}
           />
 
           <Title style={{
@@ -168,16 +170,11 @@ const Ranking = () => {
               backgroundColor: '#54AD67'
             }} onPress={() => {}}>
             <Entypo name="open-book" size={32} color="white" />
-              <HeartCount>0/{position}</HeartCount>
+              <HeartCount>{answered}</HeartCount>
             </StarView>
           </View>
-         
-          
         </EditView>
-       
       </Modal>
-
-      
     </Wrapper>  
   );
 }

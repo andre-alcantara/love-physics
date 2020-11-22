@@ -24,7 +24,7 @@ export const DifficultyText = styled.Text `
 `;
 
 export const Card = styled.View `
-    width: 335px;
+    width: 325px;
     height: 90%;
     background-color: ${props => props.theme.background};
     margin-left: 18px;
