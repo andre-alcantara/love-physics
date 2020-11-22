@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, TouchableOpacity, TouchableOpacityBase } from 'react-native';
+import { View, TouchableOpacity, TouchableOpacityBase, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar'
 import { Feather, AntDesign } from '@expo/vector-icons';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -30,24 +30,32 @@ export default function SignIn({ navigation }) {
   const [secureText, setSecureText] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
 
   const { signIn } = useContext(AuthContext);
 
   const handleLogin = () => {
-    signIn(email, password);
+    if(email == '' && password == '') {
+      Alert.alert(
+        "Ops!",
+        "Por favor, digite suas informações!",
+        [
+          { text: "OK", onPress: () => {} }
+        ],
+        { cancelable: false }
+      );
+    } 
+    else {
+      signIn(email, password);
+    }
   }
 
   return (
     <Background>
 
-      
       <StatusBar style="dark" />
       <Title>Entre com sua conta</Title>
       <Wrapper>
-        
-      
-        
+
       <Label style={{marginTop: hp('7%')}}>E-mail</Label>
       <Input 
         placeholder='exemplo@exemplo.com'

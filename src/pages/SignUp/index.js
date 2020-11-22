@@ -1,24 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { View, TouchableOpacity, TextInput , KeyboardAvoidingView} from 'react-native';
-import { StatusBar } from 'expo-status-bar'
-import { Feather, AntDesign, FontAwesome5 } from '@expo/vector-icons';
+import { TouchableOpacity, Alert, KeyboardAvoidingView} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { AuthContext } from '../../contexts/auth';
 
 import { 
     Background,
     Wrapper, 
-    Header,
-    TextView,
-    Description, 
-    InputView,
     Label, 
-    ForgotButton,
-    ForgotText, 
     SignUpView,
     SignUpDescription,
-    SignUpButton,
     SignUpText
 } from './styles';
 
@@ -37,8 +27,29 @@ export default function SignUp({ navigation }) {
   const { signUp } = useContext(AuthContext);
 
   const handleSignUp = () => {
-    signUp(email, password, name);
-  }
+    if(email == '' && password == '' && name == '') {
+      Alert.alert(
+        "Ops!",
+        "Por favor, digite suas informações!",
+        [
+          { text: "OK", onPress: () => {} }
+        ],
+        { cancelable: false }
+      );
+    } 
+    else {
+      signUp(email, password, name);
+      Alert.alert(
+        "Verifique seu e-mail",
+        "Nós te enviamos um e-mail com a confirmação, caso não recebe, edite seu e-mail nos Ajustes pra um e-mail válido",
+        [
+          { text: "OK", onPress: () => {} }
+        ],
+        { cancelable: false }
+      );
+    } 
+    }
+  
 
   return (
     <Background>

@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
+import { Alert } from 'react-native';
 import firebase from '../services/firebaseConnection';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -57,20 +58,55 @@ const AuthProvider = ({ children }) => {
       })
     })
     .catch((error) => {
-      if (error === "auth/invalid-email") {
-        
+      if (error.code === "auth/invalid-email") {
+        return Alert.alert(
+          "Ops!",
+          "E-mail e/ou senha inválida, revise-os"
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
-      else if (error === "auth/user-disabled") {
-        
+      else if (error.code === "auth/user-disabled") {
+        return Alert.alert(
+          "Ops!",
+          "E-mail e/ou senha inválida, revise-os",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
-      else if (error === "auth/user-not-found") {
-        
+      else if (error.code === "auth/user-not-found") {
+        return Alert.alert(
+          "Ops!",
+          "E-mail e/ou senha inválida, revise-os",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
-      else if (error === "auth/wrong-password") {
-        
+      else if (error.code === "auth/wrong-password") {
+        return Alert.alert(
+          "Ops!",
+          "E-mail e/ou senha inválida, revise-os",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
       else {
-        
+        return Alert.alert(
+          "Ops!",
+          "Ocorreu um erro"
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
     })
   }
@@ -101,16 +137,45 @@ const AuthProvider = ({ children }) => {
     })
     .catch((error) => {
       if (error === "auth/email-already-in-use") {
-        
+        return Alert.alert(
+          "Ops!",
+          "Este e-mail já está em uso",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
+      
       }
       else if (error === "auth/invalid-email") {
-
+        return Alert.alert(
+          "Ops!",
+          "E-mail inválido",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
       else if (error === "auth/weak-password") {
-
+        return Alert.alert(
+          "Ops!",
+          "Sua senha precisa de no mínimo, 6 caracteres",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
       else {
-
+        return Alert.alert(
+          "Ops!",
+          "Ocorreu um erro"
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       }
     })
   }
