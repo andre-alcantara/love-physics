@@ -39,7 +39,7 @@ const Quiz = ({ navigation, route }) => {
 
   const [state] = useStateValue();
 
-  const { updateHeart, updateAnswered, user } = useContext(AuthContext);
+  const { updateHeartAnswered, user } = useContext(AuthContext);
 
 
   const modalizeRef = useRef(null);
@@ -76,8 +76,9 @@ const Quiz = ({ navigation, route }) => {
   const nextQuestion = () => {
     if(questionIndex == length) {
       setProgressBar(progressBar + (1 / question.length));
-      updateHeart(user.heart + heart);
-      updateAnswered(user.answered + count);
+      setHeart(user.heart + heart)
+      setCount(user.answered + count)
+      updateHeartAnswered(heart, count)
       modalizeEnd.current?.open();
       modalizeRef.current?.close();
       modalizeWrong.current?.close();

@@ -22,22 +22,22 @@ const AuthProvider = ({ children }) => {
 
     loadStorage();
 
-    async function loadUser() {
-      await firebase.database().ref('users').child(user.uid).on('value', (snapshot) => {
-        var data = {
-          uid: user.uid,
-          name: snapshot.val().name,
-          email: user.email,
-          image: snapshot.val().image,
-          heart: snapshot.val().heart,
-          answered: snapshot.val().answered,
-        };
-        setUser(data);
-        storageUser(data);
-      })
-    }
-    loadUser();
   }, []);
+  async function loadUser() {
+    await firebase.database().ref('users').child(user.uid).once('value')
+    .then((snapshot) => {
+      var data = {
+        uid: user.uid,
+        name: snapshot.val().name,
+        email: user.email,
+        image: snapshot.val().image,
+        heart: snapshot.val().heart,
+        answered: snapshot.val().answered,
+      };
+      setUser(data);
+      storageUser(data);
+    })
+  }
 
   async function signIn(email, password) {
     await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -214,11 +214,8 @@ const AuthProvider = ({ children }) => {
 
   async function updateNickname(nickname, password) {
 
-    let oldEmail = user.email;
-    console.log(oldEmail);
-
     firebase.auth()
-    .signInWithEmailAndPassword(oldEmail, password)
+    .signInWithEmailAndPassword(user.email, password)
     .then(async () => {
       await firebase.database().ref('users').child(user.uid).update({
         name: nickname,
@@ -266,10 +263,11 @@ const AuthProvider = ({ children }) => {
     });
   }
 
-  async function updateHeart(heart) {
+  async function updateHeartAnswered(heart, qtd) {
 
     await firebase.database().ref('users').child(user.uid).update({
       heart: heart,
+      answered: qtd,
     }).then(() => {
       var data = {
         uid: user.uid,
@@ -277,38 +275,18 @@ const AuthProvider = ({ children }) => {
         email: user.email,
         image: user.image,
         heart: heart,
-        answered: user.answered,
-      }
-      setUser(data);
-      storageUser(data);
-      console.log('Foi irmão');
-      console.log(heart)
-    }).catch((error) => {
-      console.log(error)
-    });
-  }
-
-  async function updateAnswered(qtd) {
-
-    await firebase.database().ref('users').child(user.uid).update({
-      answered: qtd
-    })
-    .then(() => {
-      var data = {
-        uid: user.uid,
-        name: user.name,
-        email: user.email,
-        image: user.image,
-        heart: user.heart,
         answered: qtd,
       }
       setUser(data);
       storageUser(data);
-      console.log('Foi irmão')
-    })
-    .catch((error) => {
+      console.log('Foi irmão');
+      console.log(user.heart);
+      console.log(heart);
+      console.log(user.answered);
+      console.log(qtd);
+    }).catch((error) => {
       console.log(error)
-    })
+    });
   }
 
   async function updatePassword(email) {
@@ -335,7 +313,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, updateUserEmail, updatePassword, updateNickname, updateImage, updateHeart, updateAnswered }}>
+    <AuthContext.Provider value={{ signed:!!user, user, setUser, loading, signUp, signIn, signOut, loadUser, updateUserEmail, updatePassword, updateNickname, updateImage, updateHeartAnswered  }}>
       { children }
     </AuthContext.Provider>
   );

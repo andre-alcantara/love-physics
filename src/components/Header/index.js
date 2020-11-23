@@ -33,9 +33,9 @@ const Header = ({ question }) => {
 
 
   
-  const { user } = useContext(AuthContext);
+  const { loadUser, user } = useContext(AuthContext);
 
-  
+  // loadUser();
 
   return (
     <Top>

@@ -43,6 +43,7 @@ const Settings = () => {
   const [state] = useStateValue();
   const [darkMode, setDarkMode] = useState(false);
   const [, dispach] = useStateValue();
+  const { loadUser, user, updateUserEmail, updateNickname } = useContext(AuthContext);
 
   useEffect(() => {
     async function listPhotos() {
@@ -60,6 +61,8 @@ const Settings = () => {
       });
     }
     listPhotos();
+    
+    loadUser();
     
   }, []);
  
@@ -84,7 +87,7 @@ const Settings = () => {
     setDarkMode(!darkMode)
   }
 
-  const { user, updateUserEmail, updateNickname } = useContext(AuthContext);
+  
   const [nickname, setNickname] = useState(user && user.name);
   const [email, setEmail] = useState(user && user.email);
   const [password, setPassword] = useState('')
