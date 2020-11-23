@@ -133,10 +133,18 @@ const AuthProvider = ({ children }) => {
         };
         setUser(data);
         storageUser(data);
+        Alert.alert(
+          "Verifique seu e-mail",
+          "Nós te enviamos um e-mail de confirmação, caso não receba, edite-o nos Ajustes para um e-mail válido",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
       })
     })
     .catch((error) => {
-      if (error === "auth/email-already-in-use") {
+      if (error.code === "auth/email-already-in-use") {
         return Alert.alert(
           "Ops!",
           "Este e-mail já está em uso",
@@ -147,7 +155,7 @@ const AuthProvider = ({ children }) => {
         );
       
       }
-      else if (error === "auth/invalid-email") {
+      else if (error.code === "auth/invalid-email") {
         return Alert.alert(
           "Ops!",
           "E-mail inválido",
@@ -157,7 +165,7 @@ const AuthProvider = ({ children }) => {
           { cancelable: false }
         );
       }
-      else if (error === "auth/weak-password") {
+      else if (error.code === "auth/weak-password") {
         return Alert.alert(
           "Ops!",
           "Sua senha precisa de no mínimo, 6 caracteres",
@@ -169,8 +177,8 @@ const AuthProvider = ({ children }) => {
       }
       else {
         return Alert.alert(
-          "Ops!",
-          "Ocorreu um erro"
+          "Ops",
+          "Ocorreu um erro",
           [
             { text: "OK", onPress: () => {} }
           ],
@@ -280,9 +288,7 @@ const AuthProvider = ({ children }) => {
       setUser(data);
       storageUser(data);
       console.log('Foi irmão');
-      console.log(user.heart);
       console.log(heart);
-      console.log(user.answered);
       console.log(qtd);
     }).catch((error) => {
       console.log(error)

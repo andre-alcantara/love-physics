@@ -35,7 +35,9 @@ const Header = ({ question }) => {
   
   const { loadUser, user } = useContext(AuthContext);
 
-  // loadUser();
+  useEffect(() => {
+    loadUser();
+  }, [])
 
   return (
     <Top>

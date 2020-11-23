@@ -39,14 +39,7 @@ export default function SignUp({ navigation }) {
     } 
     else {
       signUp(email, password, name);
-      Alert.alert(
-        "Verifique seu e-mail",
-        "Nós te enviamos um e-mail com a confirmação, caso não recebe, edite seu e-mail nos Ajustes pra um e-mail válido",
-        [
-          { text: "OK", onPress: () => {} }
-        ],
-        { cancelable: false }
-      );
+      
     } 
     }
   

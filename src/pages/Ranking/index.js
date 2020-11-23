@@ -95,7 +95,8 @@ const Ranking = () => {
 
       <ListView style={{
         marginTop: 30,
-        paddingTop: 95
+        paddingTop: 95,
+        paddingBottom: 145
       }}>
         <Content>
           <PlayerCard />
@@ -123,6 +124,9 @@ const Ranking = () => {
           fontFamily: 'Montserrat_600SemiBold',
           marginLeft: 13,
           color: state.theme.title
+        }}
+        containerStyle={{
+          paddingLeft: 30
         }}
       />
       </ListView>

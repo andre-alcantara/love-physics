@@ -27,6 +27,7 @@ const Lesson = ({ color, question }) => {
   const [visible, setVisible] = useState(false);
   const [heartCount, setHeartCount] = useState(0);
   const [visibleGo, setVisibleGo] = useState(false);
+  const [matter, setMatter] = useState([]);
 
   const { user } = useContext(AuthContext);
 
@@ -86,10 +87,13 @@ const Lesson = ({ color, question }) => {
           <Quiz onPress={() => {
            
             if(heart >= item.star) {
+              setMatter(item.questions);
               setVisibleGo(true)
             } 
             else {
-              setHeartCount(item.star)
+              setHeartCount(item.star);
+              
+              
               setVisible(true)
             }
           }}>
@@ -135,7 +139,7 @@ const Lesson = ({ color, question }) => {
             <AntDesign name="heart" size={60} color='#FF5555' />
             <SubTitle style={{ textAlign: 'center' }}>Tem ceteza que deseja praticar essa lição?</SubTitle>
             <Edit onPress={() =>  navigation.replace('Quiz', {
-              question: item.questions
+              question: matter
             })}
             style={{ marginBottom: -4, marginTop: 20 }}
             >

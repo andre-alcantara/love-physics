@@ -76,9 +76,9 @@ const Quiz = ({ navigation, route }) => {
   const nextQuestion = () => {
     if(questionIndex == length) {
       setProgressBar(progressBar + (1 / question.length));
-      setHeart(user.heart + heart)
-      setCount(user.answered + count)
-      updateHeartAnswered(heart, count)
+      var ent1 = heart + user.heart;
+      var ent2 = count + user.answered
+      updateHeartAnswered(ent1, ent2);
       modalizeEnd.current?.open();
       modalizeRef.current?.close();
       modalizeWrong.current?.close();
@@ -119,14 +119,14 @@ const Quiz = ({ navigation, route }) => {
         paddingBottom: 15
       }}>
         <Question
-          numberOfLines={10}
+          numberOfLines={20}
         >
           { question[questionIndex].question }
         </Question>
       </QuestionView>
       </View>
      
-
+      {console.log(question[questionIndex].answers[0].answer.length )}
         <AnswersView onPress={() => answer(question[questionIndex].answers[0].correct)}>
           <Answer>
           { question[questionIndex].answers[0].answer }
@@ -180,7 +180,6 @@ const Quiz = ({ navigation, route }) => {
                 }}>💔 Resposta correta:</Title>
                 <SubTitle style={{  
                   marginTop: 20,
-                  textAlign: 'flex-start', 
                   color: '#FF7676'
                   }}>
                     { question[questionIndex].correction }</SubTitle>
@@ -277,7 +276,7 @@ const Quiz = ({ navigation, route }) => {
 
           </Modalize>
 
-          <Modalize ref={modalizeEnd} modalHeight={360} 
+          <Modalize ref={modalizeEnd} modalHeight={390} 
           closeOnOverlayTap={false} 
           closeSnapPointStraightEnabled={false} 
           panGestureEnabled={false}
