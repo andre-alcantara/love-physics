@@ -16,7 +16,7 @@ import { Wrapper,
   InfoView
 } from './styles';
 
-const ScientistDetail = ({ close, life, scientist, image, who, award, nationality }) => {
+const ScientistDetail = ({ close, life, scientist, image, who, award, nationality, known }) => {
   const [state] = useStateValue();
   return (
     <Wrapper>
@@ -61,16 +61,13 @@ const ScientistDetail = ({ close, life, scientist, image, who, award, nationalit
         <Detail>
           { who }
         </Detail>
-        <Title>🎖 Prêmios </Title>
-        <Detail style={{
-          width: 240
-        }}>
-          { award }
+        <Title>💡 Conhecido por </Title>
+        <Detail>
+          { known }
         </Detail>
-        <Title>💡 Descobertas </Title>
-        <Detail style={{
-          width: 240
-        }}>
+        <Title>🎖 Prêmios e Homenagens
+           </Title>
+        <Detail>
           { award }
         </Detail>
       </Content>

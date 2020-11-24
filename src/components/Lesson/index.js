@@ -113,7 +113,7 @@ const Lesson = ({ color, question }) => {
         isVisible={visible}
         coverScreen={true}
         >
-          <EditView style={{ height: 310, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
+          <EditView style={{ height: 330, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
             <AntDesign name="heart" size={60} color='#FF5555' />
             <SubTitle style={{ textAlign: 'center' }}>Você não possui corações suficientes!</SubTitle>
             <MaterialText style={{ textAlign: 'center', fontSize: 16 }}>Corações necessários para desbloquear lição: {heartCount}</MaterialText>
@@ -135,7 +135,7 @@ const Lesson = ({ color, question }) => {
         isVisible={visibleGo}
         coverScreen={true}
         >
-          <EditView style={{ height: 300, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
+          <EditView style={{ height: 330, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
             <AntDesign name="heart" size={60} color='#FF5555' />
             <SubTitle style={{ textAlign: 'center' }}>Tem ceteza que deseja praticar essa lição?</SubTitle>
             <Edit onPress={() =>  navigation.replace('Quiz', {

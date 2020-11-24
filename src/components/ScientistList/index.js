@@ -26,26 +26,22 @@ const ScientistList = ({ data }) => {
           who={data.who}
           award={data.award}
           nationality={data.nationality}
+          known={data.known}
         />
       </Modal>
       
 
       <ImageView>
       <Image 
-          style={{
-            height: 45,
-            width: 45
-          }}
-    
+        style={{
+          height: 40,
+          width: 40
+        }}
           source={{uri : `${data.image}` }}
         />
 
       </ImageView>
-        
-      
         <Name>{data.name}</Name>
-        
-      
     </Button>
   );
 }

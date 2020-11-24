@@ -19,7 +19,8 @@ const ScientistsProvider = ({ children }) => {
             life: value.val().life,
             name: value.val().name,
             who: value.val().who,
-            nationality: value.val().nationality
+            nationality: value.val().nationality,
+            known: value.val().known
           };
           if (value.val().name.indexOf(name) != -1){
             setScientists(oldScientist => [...oldScientist, scientist]);
@@ -35,7 +36,8 @@ const ScientistsProvider = ({ children }) => {
             life: value.val().life,
             name: value.val().name,
             who: value.val().who,
-            nationality: value.val().nationality
+            nationality: value.val().nationality,
+            known: value.val().known
           };
           setScientists(oldScientist => [...oldScientist, scientist]);
         })

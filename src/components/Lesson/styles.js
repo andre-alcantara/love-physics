@@ -36,6 +36,7 @@ export const Card = styled.View `
 export const SubTitle = styled.Text `
     font-family: Montserrat_700Bold;
     font-size: 24px;
+    width: 250;
     margin-top: 18px;
     color: ${props => props.theme.title};
 `;
