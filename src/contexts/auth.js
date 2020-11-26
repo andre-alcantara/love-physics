@@ -211,12 +211,31 @@ const AuthProvider = ({ children }) => {
         storageUser(data);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error.code)
       })
       await userCredential.user.sendEmailVerification()
     })
     .catch((error) => {
-      console.log(error)
+      if (error.code === "auth/wrong-password") {
+        return Alert.alert(
+          "Ops!",
+          "Senha inválida.",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
+      }
+      else {
+        return Alert.alert(
+          "Ops",
+          "Ocorreu um erro",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
+      }
     })
   }
 
@@ -246,7 +265,26 @@ const AuthProvider = ({ children }) => {
       });
     })
     .catch((error) => {
-      console.log(error)
+      if (error.code === "auth/wrong-password") {
+        return Alert.alert(
+          "Ops!",
+          "Senha inválida.",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
+      }
+      else {
+        return Alert.alert(
+          "Ops",
+          "Ocorreu um erro",
+          [
+            { text: "OK", onPress: () => {} }
+          ],
+          { cancelable: false }
+        );
+      }
     })
   }
 
