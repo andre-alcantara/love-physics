@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "lovePhysics",
-    "slug": "lovePhysics",
+    "name": "LovePhysics",
+    "slug": "lovephysics",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#5EBACE"
+      "resizeMode": "contain",
+      "backgroundColor": "#9BDCEA"
     },
     "packagerOpts": {
       "config": "metro.config.js",
@@ -33,13 +33,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.softweare.lovephysics"
+    },
+    "android": {
+      "package": "com.softweare.lovephysics"
     },
     "androidStatusBar": {
       "backgroundColor": "#000000"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
   }
 }
