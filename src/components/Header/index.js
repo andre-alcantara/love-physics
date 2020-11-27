@@ -31,8 +31,6 @@ const Header = ({ question }) => {
     modalizeRef.current?.open();
   }
 
-
-  
   const { loadUser, user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -44,7 +42,7 @@ const Header = ({ question }) => {
       <HeaderView>
         <TextView>
           <PrimaryText>Olá { user && user.name },</PrimaryText>
-          <SecondaryText>Que bom te ver!</SecondaryText>
+          <SecondaryText>Que bom te ver! ✌️</SecondaryText>
         </TextView>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Image

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Modal, View, Image } from 'react-native';
-
+import { View, Image, Text } from 'react-native';
+import Modal from 'react-native-modal';
+import { Edit, EditView } from '../../pages/Settings/styles';
+import { AntDesign } from '@expo/vector-icons';
+import { SubTitle, MaterialText } from '../Lesson/styles';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,12 +19,20 @@ const Activity = ({ question }) => {
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
-  console.log(question.matterIcon)
+
+  const handleEnter = () => {
+    if(question.finished == true) {
+      navigation.navigate('ActivityDetail', {
+        question: question
+       })
+    }
+    else {
+      setVisible(true)
+    }
+  }
 
   return (
-    <Activities onPress={() => navigation.navigate('ActivityDetail', {
-     question: question
-    })}>
+    <Activities onPress={handleEnter}>
       <View style={{
         marginLeft: 20,
         height: 300, 
@@ -57,7 +68,26 @@ const Activity = ({ question }) => {
 
       </View>
 
-      
+      <Modal 
+      onBackdropPress={() => setVisible(false)}
+      isVisible={visible}
+      coverScreen={true}
+      >
+        <EditView style={{ height: 280, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
+
+          <SubTitle style={{ textAlign: 'center' }}>  Acalme-se jovem! ✋</SubTitle>
+          <MaterialText style={{ textAlign: 'center', fontSize: 18, marginTop: 19 }}>Parece que está matéria ainda não está disponível. Volte novamente mais tarde.</MaterialText>
+          <Edit onPress={() => setVisible(false)}
+          style={{ marginBottom: 8, marginTop: 14 }}
+          >
+            <Text style={{
+              fontFamily: 'Montserrat_600SemiBold',
+              color: '#FFF',
+              fontSize: 16
+            }}>OK</Text>
+          </Edit>
+        </EditView>
+    </Modal>
   
     </Activities>
 
