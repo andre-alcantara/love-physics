@@ -27,7 +27,7 @@ const ScientistDetail = ({ close, life, scientist, image, who, award, nationalit
         <Close onPress={close}>
           <Ionicons style={{
               alignSelf: "flex-end",
-              
+              marginTop: 8
             }} name="ios-arrow-down" size={28} color={state.theme.title} />
         </Close>
         </ImageView>

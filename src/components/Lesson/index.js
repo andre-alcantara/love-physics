@@ -137,7 +137,7 @@ const Lesson = ({ color, question }) => {
         >
           <EditView style={{ height: 330, alignItems: 'center', paddingRight: 17, paddingLeft: 17 }}>
             <AntDesign name="heart" size={60} color='#FF5555' />
-            <SubTitle style={{ textAlign: 'center' }}>Tem ceteza que deseja praticar essa lição?</SubTitle>
+            <SubTitle style={{ textAlign: 'center' }}>Tem certeza que deseja praticar essa lição?</SubTitle>
             <Edit onPress={() =>  navigation.replace('Quiz', {
               question: matter
             })}

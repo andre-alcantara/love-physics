@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
       if (error.code === "auth/invalid-email") {
         return Alert.alert(
           "Ops!",
-          "E-mail e/ou senha inválida, revise-os"
+          "E-mail e/ou senha inválida, revise-os",
           [
             { text: "OK", onPress: () => {} }
           ],

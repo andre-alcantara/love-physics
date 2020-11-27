@@ -10,29 +10,37 @@ export const Wrapper = styled.SafeAreaView `
 
 export const Container = styled.View `
     width: ${wp('100%')}px;
-    height: ${hp('70%')}px;
-    margin-top: ${hp('-15%')}px;
+    height: 95%;
     background-color: #FFF;
 `;
 
 export const Slide = styled.View `
-    height: 65%; 
-    margin-top: ${hp('6%')}px;
+    
+   
 `;
 
 export const Title = styled.Text `
-    text-align: center;
-    margin-bottom: ${hp('4%')}px;
-    font-size: ${hp('5%')}px;
+    margin-bottom: ${hp('2%')}px;
+    font-size: 26px;
+    margin-left: 24px;
     font-family: Montserrat_700Bold;
 `;
 
+export const SubTitle = styled.Text `
+    font-family: Montserrat_500Medium;
+    font-size: 18px;
+    margin-left: 24px;
+    margin-bottom: ${hp('5%')}px;
+    color: #2E2E2E;
+`;
+
 export const SignInButton = styled.TouchableOpacity `
-    margin-top: ${hp('6%')};
+    margin-top: ${hp('5%')};
     margin-bottom: ${hp('-6%')};
     background-color: #FF5555;
     width: 60%;
     border-radius: 15px;
+    align-self: center
 `;
 
 export const SignInText = styled.Text `
