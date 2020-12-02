@@ -37,7 +37,12 @@
       "bundleIdentifier": "com.softweare.lovephysics"
     },
     "android": {
-      "package": "com.softweare.lovephysics"
+      "package": "com.softweare.lovephysics",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     },
     "androidStatusBar": {
       "backgroundColor": "#000000"

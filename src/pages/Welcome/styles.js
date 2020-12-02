@@ -10,7 +10,8 @@ export const Wrapper = styled.SafeAreaView `
 
 export const Container = styled.View `
     width: ${wp('100%')}px;
-    height: 95%;
+    margin-top: 6px;
+    height: 90%;
     background-color: #FFF;
 `;
 
